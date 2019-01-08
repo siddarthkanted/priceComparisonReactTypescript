@@ -1,7 +1,10 @@
 import * as Firebase from 'firebase';
 import { autobind } from "office-ui-fabric-react";
 import * as React from 'react';
+import { Route, Switch } from "react-router";
 import './App.css';
+import { MultipleProduct } from './components/Product/MultipleProduct';
+import { SingleProduct } from "./components/Product/SingleProduct";
 import { VerticalNavigationBar } from "./components/VerticalNavigationBar/VerticalNavigationBar";
 
 interface IAppState {
@@ -38,32 +41,33 @@ class App extends React.Component<any, IAppState> {
       return (
         <>
           <VerticalNavigationBar dataList={this.state.dataList} />
-          {this.state.dataList.map(x => this.renderData(x))}
+            <Switch>
+              <Route path="/product/:productName" render={this.renderSingleProduct} />
+              <Route path="/category/:parentCategory?/:childCategory?" render={this.renderCategory}  />)} />
+              <Route path="/" render={this.renderCategory}  />)} />
+            </Switch>
         </>
       );
     }
     return <div>nothing found</div>
   }
 
-  private renderData(data: any): JSX.Element {
+  @autobind
+  private renderSingleProduct(props: any): JSX.Element {
     return (
-      <>
-        <div>{data.Name}</div>
-        {data.Category.map(x => this.renderValue(x))}
-        {data.Link.map(x => this.renderValue(x))}
-        {data.Images.map(x => this.renderImage(x))}
-      </>
-    );
+      <SingleProduct 
+        dataList={this.state.dataList}
+        {...props}
+      />);
   }
 
-  private renderValue(value: string): JSX.Element {
+  @autobind
+  private renderCategory(props: any): JSX.Element {
     return (
-      <div>{value}</div>
-    );
-  }
-
-  private renderImage(link: string): JSX.Element {
-    return <img src={link} />
+      <MultipleProduct 
+        dataList={this.state.dataList}
+        {...props}
+      />);
   }
 
   @autobind
@@ -75,7 +79,6 @@ class App extends React.Component<any, IAppState> {
   private setAppSate(dataList: any, isSuccess: boolean): void {
     this.setState({ dataList, isSuccess });
   }
-
 }
 
 export default App;

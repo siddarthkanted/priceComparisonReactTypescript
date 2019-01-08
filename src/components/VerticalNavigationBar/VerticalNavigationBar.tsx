@@ -1,6 +1,7 @@
 import { Dictionary } from "lodash";
 import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
 import * as React from "react";
+import { Utils } from "src/Utils";
 import './VerticalNavigationBar.css';
 
 interface IVerticalNavigationBarProps {
@@ -31,7 +32,7 @@ function createLinks(categoriesDictionary: Dictionary<string[]>, parentCateogry:
         isExpanded: true,
         links,
         name: parentCateogry,
-        url: new URL(getCategoryUrl(parentCateogry), getBaseUrl()).toString()
+        url: Utils.getUrl("category", parentCateogry)
     };
 }
 
@@ -39,7 +40,7 @@ function createLink(parentCateogry: string, childCategory: string): INavLink {
     return {
         key: childCategory,
         name: childCategory,
-        url: new URL(getCategoryUrl(parentCateogry, childCategory), getBaseUrl()).toString()
+        url: Utils.getUrl("category", parentCateogry, childCategory)
     }
 }
 
@@ -48,13 +49,4 @@ function addCategory(categoriesDictionary: Dictionary<string[]>, data: any): voi
         categoriesDictionary[data.Category[0]] = [];
     }
     categoriesDictionary[data.Category[0]].push(data.Category[1]);
-}
-
-function getBaseUrl(): string {
-    return location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
-}
-
-function getCategoryUrl(...urlPart: string[]): string {
-    const urlAllParts = ["category", ...urlPart];
-    return urlAllParts.join("/");
 }
