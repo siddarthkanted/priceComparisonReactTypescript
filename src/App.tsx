@@ -1,3 +1,4 @@
+import { initializeIcons } from '@uifabric/icons';
 import * as Firebase from 'firebase';
 import { autobind } from "office-ui-fabric-react";
 import * as React from 'react';
@@ -6,6 +7,8 @@ import './App.css';
 import { MultipleProduct } from './components/Product/MultipleProduct';
 import { SingleProduct } from "./components/Product/SingleProduct";
 import { VerticalNavigationBar } from "./components/VerticalNavigationBar/VerticalNavigationBar";
+
+initializeIcons();
 
 interface IAppState {
   isSuccess: boolean;

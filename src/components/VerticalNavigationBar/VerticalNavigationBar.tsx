@@ -26,6 +26,9 @@ export const VerticalNavigationBar: React.SFC<IVerticalNavigationBarProps> = (pr
     );
 };
 
+/**
+ * Create Parent Link
+ */
 function createLinks(categoriesDictionary: Dictionary<string[]>, parentCateogry: string): INavLink {
     const links = categoriesDictionary[parentCateogry].map(childCategory => createLink(parentCateogry, childCategory));
     return {
@@ -36,6 +39,9 @@ function createLinks(categoriesDictionary: Dictionary<string[]>, parentCateogry:
     };
 }
 
+/**
+ * Create Child Link
+ */
 function createLink(parentCateogry: string, childCategory: string): INavLink {
     return {
         key: childCategory,
