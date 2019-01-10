@@ -11,7 +11,6 @@ interface IUrlParams {
 }
 
 interface ISingleProductProps extends RouteComponentProps<IUrlParams> {
-    // tslint:disable:react-unused-props-and-state
     dataList: any;
 }
 
