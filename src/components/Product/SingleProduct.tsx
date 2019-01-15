@@ -1,4 +1,6 @@
+import { autobind } from '@uifabric/utilities';
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import {  PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -30,7 +32,7 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
         const { dataList } = this.props;
         const { productName } = this.props.match.params;
         const data = dataList.filter(x => Utils.convertToSlug(x.Name) === productName)[0];
-        this.setState({data});
+        this.setState({ data });
     }
 
     public componentDidMount(): void {
@@ -38,24 +40,28 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
     }
 
     public render(): JSX.Element {
-        const {data} = this.state;
+        const { data } = this.state;
         return (
             <>
-                <Breadcrumb
-                    items={[
-                        this.createBreadcrumbItem(data.Category[0], data.Category[0]),
-                        this.createBreadcrumbItem(data.Category[1], data.Category[0], data.Category[1])
-                    ]}
-                    ariaLabel={'Category of ' + data.Name}
-                />
-                <Label>
-                    {data.Name}
-                </Label>
-                <Image
-                    src={data.Images[0]}
-                    alt={data.Name}
-                />
-                {data.Link.map(x => this.renderLink(x))}
+            <Breadcrumb
+                items={[
+                    this.createBreadcrumbItem(data.Category[0], data.Category[0]),
+                    this.createBreadcrumbItem(data.Category[1], data.Category[0], data.Category[1])
+                ]}
+                ariaLabel={'Category of ' + data.Name}
+            />
+            <Label>
+                {data.Name}
+            </Label>
+            <PrimaryButton
+                text="Open all"
+                onClick={this.onOpenAllClick}
+            />
+            <Image
+                src={data.Images[0]}
+                alt={data.Name}
+            />
+            {data.Link.map(x => this.renderLink(x))}
             </>
         )
     }
@@ -77,6 +83,11 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
             text: category,
         };
     }
+
+    @autobind
+    private onOpenAllClick(): void {
+        this.state.data.Link.forEach(link => {
+            window.open(link);
+        });
+    }
 };
-
-
