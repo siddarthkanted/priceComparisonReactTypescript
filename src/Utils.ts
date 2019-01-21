@@ -1,5 +1,15 @@
 // tslint:disable-next-line:no-namespace
 export namespace Utils {
+    export function format(compositeString: string, ...args: any[]): string {
+        let replacedString = compositeString;
+        for (let i = 0; i < args.length; i++) {
+            const regex = new RegExp("\\{" + i + "\\}", "gi");
+            replacedString = replacedString.replace(regex, args[i]);
+        }
+
+        return replacedString;
+    }
+
     export function convertToSlug(text: string): string {
         return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     }

@@ -1,15 +1,19 @@
 import { autobind } from '@uifabric/utilities';
+import * as moment from "moment";
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
+import { Utils } from "src/Utils";
+
+interface IOptionType { value: string; label: string; }
 
 interface IFlightsState {
-    selectedFromPlace: ValueType<{ value: string; label: string; }>;
-    selectedToPlace: ValueType<{ value: string; label: string; }>;
-    date?: Date;
+    fromPlace: ValueType<IOptionType>;
+    toPlace: ValueType<IOptionType>;
+    date?: moment.Moment;
 }
 
 export class Flights extends React.Component<any, IFlightsState> {
@@ -17,8 +21,8 @@ export class Flights extends React.Component<any, IFlightsState> {
         super(props);
         this.state = {
             date: undefined,
-            selectedFromPlace: null,
-            selectedToPlace: null
+            fromPlace: null,
+            toPlace: null
         }
     }
 
@@ -26,30 +30,30 @@ export class Flights extends React.Component<any, IFlightsState> {
     public render(): JSX.Element {
         return (
             <>
-                            <Label>
+                <Label required={true}>
                     {"From Place"}
                 </Label>
-            <Select
-                value={this.state.selectedFromPlace}
-                onChange={this.setSelectedFromPlace}
-                options={options}
-            />
-                            <Label>
+                <Select
+                    value={this.state.fromPlace}
+                    onChange={this.setFromPlace}
+                    options={options}
+                />
+                <Label required={true}>
                     {"To Place"}
                 </Label>
-            <Select
-                value={this.state.selectedToPlace}
-                onChange={this.setSelectedToPlace}
-                options={options}
-            />
-            <DatePicker
-                label="Travel date"
-                isRequired={true}
-                allowTextInput={true}
-                onSelectDate={this.onTravelDateSelected}
-                value={this.state.date}
-            />
-                            <PrimaryButton
+                <Select
+                    value={this.state.toPlace}
+                    onChange={this.setToPlace}
+                    options={options}
+                />
+                <DatePicker
+                    label="Travel date"
+                    isRequired={true}
+                    allowTextInput={true}
+                    onSelectDate={this.onTravelDateSelected}
+                    value={this.state.date && this.state.date.toDate()}
+                />
+                <PrimaryButton
                     text="Open all"
                     onClick={this.onOpenAllClick}
                 />
@@ -59,22 +63,42 @@ export class Flights extends React.Component<any, IFlightsState> {
 
     @autobind
     private onOpenAllClick(): void {
+        const { fromPlace, toPlace, date} = this.state;
+        if (!fromPlace || !toPlace || !date ) {
+            return;
+        }
+        // 0 fromPlace
+        // 1 toPlace
+        // 2 day
+        // 3 month
+        // 4 year                                
+        const links = [
+            "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
+            "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}"
+            ]
+            links.forEach(link => {
+            window.open(Utils.format(link, (fromPlace as IOptionType).value, (toPlace as IOptionType).value, this.getTwoDigit(date.date()), this.getTwoDigit(date.month()+1), date.year()));
+        });
+    }
 
+    private getTwoDigit(value: number): string {
+        return ("0" + value).slice(-2)
     }
 
     @autobind
     private onTravelDateSelected(date: Date): void {
-        this.setState({ date });
+        const momentDate = moment(date);
+        this.setState({ date: momentDate });
     };
 
     @autobind
-    private setSelectedFromPlace(selectedFromPlace: ValueType<{ value: string; label: string; }>): void {
-        this.setState({ selectedFromPlace });
+    private setFromPlace(fromPlace: ValueType<{ value: string; label: string; }>): void {
+        this.setState({ fromPlace });
     };
 
     @autobind
-    private setSelectedToPlace(selectedToPlace: ValueType<{ value: string; label: string; }>): void {
-        this.setState({ selectedToPlace });
+    private setToPlace(toPlace: ValueType<{ value: string; label: string; }>): void {
+        this.setState({ toPlace });
     };
 }
 
