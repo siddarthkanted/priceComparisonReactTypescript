@@ -78,7 +78,7 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
 
     private createBreadcrumbItem(category: string, ...urlPart: string[]): IBreadcrumbItem {
         return {
-            href: Utils.getUrl("category", ...urlPart),
+            href: Utils.getUrl("Grocery", "category", ...urlPart),
             key: category,
             text: category,
         };

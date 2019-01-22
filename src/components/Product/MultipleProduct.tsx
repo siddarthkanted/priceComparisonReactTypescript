@@ -49,7 +49,7 @@ export class MultipleProduct extends React.Component<IMultipleProductProps, IMul
     }
 
     private renderCard(data: any, index: number): JSX.Element {
-        const url = Utils.getUrl("product", data.Name);
+        const url = Utils.getUrl("Grocery", "product", data.Name);
         return (
             <a key={index} href={url}>
                 <Image

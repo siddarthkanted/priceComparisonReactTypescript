@@ -17,7 +17,8 @@ class App extends React.Component<any, any> {
   private pathList: IPath[] = [
     { path: "Flight", render: this.renderFlight },
     { path: "Train", render: this.renderTrain },
-    { path: "Grocery", render: this.renderGrocery }
+    { path: "Grocery", render: this.renderGrocery },
+    { path: "", render: this.renderFlight }
   ];
 
   public render() {

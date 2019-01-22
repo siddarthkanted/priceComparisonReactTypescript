@@ -35,7 +35,7 @@ function createLinks(categoriesDictionary: Dictionary<string[]>, parentCateogry:
         isExpanded: true,
         links,
         name: parentCateogry,
-        url: Utils.getUrl("category", parentCateogry)
+        url: Utils.getUrl("Grocery", "category", parentCateogry)
     };
 }
 
@@ -46,7 +46,7 @@ function createLink(parentCateogry: string, childCategory: string): INavLink {
     return {
         key: childCategory,
         name: childCategory,
-        url: Utils.getUrl("category", parentCateogry, childCategory)
+        url: Utils.getUrl("Grocery", "category", parentCateogry, childCategory)
     }
 }
 

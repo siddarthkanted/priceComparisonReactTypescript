@@ -18,7 +18,7 @@ interface IGenericProps {
 interface IGenericState {
     fromPlace: ValueType<IOptionType>;
     toPlace: ValueType<IOptionType>;
-    date?: moment.Moment;
+    date?: moment.Moment
 }
 
 export class Generic extends React.Component<IGenericProps, IGenericState> {
@@ -58,11 +58,20 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     onSelectDate={this.onTravelDateSelected}
                     value={this.state.date && this.state.date.toDate()}
                 />
+                {this.renderWarning()}
                 <PrimaryButton
                     text="Open all"
                     onClick={this.onOpenAllClick}
                 />
             </>
+        );
+    }
+
+    private renderWarning(): JSX.Element {
+        return (
+            <Label>
+                {"By default popup is blocked, Please allow pop-up to this site unless it will not work."}
+            </Label>
         );
     }
 
