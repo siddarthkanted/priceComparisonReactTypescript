@@ -1,11 +1,10 @@
-import { autobind } from '@uifabric/utilities';
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
+import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/Utils";
 
 interface IUrlParams {
@@ -53,9 +52,8 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
                 <Label>
                     {data.Name}
                 </Label>
-                <PrimaryButton
-                    text="Open all"
-                    onClick={this.onOpenAllClick}
+                <MultipleUrlOpener
+                    getLinks={() => this.state.data.Link}
                 />
                 <Image
                     src={data.Images[0]}
@@ -82,12 +80,5 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
             key: category,
             text: category,
         };
-    }
-
-    @autobind
-    private onOpenAllClick(): void {
-        this.state.data.Link.forEach(link => {
-            window.open(link);
-        });
     }
 };

@@ -1,11 +1,11 @@
 import { autobind } from '@uifabric/utilities';
 import * as moment from "moment";
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
+import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/Utils";
 
 interface IOptionType { value: string; label: string; }
@@ -58,32 +58,20 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     onSelectDate={this.onTravelDateSelected}
                     value={this.state.date && this.state.date.toDate()}
                 />
-                {this.renderWarning()}
-                <PrimaryButton
-                    text="Open all"
-                    onClick={this.onOpenAllClick}
+                <MultipleUrlOpener
+                    getLinks={this.getLinks}
                 />
             </>
         );
     }
 
-    private renderWarning(): JSX.Element {
-        return (
-            <Label>
-                {"By default popup is blocked, Please allow pop-up to this site unless it will not work."}
-            </Label>
-        );
-    }
-
     @autobind
-    private onOpenAllClick(): void {
+    private getLinks(): string[] {
         const { fromPlace, toPlace, date } = this.state;
         if (!fromPlace || !toPlace || !date) {
-            return;
+            return [];
         }
-        this.props.Links.forEach(link => {
-            window.open(Utils.format(link, (fromPlace as IOptionType).value, (toPlace as IOptionType).value, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()));
-        });
+        return this.props.Links.map(link => Utils.format(link, (fromPlace as IOptionType).value, (toPlace as IOptionType).value, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()));
     }
 
     private getTwoDigit(value: number): string {
