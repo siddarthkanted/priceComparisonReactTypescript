@@ -93,6 +93,7 @@ const trainLinks = [
 ];
 
 const flightLinks = [
+  "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}",
   "https://www.cleartrip.com/flights/results?from={0}&to={1}&depart_date={2}/{3}/{4}&adults=1&childs=0&infants=0&class=Economy",
   "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0",
   "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true",

@@ -100,7 +100,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         if (!this.state.date) {
             errorDictionary[FieldsEnum.Date] = "Date cannot be empty";
         }
-        else if (this.state.date.isValid) {
+        else if (!this.state.date.isValid()) {
             errorDictionary[FieldsEnum.Date] = "Date is invalid";
         }
         this.setState({ errorDictionary });
