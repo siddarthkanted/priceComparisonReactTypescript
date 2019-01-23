@@ -10,12 +10,12 @@ initializeIcons();
 
 interface IPath {
   path: string;
-  render: () => JSX.Element
+  render: () => JSX.Element;
 }
 
 class App extends React.Component<any, any> {
   private pathList: IPath[] = [
-    { path: "Flight", render: this.renderFlight },
+    { path: "Flight", render: this.renderFlight},
     { path: "Train", render: this.renderTrain },
     { path: "Grocery", render: this.renderGrocery },
     { path: "", render: this.renderFlight }
@@ -58,6 +58,7 @@ class App extends React.Component<any, any> {
       <Generic
         Links={flightLinks}
         Options={flightOptions}
+        Title={"Flights Multiple URL Opener"}
       />);
   }
 
@@ -66,6 +67,7 @@ class App extends React.Component<any, any> {
       <Generic
         Links={trainLinks}
         Options={trainOptions}
+        Title={"Train Multiple URL Opener"}
       />);
   }
 

@@ -2,12 +2,12 @@ import { autobind } from '@uifabric/utilities';
 import * as moment from "moment";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { List } from 'office-ui-fabric-react/lib/List';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/Utils";
-import './Generic.css';
 
 interface IOptionType { value: string; label: string; }
 
@@ -20,6 +20,7 @@ enum FieldsEnum {
 interface IGenericProps {
     Links: string[];
     Options: Array<ValueType<IOptionType>>;
+    Title: string;
 }
 
 interface IGenericState {
@@ -44,6 +45,8 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     public render(): JSX.Element {
         return (
             <>
+                <h3>{this.props.Title}</h3>
+                {this.renderSupportedSites()}
                 <Label required={true}>
                     {"From Place"}
                 </Label>
@@ -77,11 +80,22 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         );
     }
 
+    private renderSupportedSites(): JSX.Element {
+        const items = this.props.Links.map(link => ({name: Utils.getHostNameFromUrl(link)}));
+        return (
+            <>
+                <div>Supported Sites</div>
+                <List items={items}/>
+                {}
+            </>
+        );
+    }
+
     private renderWarning(field: FieldsEnum): JSX.Element | undefined {
         const message = this.state.errorDictionary[field];
         if (message) {
             return (
-                <Label className={"warning"}>
+                <Label>
                     {message}
                 </Label>
             );
