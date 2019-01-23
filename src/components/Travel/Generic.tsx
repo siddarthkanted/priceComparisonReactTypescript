@@ -7,8 +7,15 @@ import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/Utils";
+import './Generic.css';
 
 interface IOptionType { value: string; label: string; }
+
+enum FieldsEnum {
+    FromPlace,
+    ToPlace,
+    Date
+}
 
 interface IGenericProps {
     Links: string[];
@@ -19,6 +26,7 @@ interface IGenericState {
     fromPlace: ValueType<IOptionType>;
     toPlace: ValueType<IOptionType>;
     date?: moment.Moment
+    errorDictionary: _.Dictionary<FieldsEnum>;
 }
 
 export class Generic extends React.Component<IGenericProps, IGenericState> {
@@ -26,6 +34,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         super(props);
         this.state = {
             date: undefined,
+            errorDictionary: {},
             fromPlace: null,
             toPlace: null
         }
@@ -43,6 +52,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     onChange={this.setFromPlace}
                     options={this.props.Options}
                 />
+                {this.renderWarning(FieldsEnum.FromPlace)}
                 <Label required={true}>
                     {"To Place"}
                 </Label>
@@ -51,6 +61,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     onChange={this.setToPlace}
                     options={this.props.Options}
                 />
+                {this.renderWarning(FieldsEnum.ToPlace)}
                 <DatePicker
                     label="Travel date"
                     isRequired={true}
@@ -58,6 +69,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     onSelectDate={this.onTravelDateSelected}
                     value={this.state.date && this.state.date.toDate()}
                 />
+                {this.renderWarning(FieldsEnum.Date)}
                 <MultipleUrlOpener
                     getLinks={this.getLinks}
                 />
@@ -65,8 +77,41 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         );
     }
 
+    private renderWarning(field: FieldsEnum): JSX.Element | undefined {
+        const message = this.state.errorDictionary[field];
+        if (message) {
+            return (
+                <Label className={"warning"}>
+                    {message}
+                </Label>
+            );
+        }
+        return;
+    }
+
+    private validate(): void {
+        const errorDictionary = {};
+        if (!this.state.fromPlace) {
+            errorDictionary[FieldsEnum.FromPlace] = "From Place cannot be empty";
+        }
+        if (!this.state.toPlace) {
+            errorDictionary[FieldsEnum.ToPlace] = "To Place cannot be empty";
+        }
+        if (!this.state.date) {
+            errorDictionary[FieldsEnum.Date] = "Date cannot be empty";
+        }
+        else if (this.state.date.isValid) {
+            errorDictionary[FieldsEnum.Date] = "Date is invalid";
+        }
+        this.setState({ errorDictionary });
+    }
+
     @autobind
     private getLinks(): string[] {
+        this.validate();
+        if (Object.keys(this.state.errorDictionary).length > 0) {
+            return [];
+        }
         const { fromPlace, toPlace, date } = this.state;
         if (!fromPlace || !toPlace || !date) {
             return [];

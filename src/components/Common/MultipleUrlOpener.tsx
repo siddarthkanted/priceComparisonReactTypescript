@@ -1,8 +1,7 @@
 import { autobind } from '@uifabric/utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
-import './MultipleUrlOpener.css';
 
 interface IMultipleUrlOpenerProps {
     /**
@@ -26,20 +25,22 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
     public render(): JSX.Element {
         return (
             <>
-                {this.state.showWarning && this.renderWarning()}
                 <PrimaryButton
                     text="Open all"
                     onClick={this.onOpenAllClick}
                 />
+                {this.state.showWarning && this.renderWarning()}
             </>
         );
     }
 
     private renderWarning(): JSX.Element {
         return (
-            <Label className="warning">
-                {"By default popup is blocked, Please allow pop-up to this site unless it will not work."}
-            </Label>
+            <>
+                <MessageBar messageBarType={MessageBarType.severeWarning}>
+                    {"By default popup is blocked, Please allow pop-up to this site unless it will not work."}
+                </MessageBar>
+            </>
         );
     }
 
