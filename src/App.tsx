@@ -59,6 +59,7 @@ class App extends React.Component<any, any> {
         Links={flightLinks}
         Options={flightOptions}
         Title={"Flights Multiple URL Opener"}
+        OfferLinks={flightOffers}
       />);
   }
 
@@ -68,6 +69,7 @@ class App extends React.Component<any, any> {
         Links={trainLinks}
         Options={trainOptions}
         Title={"Train Multiple URL Opener"}
+        OfferLinks={trainOffers}
       />);
   }
 
@@ -78,6 +80,35 @@ class App extends React.Component<any, any> {
   }
 
 }
+
+const trainOffers = [
+  "https://www.goibibo.com/offers/train-offers/",
+  "https://www.railyatri.in/offers",
+  "https://paytm.com/train-tickets",
+  "https://www.cleartrip.com/offers/india",
+  "https://www.ixigo.com/offers/tag/trains/",
+  "https://www.makemytrip.com/railways",
+  "https://www.desidime.com/categories/travel",
+  "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
+  "https://www.freecharge.in/offers"
+
+];
+
+const flightOffers = [
+  "https://paytm.com/flights",
+  "https://www.makemytrip.com/daily-deals/flights/",
+  "https://www.goibibo.com/offers/flight-offers/",
+  "https://www.cleartrip.com/offers/india",
+  "https://www.akbartravels.com/offers",
+  "https://www.ixigo.com/offers/tag/flight-offers/",
+  "https://www.easemytrip.com/offers/flights.html",
+  "https://in.via.com/offers",
+  "https://www.yatra.com/offer/dom/listing/domestic-flight-deals",
+  "https://cashkaro.com/shop/domestic-flight-offers",
+  "https://www.desidime.com/categories/travel",
+  "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
+  "https://www.freecharge.in/offers"
+];
 
 // 0 fromPlace
 // 1 toPlace

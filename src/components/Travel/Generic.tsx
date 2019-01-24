@@ -8,6 +8,7 @@ import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/Utils";
+import './Generic.css';
 
 interface IOptionType { value: string; label: string; }
 
@@ -19,6 +20,7 @@ enum FieldsEnum {
 
 interface IGenericProps {
     Links: string[];
+    OfferLinks: string[];
     Options: Array<ValueType<IOptionType>>;
     Title: string;
 }
@@ -46,7 +48,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         return (
             <>
                 <h3>{this.props.Title}</h3>
-                {this.renderSupportedSites()}
+                {this.renderSupportedSites(this.props.Links)}
                 <Label required={true}>
                     {"From Place"}
                 </Label>
@@ -76,16 +78,34 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                 <MultipleUrlOpener
                     getLinks={this.getLinks}
                 />
+                {this.renderOffers()}
             </>
         );
     }
 
-    private renderSupportedSites(): JSX.Element {
-        const items = this.props.Links.map(link => ({name: Utils.getHostNameFromUrl(link)}));
+    private renderOffers(): JSX.Element | undefined {
+        if (this.props.OfferLinks) {
+            return (
+                <>
+                    <Label required={true}>
+                        {"Offers - " + this.props.Title}
+                    </Label>
+                    {this.renderSupportedSites(this.props.OfferLinks)}
+                    <MultipleUrlOpener
+                        getLinks={() => this.props.OfferLinks}
+                    />
+                </>
+            )
+        }
+        return;
+    }
+
+    private renderSupportedSites(links: string[]): JSX.Element {
+        const items = links.map(link => ({ name: Utils.getHostNameFromUrl(link) }));
         return (
             <>
                 <div>Supported Sites</div>
-                <List items={items}/>
+                <List items={items} />
                 {}
             </>
         );
@@ -95,9 +115,9 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         const message = this.state.errorDictionary[field];
         if (message) {
             return (
-                <Label>
+                <div className="warning">
                     {message}
-                </Label>
+                </div>
             );
         }
         return;
