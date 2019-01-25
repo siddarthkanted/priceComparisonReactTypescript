@@ -17,17 +17,18 @@ enum FieldsEnum {
     Date
 }
 
-interface IGenericProps {
-    Links: string[];
-    OfferLinks: string[];
-    Options: Array<ValueType<IOptionType>>;
-    Title: string;
+export interface IGenericProps {
+    links: string[];
+    offerLinks: string[];
+    options: Array<ValueType<IOptionType>>;
+    title: string;
+    variedLinks?: _.Dictionary< _.Dictionary<string>>
 }
 
 interface IGenericState {
     fromPlace: ValueType<IOptionType>;
     toPlace: ValueType<IOptionType>;
-    date?: moment.Moment
+    date: moment.Moment
     errorDictionary: _.Dictionary<FieldsEnum>;
 }
 
@@ -35,7 +36,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     constructor(props: IGenericProps) {
         super(props);
         this.state = {
-            date: undefined,
+            date: moment(),
             errorDictionary: {},
             fromPlace: null,
             toPlace: null
@@ -46,14 +47,14 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     public render(): JSX.Element {
         return (
             <>
-                <h3>{this.props.Title}</h3>
+                <h3>{this.props.title}</h3>
                 <Label required={true}>
                     {"From Place"}
                 </Label>
                 <Select
                     value={this.state.fromPlace}
                     onChange={this.setFromPlace}
-                    options={this.props.Options}
+                    options={this.props.options}
                 />
                 {this.renderWarning(FieldsEnum.FromPlace)}
                 <Label required={true}>
@@ -62,7 +63,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                 <Select
                     value={this.state.toPlace}
                     onChange={this.setToPlace}
-                    options={this.props.Options}
+                    options={this.props.options}
                 />
                 {this.renderWarning(FieldsEnum.ToPlace)}
                 <DatePicker
@@ -82,14 +83,14 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     }
 
     private renderOffers(): JSX.Element | undefined {
-        if (this.props.OfferLinks) {
+        if (this.props.offerLinks) {
             return (
                 <>
                     <h3>
-                        {"Offers - " + this.props.Title}
+                        {"Offers - " + this.props.title}
                     </h3>
                     <MultipleUrlOpener
-                        getLinks={() => this.props.OfferLinks}
+                        getLinks={() => this.props.offerLinks}
                     />
                 </>
             )
@@ -129,17 +130,24 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     @autobind
     private getLinks(validate: boolean): string[] {
         if(!validate) {
-            return this.props.Links;
+            return this.props.links;
         }
         this.validate();
         if (Object.keys(this.state.errorDictionary).length > 0) {
             return [];
         }
+        return this.props.links.map(link => this.handleVariedLink(link));
+    }
+
+    private handleVariedLink(link: string): string {
         const { fromPlace, toPlace, date } = this.state;
-        if (!fromPlace || !toPlace || !date) {
-            return [];
-        }
-        return this.props.Links.map(link => Utils.format(link, (fromPlace as IOptionType).value, (toPlace as IOptionType).value, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()));
+        let fromPlaceValue = (fromPlace as IOptionType).value;
+        let toPlaceValue = (toPlace as IOptionType).value;
+        if(this.props.variedLinks && this.props.variedLinks[link]) {
+            fromPlaceValue = this.props.variedLinks[link][fromPlaceValue] ? this.props.variedLinks[link][fromPlaceValue] : fromPlaceValue;
+            toPlaceValue = this.props.variedLinks[link][toPlaceValue] ? this.props.variedLinks[link][toPlaceValue] : toPlaceValue;
+        } 
+        return  Utils.format(link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());
     }
 
     private getTwoDigit(value: number): string {
