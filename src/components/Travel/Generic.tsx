@@ -87,9 +87,9 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         if (this.props.OfferLinks) {
             return (
                 <>
-                    <Label required={true}>
+                    <h3>
                         {"Offers - " + this.props.Title}
-                    </Label>
+                    </h3>
                     {this.renderSupportedSites(this.props.OfferLinks)}
                     <MultipleUrlOpener
                         getLinks={() => this.props.OfferLinks}
