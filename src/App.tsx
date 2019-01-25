@@ -5,12 +5,14 @@ import { Route, Switch } from "react-router";
 import { GroceryMain } from "src/components/Product/GroceryMain";
 import { Generic } from "src/components/Travel/Generic";
 import { Utils } from "src/Utils";
+import './App.css';
 
 initializeIcons();
 
 interface IPath {
   path: string;
   render: () => JSX.Element;
+  className?: string;
 }
 
 class App extends React.Component<any, any> {
@@ -18,7 +20,7 @@ class App extends React.Component<any, any> {
     { path: "Flight", render: this.renderFlight},
     { path: "Train", render: this.renderTrain },
     { path: "Bus", render: this.renderBus },
-    { path: "Grocery", render: this.renderGrocery },
+    { path: "Grocery", render: this.renderGrocery, className:"groceryMain" },
     { path: "", render: this.renderFlight }
   ];
 
@@ -36,7 +38,7 @@ class App extends React.Component<any, any> {
 
   private renderPivotItem(path: IPath): JSX.Element {
     return (
-      <PivotItem linkText={path.path} itemKey={path.path} key={path.path}>
+      <PivotItem linkText={path.path} itemKey={path.path} key={path.path} className={path.className}>
         {path.render()}
       </PivotItem>
     );

@@ -1,5 +1,17 @@
+import {
+    IDocumentCardPreviewProps
+} from 'office-ui-fabric-react/lib/DocumentCard';
+
 // tslint:disable-next-line:no-namespace
 export namespace Utils {
+    export function getIDocumentCardPreviewProps(imageStringArray: string[]): IDocumentCardPreviewProps {
+        const images = imageStringArray.map(image => ({ previewImageSrc: image, height: 196}));
+        const previewProps: IDocumentCardPreviewProps = {
+            previewImages: images,
+        };
+        return previewProps;
+    }
+
     export function format(compositeString: string, ...args: any[]): string {
         let replacedString = compositeString;
         for (let i = 0; i < args.length; i++) {

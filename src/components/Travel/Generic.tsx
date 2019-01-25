@@ -2,7 +2,6 @@ import { autobind } from '@uifabric/utilities';
 import * as moment from "moment";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { List } from 'office-ui-fabric-react/lib/List';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
@@ -48,7 +47,6 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         return (
             <>
                 <h3>{this.props.Title}</h3>
-                {this.renderSupportedSites(this.props.Links)}
                 <Label required={true}>
                     {"From Place"}
                 </Label>
@@ -90,7 +88,6 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     <h3>
                         {"Offers - " + this.props.Title}
                     </h3>
-                    {this.renderSupportedSites(this.props.OfferLinks)}
                     <MultipleUrlOpener
                         getLinks={() => this.props.OfferLinks}
                     />
@@ -98,17 +95,6 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
             )
         }
         return;
-    }
-
-    private renderSupportedSites(links: string[]): JSX.Element {
-        const items = links.map(link => ({ name: Utils.getHostNameFromUrl(link) }));
-        return (
-            <>
-                <div>Supported Sites</div>
-                <List items={items} />
-                {}
-            </>
-        );
     }
 
     private renderWarning(field: FieldsEnum): JSX.Element | undefined {
@@ -141,7 +127,10 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     }
 
     @autobind
-    private getLinks(): string[] {
+    private getLinks(validate: boolean): string[] {
+        if(!validate) {
+            return this.props.Links;
+        }
         this.validate();
         if (Object.keys(this.state.errorDictionary).length > 0) {
             return [];

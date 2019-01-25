@@ -1,10 +1,6 @@
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { Image } from 'office-ui-fabric-react/lib/Image';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
+import { ProductCard } from "src/components/Product/ProductCard";
 import { Utils } from "src/Utils";
 
 interface IUrlParams {
@@ -39,46 +35,8 @@ export class SingleProduct extends React.Component<ISingleProductProps, ISingleP
     }
 
     public render(): JSX.Element {
-        const { data } = this.state;
         return (
-            <>
-                <Breadcrumb
-                    items={[
-                        this.createBreadcrumbItem(data.Category[0], data.Category[0]),
-                        this.createBreadcrumbItem(data.Category[1], data.Category[0], data.Category[1])
-                    ]}
-                    ariaLabel={'Category of ' + data.Name}
-                />
-                <Label>
-                    {data.Name}
-                </Label>
-                <MultipleUrlOpener
-                    getLinks={() => this.state.data.Link}
-                />
-                <Image
-                    src={data.Images[0]}
-                    alt={data.Name}
-                />
-                {data.Link.map(x => this.renderLink(x))}
-            </>
+            <ProductCard data={this.state.data} />
         )
-    }
-
-    private renderLink(link: string): JSX.Element {
-        const hostName = Utils.getHostNameFromUrl(link);
-        return (
-            <div>
-                <span>{hostName}</span>
-                <Link href={link}>Buy from {hostName}</Link>
-            </div>
-        );
-    }
-
-    private createBreadcrumbItem(category: string, ...urlPart: string[]): IBreadcrumbItem {
-        return {
-            href: Utils.getUrl("Grocery", "category", ...urlPart),
-            key: category,
-            text: category,
-        };
     }
 };

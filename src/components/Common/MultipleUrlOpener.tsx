@@ -1,13 +1,15 @@
 import { autobind } from '@uifabric/utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { List } from 'office-ui-fabric-react/lib/List';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
+import { Utils } from "src/Utils";
 
 interface IMultipleUrlOpenerProps {
     /**
      * Make sure getLinks method has autobind annotation
      */
-    getLinks: () => string[];
+    getLinks: (validate: boolean) => string[];
 }
 
 interface IMultipleUrlOpenerState {
@@ -25,11 +27,22 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
     public render(): JSX.Element {
         return (
             <>
+                {this.renderSupportedSites()}
                 <PrimaryButton
                     text="Open all"
                     onClick={this.onOpenAllClick}
                 />
                 {this.state.showWarning && this.renderWarning()}
+            </>
+        );
+    }
+
+    private renderSupportedSites(): JSX.Element {
+        const items = this.props.getLinks(false).map(link => ({ name: Utils.getHostNameFromUrl(link) }));
+        return (
+            <>
+                <div>Supported Sites</div>
+                <List items={items} />
             </>
         );
     }
@@ -46,7 +59,7 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
 
     @autobind
     private onOpenAllClick(): void {
-        const links = this.props.getLinks();
+        const links = this.props.getLinks(true);
         let windowResponseFailureCount = 0;
         links.forEach(link => {
             const windowResponse = window.open(link);

@@ -1,8 +1,8 @@
-import { Image } from 'office-ui-fabric-react/lib/Image';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
+import { ProductCard } from "src/components/Product/ProductCard";
 import { Utils } from "src/Utils";
+import './Product.css';
 
 interface IUrlParams {
     parentCategory?: string;
@@ -27,7 +27,7 @@ export class MultipleProduct extends React.Component<IMultipleProductProps, IMul
 
     public componentWillMount(): void {
         const dataList = this.filterDataList();
-        this.setState({dataList});
+        this.setState({ dataList });
     }
 
     public componentDidMount(): void {
@@ -42,27 +42,13 @@ export class MultipleProduct extends React.Component<IMultipleProductProps, IMul
     }
 
     public render() {
-        const dataList = this.filterDataList();
         return (
-            dataList.map((data, index) => this.renderCard(data, index))
+            <div className={"multipleProductDataList"}>
+                {this.filterDataList().map((data, index) => <ProductCard data={data} key={index} />)}
+            </div>
         );
     }
 
-    private renderCard(data: any, index: number): JSX.Element {
-        const url = Utils.getUrl("Grocery", "product", data.Name);
-        return (
-            <a key={index} href={url}>
-                <Image
-                    src={data.Images[0]}
-                    alt={data.Name}
-                />
-                <Label>
-                    {data.Name}
-                </Label>
-            </a>
-        )
-    }
-    
     private filterDataList(): any {
         let { dataList } = this.props;
         const { parentCategory, childCategory } = this.props.match.params;
