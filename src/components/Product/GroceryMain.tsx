@@ -44,8 +44,8 @@ export class GroceryMain extends React.Component<any, IGroceryMain> {
         <>
           <VerticalNavigationBar dataList={this.state.dataList} />
             <Switch>
-              <Route path="/product/:productName" render={this.renderSingleProduct} />
-              <Route path="/category/:parentCategory?/:childCategory?" render={this.renderCategory}  />)} />
+              <Route path="/Grocery/product/:productName" render={this.renderSingleProduct} />
+              <Route path="/Grocery/category/:parentCategory?/:childCategory?" render={this.renderCategory}  />)} />
               <Route path="/" render={this.renderCategory}  />)} />
             </Switch>
         </>

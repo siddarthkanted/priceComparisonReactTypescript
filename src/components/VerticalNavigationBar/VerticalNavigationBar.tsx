@@ -16,13 +16,11 @@ export const VerticalNavigationBar: React.SFC<IVerticalNavigationBarProps> = (pr
     const keyArray = Object.keys(categoriesDictionary);
     const links = keyArray.map(key => createLinks(categoriesDictionary, key));
     return (
-        <div className="NavContainer">
-            <Nav groups={[
-                {
-                    links
-                }
-            ]} expandedStateText={'expanded'} collapsedStateText={'collapsed'} selectedKey={keyArray[0]} expandButtonAriaLabel={'Expand or collapse'} />
-        </div>
+        <Nav groups={[
+            {
+                links
+            }
+        ]} expandedStateText={'expanded'} collapsedStateText={'collapsed'} selectedKey={keyArray[0]} expandButtonAriaLabel={'Expand or collapse'} />
     );
 };
 
@@ -35,7 +33,7 @@ function createLinks(categoriesDictionary: Dictionary<string[]>, parentCateogry:
         isExpanded: true,
         links,
         name: parentCateogry,
-        url: Utils.getUrl("category", parentCateogry)
+        url: Utils.getUrl("Grocery", "category", parentCateogry)
     };
 }
 
@@ -46,7 +44,7 @@ function createLink(parentCateogry: string, childCategory: string): INavLink {
     return {
         key: childCategory,
         name: childCategory,
-        url: Utils.getUrl("category", parentCateogry, childCategory)
+        url: Utils.getUrl("Grocery", "category", parentCateogry, childCategory)
     }
 }
 
