@@ -3,6 +3,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
+import { affilateLinks } from "src/components/Common/Constants";
 import { Utils } from "src/Utils";
 
 interface IMultipleUrlOpenerProps {
@@ -62,7 +63,12 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
         const links = this.props.getLinks(true);
         let windowResponseFailureCount = 0;
         links.forEach(link => {
-            const windowResponse = window.open(link);
+            let finalUrl =  link;
+            const hostName = Utils.getHostNameFromUrl(finalUrl);
+            if (affilateLinks[hostName]) {
+                finalUrl = Utils.format(affilateLinks[hostName], finalUrl);
+            }
+            const windowResponse = window.open(finalUrl);
             if (!windowResponse) {
                 windowResponseFailureCount++;
             }

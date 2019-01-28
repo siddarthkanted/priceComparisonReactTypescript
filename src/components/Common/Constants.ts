@@ -34,6 +34,10 @@ export namespace Flight {
 
         "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
 
+        "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}",
+
+        "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}",
+
         "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}",
 
         "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results",
@@ -109,19 +113,33 @@ export namespace Bus {
 }
 
 export const affilateLinks: _.Dictionary<string> = {
-    ["https://www.makemytrip.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.mybustickets.in/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.agoda.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.akbartravels.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.booking.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.cleartrip.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.easemytrip.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.expedia.co.in/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.goibibo.com/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.railyatri.in/"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.sastiticket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://www.bigbasket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["https://paytm.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}"
+    ["flights.makemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+    ["bus.makemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["www.goibibo.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["www.railyatri.in"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    // ["www.cleartrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    // ["flight.easemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    // ["www.expedia.co.in"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    // ["www.sastiticket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["www.akbartravels.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["booking.kayak.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["www.mybustickets.in"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["paytm.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["flights.agoda.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["www.bigbasket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
 }
 
 // tslint:disable-next-line:no-namespace
