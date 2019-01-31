@@ -2,7 +2,6 @@ import { autobind } from '@uifabric/utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
-import { affilateLinks } from "src/components/Common/Constants";
 import { IAffiliateLink } from 'src/components/Common/Model';
 import { Utils } from "src/components/Common/Utils";
 import './AffiliateMultipleUrlOpener.css';
@@ -66,17 +65,19 @@ export class AffiliateMultipleUrlOpener extends React.Component<IAffiliateMultip
     private renderAffiliateLink(affiliateLink: IAffiliateLink, index: number): JSX.Element {
         return (
             <li key={index}>
-                <span className={"hostName"}>{affiliateLink.name ? affiliateLink.name : Utils.getHostNameFromUrl(affiliateLink.link)}</span>
-                {affiliateLink.referralCode && this.renderReferralCode(affiliateLink.referralCode)}
+                <span>{affiliateLink.name ? affiliateLink.name : Utils.getHostNameFromUrl(affiliateLink.link)}</span>
+                {affiliateLink.referralCode && this.renderLabelValue("Referral code", affiliateLink.referralCode)}
+                {affiliateLink.email && this.renderLabelValue("Email", affiliateLink.email)}
+                {affiliateLink.phone && this.renderLabelValue("Phone", affiliateLink.phone)}
             </li>
         );
     }
 
-    private renderReferralCode(referralCode: string): JSX.Element {
+    private renderLabelValue(label: string, value: string): JSX.Element {
         return (
             <>
-                <span><b>{"Referral code:"}</b></span>
-                <span className={"referralCode"}>{referralCode}</span>
+                <span className={"marginLeft"}><b>{label}:</b></span>
+                <span className={"marginLeft"}>{value}</span>
             </>
         );
     }
@@ -96,12 +97,7 @@ export class AffiliateMultipleUrlOpener extends React.Component<IAffiliateMultip
         const links = this.props.getLinks(true);
         let windowResponseFailureCount = 0;
         links.forEach(link => {
-            let finalUrl = link.link;
-            const hostName = Utils.getHostNameFromUrl(finalUrl);
-            if (affilateLinks[hostName]) {
-                finalUrl = Utils.format(affilateLinks[hostName], finalUrl);
-            }
-            const windowResponse = window.open(finalUrl);
+            const windowResponse = window.open(link.link);
             if (!windowResponse) {
                 windowResponseFailureCount++;
             }

@@ -3,33 +3,140 @@ import { Utils } from "src/components/Common/Utils";
 // tslint:disable-next-line:no-namespace
 export namespace AllOffers {
     export const affilateWebSite = [
-        Utils.createAffiliateLink("https://cashkaro.com/r=912171", "Cashkaro"),
+        
+
+        {link: "https://cashkaro.com/r=912171", referralCode: "" , name: "Cashkaro", email: "contact@cashkaro.com", phone: "9821397418"},
+
         Utils.createAffiliateLink("https://zngy.in/c4ol", "Zingoy", "sidman03"),
         Utils.createAffiliateLink("http://www.paisaget.com/?r=131420", "PaisaGet"),
         Utils.createAffiliateLink("http://paisawapas.com/?ref=528877", "PaisaWapas", "UAIJG"),
         Utils.createAffiliateLink("https://www.coupondunia.in/referral/TML9LO", "CouponDunia"),
     ];
+
+    export const wallet = [
+        
+        Utils.createAffiliateLink("https://www.freecharge.in/offers", "Freecharge"),
+        
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https://paytm.com/offer/", "Paytm"),
+        Utils.createAffiliateLink("https://www.mobikwik.com/offers", "MobiKwik"),
+        Utils.createAffiliateLink("https://www.amazon.in/b?node=14783922031&tag=amazonhttpp-21", "Amazon"),
+        
+        Utils.createAffiliateLink("https://www.paypal.com/in/webapps/mpp/online-shopping", "PayPal"),
+        
+        {link: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html", referralCode: "siro80" , name: "PayZapp", email: "support@payzapp.in", phone: "18001029426"},
+
+        {link: "https://www.phonepe.com/en/", name: "PhonePe", email: "support@phonepe.com", phone: "01246789345"},
+        
+        Utils.createAffiliateLink("https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html", "Pockets", "POC0181469"),
+
+        Utils.createAffiliateLink("https://www.airtel.in/bank/offers", "Airtel"),
+
+        Utils.createAffiliateLink("https://g.co/payinvite/up873", "Google Pay", "up873"),
+
+    ];
+
+    export const mobileRecharge = [
+        Utils.createAffiliateLink("https://niki.ai/?chat=1&_branch_match_id=618330132380661336", "Niki Ai", "niki21218"),
+        Utils.createAffiliateLink("https://www.messenger.com/t/hdfcbankonchat", "HDFC Bank OnChat"),
+        Utils.createAffiliateLink("https://www.amazon.in/hfc/mobileRecharge?tag=amazonhttpp-21", "Amazon"),
+        Utils.createAffiliateLink("https://www.freecharge.in/prepaid", "Freecharge"),
+        Utils.createAffiliateLink("https://www.mobikwik.com/mobile", "MobiKwik"),
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Frecharge", "Paytm"),
+        Utils.createAffiliateLink("https://www.airtel.in/bank/recharge/mobile?type=prepaid", "Airtel"),
+    ];
+
+    export const cabBooking = [
+        Utils.createAffiliateLink("https://hello.ola.app/refer/?referral_code=2YM97VU", "Ola", "2YM97VU"),
+        Utils.createAffiliateLink("https://www.uber.com/invite/siddarthk140ue", "Uber", "siddarthk140ue"),
+        Utils.createAffiliateLink("https://umzf4.app.goo.gl/C4ytAJ7MHMnt5kkD8", "Rapido", "SIDPUVQ"),
+        Utils.createAffiliateLink("https://www.mobikwik.com/offers/bikesandcabs", "MobiKwik")       
+    ];
+
+    export const foodDelivery = [
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.swiggy.com%2F", "Swiggy", "1AFJ6G"),
+        Utils.createAffiliateLink("https://www.zomato.com/india", "Zomato", "SIDM2839"),
+        Utils.createAffiliateLink("https://www.ubereats.com/en-IN/", "Uber eats"),
+        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031&tag=amazonhttpp-21  ", "Amazon"),
+    ];
+
+    export const movieBooking = [
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fin.bookmyshow.com%2F", "Bookmyshow"),
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Fmovies", "Paytm"),
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fmoviecardindia.com%2Fbuy-movie-card%2FSACPM01", "MoviEcard"),
+        Utils.createAffiliateLink("https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031&tag=amazonhttpp-21  ", "Amazon"),
+    ];
+
+    export const electricity = [
+        Utils.createAffiliateLink("https://www.mobikwik.com/electricity", "MobiKwik", "sidman03"),
+        Utils.createAffiliateLink("https://www.freecharge.in/electricity", "Freecharge"),
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Felectricity-bill-payment", "Paytm", "UAIJG"),
+        Utils.createAffiliateLink("https://www.amazon.in/hfc/bill/electricity?tag=amazonhttpp-21", "Amazon"),
+    ];
+
+    export const flightOffers = [
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Fflights"),
+        
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html"),
+
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F"),
+
+        Utils.createAffiliateLink("https://www.goibibo.com/offers/flight-offers/"),
+        Utils.createAffiliateLink("https://www.cleartrip.com/offers/india"),
+        Utils.createAffiliateLink("https://www.akbartravels.com/offers"),
+        Utils.createAffiliateLink("https://www.ixigo.com/offers/tag/flight-offers/"),
+
+        Utils.createAffiliateLink("https://in.via.com/offers"),
+        Utils.createAffiliateLink("https://www.yatra.com/offer/dom/listing/domestic-flight-deals"),
+        Utils.createAffiliateLink("https://cashkaro.com/shop/domestic-flight-offers"),
+        Utils.createAffiliateLink("https://www.desidime.com/categories/travel"),
+        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031"),
+        Utils.createAffiliateLink("https://www.freecharge.in/offers"),
+        Utils.createAffiliateLink("https://www.sastiticket.com/offers")
+    ];
+
+    export const trainOffers = [
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Ftrain-tickets"),
+
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.makemytrip.com%2Frailways"),
+
+        Utils.createAffiliateLink("https://www.goibibo.com/offers/train-offers/"),
+        Utils.createAffiliateLink("https://www.railyatri.in/offers"),
+
+        Utils.createAffiliateLink("https://www.cleartrip.com/offers/india"),
+        Utils.createAffiliateLink("https://www.ixigo.com/offers/tag/trains/"),
+
+        Utils.createAffiliateLink("https://www.desidime.com/categories/travel"),
+        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031"),
+        Utils.createAffiliateLink("https://www.freecharge.in/offers")
+
+    ];
+
+    export const busOffers = [
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.makemytrip.com%2Fbus-tickets%2F"),
+
+        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Fbus-tickets"),
+
+        Utils.createAffiliateLink("https://www.travelyaari.com/offers"),
+        
+
+
+        Utils.createAffiliateLink("https://www.railyatri.in/offers"),
+
+        Utils.createAffiliateLink("https://www.mybustickets.in/"),
+        Utils.createAffiliateLink("https://www.ticketgoose.com/"),
+        Utils.createAffiliateLink("https://www.yatra.com/offer/listing/bus"),
+        Utils.createAffiliateLink("https://www.abhibus.com/bus-ticket-offers"),
+        Utils.createAffiliateLink("https://www.redbus.in/info/OfferTerms"),
+        Utils.createAffiliateLink("https://www.goibibo.com/offers/bus-offers/"),
+        Utils.createAffiliateLink("https://cashkaro.com/shop/bus-booking-offers"),
+        Utils.createAffiliateLink("https://www.desidime.com/categories/travel"),
+        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031"),
+        Utils.createAffiliateLink("https://www.freecharge.in/offers"),
+    ];
 };
 
 // tslint:disable-next-line:no-namespace
 export namespace Flight {
-    export const flightOffers = [
-        "https://paytm.com/flights",
-        "https://www.makemytrip.com/daily-deals/flights/",
-        "https://www.goibibo.com/offers/flight-offers/",
-        "https://www.cleartrip.com/offers/india",
-        "https://www.akbartravels.com/offers",
-        "https://www.ixigo.com/offers/tag/flight-offers/",
-        "https://www.easemytrip.com/offers/flights.html",
-        "https://in.via.com/offers",
-        "https://www.yatra.com/offer/dom/listing/domestic-flight-deals",
-        "https://cashkaro.com/shop/domestic-flight-offers",
-        "https://www.desidime.com/categories/travel",
-        "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
-        "https://www.freecharge.in/offers",
-        "https://www.sastiticket.com/offers"
-    ];
-
     export const flightLinks = [
         "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}",
 
@@ -63,19 +170,6 @@ export namespace Flight {
 
 // tslint:disable-next-line:no-namespace
 export namespace Train {
-    export const trainOffers = [
-        "https://www.goibibo.com/offers/train-offers/",
-        "https://www.railyatri.in/offers",
-        "https://paytm.com/train-tickets",
-        "https://www.cleartrip.com/offers/india",
-        "https://www.ixigo.com/offers/tag/trains/",
-        "https://www.makemytrip.com/railways",
-        "https://www.desidime.com/categories/travel",
-        "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
-        "https://www.freecharge.in/offers"
-
-    ];
-
     export const trainLinks = [
         "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0",
         "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All",
@@ -89,23 +183,6 @@ export namespace Train {
 
 // tslint:disable-next-line:no-namespace
 export namespace Bus {
-    export const busOffers = [
-        "https://www.travelyaari.com/offers",
-        "https://www.makemytrip.com/bus-tickets/",
-        "https://www.railyatri.in/offers",
-        "https://paytm.com/bus-tickets",
-        "https://www.mybustickets.in/",
-        "https://www.ticketgoose.com/",
-        "https://www.yatra.com/offer/listing/bus",
-        "https://www.abhibus.com/bus-ticket-offers",
-        "https://www.redbus.in/info/OfferTerms",
-        "https://www.goibibo.com/offers/bus-offers/",
-        "https://cashkaro.com/shop/bus-booking-offers",
-        "https://www.desidime.com/categories/travel",
-        "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
-        "https://www.freecharge.in/offers"
-    ];
-
     // 0 fromPlace
     // 1 toPlace
     // 2 day
@@ -152,6 +229,10 @@ export const affilateLinks: _.Dictionary<string> = {
     ["flights.agoda.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
 
     ["www.bigbasket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
+
+    ["www.amazon.in"]: "{0}?tag=amazonhttpp-21",
+
+    ["www.flipkart.com"]: "{0}&affid=siddarthk"
 
 }
 

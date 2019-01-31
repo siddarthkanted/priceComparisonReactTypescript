@@ -3,6 +3,7 @@ import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pi
 import * as React from 'react';
 import { Route, Switch } from "react-router";
 import { Bus, Flight, Train, TravelOptions } from "src/components/Common/Constants";
+import { AllOffers } from "src/components/Common/Constants";
 import { Offers } from 'src/components/Common/Offers';
 import { Utils } from "src/components/Common/Utils";
 import { GroceryMain } from "src/components/Product/GroceryMain";
@@ -24,7 +25,7 @@ class App extends React.Component<any, any> {
   private travelList: ITravel[] = [
     {
       links: Flight.flightLinks,
-      offerLinks: Flight.flightOffers,
+      offerLinks: AllOffers.flightOffers,
       options: TravelOptions.flightOptions,
       path: "Flight", 
       render: this.renderGeneric, 
@@ -32,7 +33,7 @@ class App extends React.Component<any, any> {
     },
     {
       links: Train.trainLinks,
-      offerLinks: Train.trainOffers,
+      offerLinks: AllOffers.trainOffers,
       options: TravelOptions.trainOptions,
       path: "Train", 
       render: this.renderGeneric, 
@@ -40,7 +41,7 @@ class App extends React.Component<any, any> {
     },
     {
       links: Bus.busLinks,
-      offerLinks: Bus.busOffers,
+      offerLinks: AllOffers.busOffers,
       options: TravelOptions.busOptions,
       path: "Bus", 
       render: this.renderGeneric, 

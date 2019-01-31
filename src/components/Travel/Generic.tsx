@@ -5,8 +5,10 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
+import { IAffiliateLink } from 'src/components/Common/Model';
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/components/Common/Utils";
+import { AffiliateMultipleUrlOpener } from '../Common/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import './Generic.css';
 
 interface IOptionType { value: string; label: string; }
@@ -19,7 +21,7 @@ enum FieldsEnum {
 
 export interface IGenericProps {
     links: string[];
-    offerLinks: string[];
+    offerLinks: IAffiliateLink[];
     options: Array<ValueType<IOptionType>>;
     title: string;
     variedLinks?: _.Dictionary<_.Dictionary<string>>
@@ -77,7 +79,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                 <MultipleUrlOpener
                     getLinks={this.getLinks}
                 />
-                {this.props.offerLinks && <MultipleUrlOpener
+                {this.props.offerLinks && <AffiliateMultipleUrlOpener
                     getLinks={() => this.props.offerLinks}
                     title= {"Offers - " + this.props.title}
                 />}
