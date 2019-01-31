@@ -1,9 +1,18 @@
 import {
     IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
+import { IAffiliateLink } from 'src/components/Common/Model';
 
 // tslint:disable-next-line:no-namespace
 export namespace Utils {
+    export function createAffiliateLink(link: string, name?: string, referralCode?: string): IAffiliateLink {
+        return {
+            link,
+            name,
+            referralCode,
+        };
+    }
+
     export function getIDocumentCardPreviewProps(imageStringArray: string[]): IDocumentCardPreviewProps {
         const images = imageStringArray.map(image => ({ previewImageSrc: image, height: 196}));
         const previewProps: IDocumentCardPreviewProps = {

@@ -1,3 +1,16 @@
+import { Utils } from "src/components/Common/Utils";
+
+// tslint:disable-next-line:no-namespace
+export namespace AllOffers {
+    export const affilateWebSite = [
+        Utils.createAffiliateLink("https://cashkaro.com/r=912171", "Cashkaro"),
+        Utils.createAffiliateLink("https://zngy.in/c4ol", "Zingoy", "sidman03"),
+        Utils.createAffiliateLink("http://www.paisaget.com/?r=131420", "PaisaGet"),
+        Utils.createAffiliateLink("http://paisawapas.com/?ref=528877", "PaisaWapas", "UAIJG"),
+        Utils.createAffiliateLink("https://www.coupondunia.in/referral/TML9LO", "CouponDunia"),
+    ];
+};
+
 // tslint:disable-next-line:no-namespace
 export namespace Flight {
     export const flightOffers = [

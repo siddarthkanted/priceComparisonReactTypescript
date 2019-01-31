@@ -3,9 +3,10 @@ import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pi
 import * as React from 'react';
 import { Route, Switch } from "react-router";
 import { Bus, Flight, Train, TravelOptions } from "src/components/Common/Constants";
+import { Offers } from 'src/components/Common/Offers';
+import { Utils } from "src/components/Common/Utils";
 import { GroceryMain } from "src/components/Product/GroceryMain";
 import { Generic, IGenericProps } from "src/components/Travel/Generic";
-import { Utils } from "src/Utils";
 import './App.css';
 
 initializeIcons();
@@ -49,7 +50,8 @@ class App extends React.Component<any, any> {
   ];
   private pathList: IPath[]  = [
     ...this.travelList,
-    { path: "Grocery", render: this.renderGrocery, className: "groceryMain" },
+    { path: "Grocery", render: (path: IPath) => <GroceryMain />, className: "groceryMain" },
+    { path: "Offers", render: (path: IPath) => <Offers />},
   ];
 
   public render() {
@@ -79,10 +81,6 @@ class App extends React.Component<any, any> {
         {this.pathList.map(pathItem => this.renderPivotItem(pathItem))}
       </Pivot>
     );
-  }
-
-  private renderGrocery(path: IPath): JSX.Element {
-    return <GroceryMain />
   }
 
   private renderGeneric(path: IPath): JSX.Element {

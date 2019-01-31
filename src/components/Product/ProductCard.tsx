@@ -6,7 +6,7 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import * as React from "react";
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
-import { Utils } from "src/Utils";
+import { Utils } from "src/components/Common/Utils";
 import './Product.css';
 
 interface IProductCardProps {

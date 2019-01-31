@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
+import { Utils } from "src/components/Common/Utils";
 import { ProductCard } from "src/components/Product/ProductCard";
-import { Utils } from "src/Utils";
 import './Product.css';
 
 interface IUrlParams {

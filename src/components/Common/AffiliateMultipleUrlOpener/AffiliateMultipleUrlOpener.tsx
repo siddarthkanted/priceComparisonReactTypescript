@@ -1,26 +1,27 @@
 import { autobind } from '@uifabric/utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { List } from 'office-ui-fabric-react/lib/List';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
 import { affilateLinks } from "src/components/Common/Constants";
+import { IAffiliateLink } from 'src/components/Common/Model';
 import { Utils } from "src/components/Common/Utils";
+import './AffiliateMultipleUrlOpener.css';
 
-interface IMultipleUrlOpenerProps {
+interface IAffiliateMultipleUrlOpenerProps {
     title?: string;
     renderDescription?: () => JSX.Element;
     /**
      * Make sure getLinks method has autobind annotation
      */
-    getLinks: (validate: boolean) => string[];
+    getLinks: (validate: boolean) => IAffiliateLink[];
 }
 
-interface IMultipleUrlOpenerState {
+interface IAffiliateMultipleUrlOpenerState {
     showWarning: boolean;
 }
 
-export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, IMultipleUrlOpenerState> {
-    constructor(props: IMultipleUrlOpenerProps) {
+export class AffiliateMultipleUrlOpener extends React.Component<IAffiliateMultipleUrlOpenerProps, IAffiliateMultipleUrlOpenerState> {
+    constructor(props: IAffiliateMultipleUrlOpenerProps) {
         super(props);
         this.state = {
             showWarning: false
@@ -51,11 +52,31 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
     }
 
     private renderSupportedSites(): JSX.Element {
-        const items = this.props.getLinks(false).map(link => ({ name: Utils.getHostNameFromUrl(link) }));
         return (
             <>
                 <div>Supported Sites</div>
-                <List items={items} />
+                <ol>
+                    {this.props.getLinks(false).map((link, index) => this.renderAffiliateLink(link, index))}
+                </ol>
+            </>
+        );
+    }
+
+    @autobind
+    private renderAffiliateLink(affiliateLink: IAffiliateLink, index: number): JSX.Element {
+        return (
+            <li key={index}>
+                <span className={"hostName"}>{affiliateLink.name ? affiliateLink.name : Utils.getHostNameFromUrl(affiliateLink.link)}</span>
+                {affiliateLink.referralCode && this.renderReferralCode(affiliateLink.referralCode)}
+            </li>
+        );
+    }
+
+    private renderReferralCode(referralCode: string): JSX.Element {
+        return (
+            <>
+                <span><b>{"Referral code:"}</b></span>
+                <span className={"referralCode"}>{referralCode}</span>
             </>
         );
     }
@@ -75,7 +96,7 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
         const links = this.props.getLinks(true);
         let windowResponseFailureCount = 0;
         links.forEach(link => {
-            let finalUrl = link;
+            let finalUrl = link.link;
             const hostName = Utils.getHostNameFromUrl(finalUrl);
             if (affilateLinks[hostName]) {
                 finalUrl = Utils.format(affilateLinks[hostName], finalUrl);

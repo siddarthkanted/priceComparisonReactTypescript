@@ -6,7 +6,7 @@ import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
-import { Utils } from "src/Utils";
+import { Utils } from "src/components/Common/Utils";
 import './Generic.css';
 
 interface IOptionType { value: string; label: string; }
@@ -22,7 +22,7 @@ export interface IGenericProps {
     offerLinks: string[];
     options: Array<ValueType<IOptionType>>;
     title: string;
-    variedLinks?: _.Dictionary< _.Dictionary<string>>
+    variedLinks?: _.Dictionary<_.Dictionary<string>>
 }
 
 interface IGenericState {
@@ -77,25 +77,12 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                 <MultipleUrlOpener
                     getLinks={this.getLinks}
                 />
-                {this.renderOffers()}
+                {this.props.offerLinks && <MultipleUrlOpener
+                    getLinks={() => this.props.offerLinks}
+                    title= {"Offers - " + this.props.title}
+                />}
             </>
         );
-    }
-
-    private renderOffers(): JSX.Element | undefined {
-        if (this.props.offerLinks) {
-            return (
-                <>
-                    <h3>
-                        {"Offers - " + this.props.title}
-                    </h3>
-                    <MultipleUrlOpener
-                        getLinks={() => this.props.offerLinks}
-                    />
-                </>
-            )
-        }
-        return;
     }
 
     private renderWarning(field: FieldsEnum): JSX.Element | undefined {
@@ -129,7 +116,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
 
     @autobind
     private getLinks(validate: boolean): string[] {
-        if(!validate) {
+        if (!validate) {
             return this.props.links;
         }
         this.validate();
@@ -143,11 +130,11 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         const { fromPlace, toPlace, date } = this.state;
         let fromPlaceValue = (fromPlace as IOptionType).value;
         let toPlaceValue = (toPlace as IOptionType).value;
-        if(this.props.variedLinks && this.props.variedLinks[link]) {
+        if (this.props.variedLinks && this.props.variedLinks[link]) {
             fromPlaceValue = this.props.variedLinks[link][fromPlaceValue] ? this.props.variedLinks[link][fromPlaceValue] : fromPlaceValue;
             toPlaceValue = this.props.variedLinks[link][toPlaceValue] ? this.props.variedLinks[link][toPlaceValue] : toPlaceValue;
-        } 
-        return  Utils.format(link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());
+        }
+        return Utils.format(link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());
     }
 
     private getTwoDigit(value: number): string {

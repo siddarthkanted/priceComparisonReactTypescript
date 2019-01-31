@@ -1,7 +1,7 @@
 import { Dictionary } from "lodash";
 import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
 import * as React from "react";
-import { Utils } from "src/Utils";
+import { Utils } from "src/components/Common/Utils";
 import './VerticalNavigationBar.css';
 
 interface IVerticalNavigationBarProps {
