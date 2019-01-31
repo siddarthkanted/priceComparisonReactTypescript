@@ -6,35 +6,36 @@ export class Offers extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <>
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.affilateWebSite}
-                    title={"Affiliate web sites"}
-                    renderDescription={this.renderAffilateWebSitesDescription}
-                />
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.wallet}
-                    title={"Wallet"}
-                />
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.mobileRecharge}
-                    title={"Mobile recharge"}
-                />
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.cabBooking}
-                    title={"Cab booking"}
-                />
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.foodDelivery}
-                    title={"Food order"}
-                />
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.movieBooking}
-                    title={"Movie booking"}
-                />
-                <AffiliateMultipleUrlOpener
-                    getLinks={() => AllOffers.movieBooking}
-                    title={"Electricity"}
-                />
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.affilateWebSite}
+                title={"Affiliate web sites"}
+                renderDescription={this.renderAffilateWebSitesDescription}
+            />
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.movieBooking}
+                title={"Movie booking"}
+            />
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.foodDelivery}
+                title={"Food order"}
+            />
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.wallet}
+                title={"Wallet"}
+            />
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.mobileRecharge}
+                title={"Mobile recharge"}
+            />
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.cabBooking}
+                title={"Cab booking"}
+            />
+
+            <AffiliateMultipleUrlOpener
+                getLinks={() => AllOffers.electricity}
+                title={"Electricity"}
+            />
             </>
         );
     }
