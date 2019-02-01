@@ -25,15 +25,96 @@ const amazon = {
     name: "Amazon"
 }
 
+const yatra = {
+    name: "Yatra"
+}
+
+const railyatri = {
+    isCuelinks: true,
+    name: "Railyatri"
+}
+
+const ixigo = {
+    name: "Ixigo"
+}
+
+// tslint:disable-next-line:no-namespace
+export namespace TravelLinks {
+    export const bus = [
+        { link: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1", ...paytm },
+
+        { link: "https://ebus.yatra.com/busview/busdesktop/search?src={0}&dest={1}&ddate={4}-{3}-{2}", ...yatra },
+
+        { link: "https://www.goibibo.com/bus/#bus-{0}-{1}-{4}{3}{2}---0-0-3924148632351062483-4354390963378411938", ...goibibo },
+
+        { link: "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}" },
+
+        { link: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway" },
+
+        { link: "https://bus.makemytrip.com/bus/search/{0}/{1}/{2}-{3}-{4}", ...makemytrip, variedOptions: { ["Bengaluru"]: "Bangalore" } },
+
+        { link: "https://www.railyatri.in/bus-booking/{0}-to-{1}-buses?doj={2}-{3}-{4}", ...railyatri, variedOptions: { ["Bengaluru"]: "Bangalore-Bengaluru" }},
+    ]
+
+    export const flight = [
+        { link: "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}", ...makemytrip },
+
+        { link: "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}", ...paytm },
+
+        { link: "https://www.cleartrip.com/flights/results?from={0}&to={1}&depart_date={2}/{3}/{4}&adults=1&childs=0&infants=0&class=Economy", ...cleartrip },
+
+        { link: "https://www.goibibo.com/flights/air-{0}-{1}-{4}{3}{2}--1-0-0-E-I/", ...goibibo },
+
+        { link: "https://flight.yatra.com/air-search-ui/dom2/trigger?type=O&origin={0}&destination={1}&flight_depart_date={2}/{3}/{4}&ADT=1&CHD=0&INF=0&class=Economy", ...yatra },
+
+        { link: "https://www.ixigo.com/search/result/flight/{0}/{1}/{2}{3}{4}//1/0/0/e", ...ixigo },
+
+        { link: "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0" },
+
+        { link: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true" },
+
+        { link: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy" },
+
+        { link: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}" },
+
+        { link: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}" },
+
+        { link: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}" },
+
+        { link: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results" },
+
+        { link: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y" },
+
+        { link: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY" },
+
+    ];
+
+    export const train = [
+        { link: "https://paytm.com/train-tickets/searchTrains/{0}_{0}/{1}_{1}/{4}{3}{2}", ...paytm },
+
+        { link: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL", ...makemytrip, isCuelinks: false },
+
+        { link: "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0", ...cleartrip, isCuelinks: false  },
+
+        { link: "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All", ...goibibo, isCuelinks: false  },
+
+        { link: "https://rail.yatra.com/trains/b2c/search?srcStn={0}&destStn={1}&departDate={4}-{3}-{2}", ...yatra },
+
+        { link: "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}", ...railyatri, isCuelinks: false  },
+
+        { link: "https://www.ixigo.com/search/result/train/{0}/{1}/{2}{3}{4}//1/0/0/0/ALL", ...ixigo }
+    ];
+}
+
 // tslint:disable-next-line:no-namespace
 export namespace AllOffers {
     export const grocery = [
-        {link: "https://www.amazon.in/b?node=11302610031", ...amazon},
+        { link: "https://www.amazon.in/b?node=11302610031", ...amazon },
         Utils.createAffiliateLink("https://www.flipkart.com/grocery-supermart-store?affid=siddarthk", "Flipkart"),
         Utils.createAffiliateLink("https://grofers.com/offers", "Grofers"),
-        {isCuelinks: true, link: "https://www.bigbasket.com/bank-offers/", name: "Bigbasket"},
-        {isCuelinks: true, link: "https://www.spencers.in/offers/", name: "Spencers"},
-        {isCuelinks: true, link: "https://play.google.com/store/apps/details?id=com.dunzo.user", name: "Dunzo", referralCode:  "BYU3ZT"},
+        { isCuelinks: true, link: "https://www.bigbasket.com/bank-offers/", name: "Bigbasket" },
+        { isCuelinks: true, link: "https://www.spencers.in/offers/", name: "Spencers" },
+        { isCuelinks: true, link: "https://play.google.com/store/apps/details?id=com.dunzo.user", name: "Dunzo", referralCode: "BYU3ZT" },
     ];
 
     export const investment = [
@@ -44,8 +125,8 @@ export namespace AllOffers {
     ];
 
     export const affilateWebSite = [
-        
-        {link: "https://cashkaro.com/r=912171", referralCode: "" , name: "Cashkaro", email: "contact@cashkaro.com", phone: "9821397418"},
+
+        { link: "https://cashkaro.com/r=912171", referralCode: "", name: "Cashkaro", email: "contact@cashkaro.com", phone: "9821397418" },
 
         Utils.createAffiliateLink("https://zngy.in/c4ol", "Zingoy", "sidman03"),
         Utils.createAffiliateLink("http://www.paisaget.com/?r=131420", "PaisaGet"),
@@ -54,21 +135,21 @@ export namespace AllOffers {
     ];
 
     export const wallet = [
-        
+
         Utils.createAffiliateLink("https://www.freecharge.in/offers", "Freecharge"),
-        
-        {link: "https://paytm.com/offer/", ...paytm},
+
+        { link: "https://paytm.com/offer/", ...paytm },
 
         Utils.createAffiliateLink("https://www.mobikwik.com/offers", "MobiKwik"),
 
-        {link: "https://www.amazon.in/b?node=14783922031", ...amazon},
-        
-        Utils.createAffiliateLink("https://www.paypal.com/in/webapps/mpp/online-shopping", "PayPal"),
-        
-        {link: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html", referralCode: "siro80" , name: "PayZapp", email: "support@payzapp.in", phone: "18001029426"},
+        { link: "https://www.amazon.in/b?node=14783922031", ...amazon },
 
-        {link: "https://www.phonepe.com/en/", name: "PhonePe", email: "support@phonepe.com", phone: "01246789345"},
-        
+        Utils.createAffiliateLink("https://www.paypal.com/in/webapps/mpp/online-shopping", "PayPal"),
+
+        { link: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html", referralCode: "siro80", name: "PayZapp", email: "support@payzapp.in", phone: "18001029426" },
+
+        { link: "https://www.phonepe.com/en/", name: "PhonePe", email: "support@phonepe.com", phone: "01246789345" },
+
         Utils.createAffiliateLink("https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html", "Pockets", "POC0181469"),
 
         Utils.createAffiliateLink("https://www.airtel.in/bank/offers", "Airtel"),
@@ -80,25 +161,25 @@ export namespace AllOffers {
     export const mobileRecharge = [
         Utils.createAffiliateLink("https://niki.ai/?chat=1&_branch_match_id=618330132380661336", "Niki Ai", "niki21218"),
         Utils.createAffiliateLink("https://www.messenger.com/t/hdfcbankonchat", "HDFC Bank OnChat"),
-        {link: "https://www.amazon.in/hfc/mobileRecharge", ...amazon},
+        { link: "https://www.amazon.in/hfc/mobileRecharge", ...amazon },
         Utils.createAffiliateLink("https://www.freecharge.in/prepaid", "Freecharge"),
         Utils.createAffiliateLink("https://www.mobikwik.com/mobile", "MobiKwik"),
-        {link: "https://paytm.com/offer/recharge/", ...paytm},
+        { link: "https://paytm.com/offer/recharge/", ...paytm },
         Utils.createAffiliateLink("https://www.airtel.in/bank/recharge/mobile?type=prepaid", "Airtel"),
     ];
 
     export const cabBooking = [
         Utils.createAffiliateLink("https://hello.ola.app/refer/?referral_code=2YM97VU", "Ola", "2YM97VU"),
-        
+
         Utils.createAffiliateLink("https://www.uber.com/invite/siddarthk140ue", "Uber", "siddarthk140ue"),
-        
+
         Utils.createAffiliateLink("https://umzf4.app.goo.gl/C4ytAJ7MHMnt5kkD8", "Rapido", "SIDPUVQ"),
-        
-        Utils.createAffiliateLink("https://www.mobikwik.com/offers/bikesandcabs", "MobiKwik")       
+
+        Utils.createAffiliateLink("https://www.mobikwik.com/offers/bikesandcabs", "MobiKwik")
     ];
 
     export const foodDelivery = [
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.swiggy.com%2Foffers%2Fpayment", name: "Swiggy", referralCode:"1AFJ6G"},
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.swiggy.com%2Foffers%2Fpayment", name: "Swiggy", referralCode: "1AFJ6G" },
 
         Utils.createAffiliateLink("https://www.zomato.com/india", "Zomato", "SIDM2839"),
 
@@ -106,28 +187,28 @@ export namespace AllOffers {
 
         Utils.createAffiliateLink("http://magicpin.in/getapp/CAQW6774", "MagicPin", "CAQW6774"),
 
-        {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031", ...amazon},
+        { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031", ...amazon },
     ];
 
     export const movieBooking = [
-        {isCuelinks: true, link: "https%3A%2F%2Fin.bookmyshow.com%2Foffers", name: "Bookmyshow"},
-      
-        {link: "https%3A%2F%2Fpaytm.com%2Foffer%2Fmovies%2F", ...paytm},
+        { isCuelinks: true, link: "https%3A%2F%2Fin.bookmyshow.com%2Foffers", name: "Bookmyshow" },
+
+        { link: "https%3A%2F%2Fpaytm.com%2Foffer%2Fmovies%2F", ...paytm },
 
         Utils.createAffiliateLink("https://www.ticketnew.com/Movie-offers-Tickets-Online-Booking-Show-Timings/latest-offers/Offer_Section", "TicketNew"),
 
         Utils.createAffiliateLink("https://www.justickets.in/", "JusTickets"),
-      
-        {link: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031", ...amazon},
 
-        {isCuelinks: true, link: "https%3A%2F%2Fmoviecardindia.com%2Fbuy-movie-card%2FSACPM01", name: "MoviEcard"},
+        { link: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031", ...amazon },
+
+        { isCuelinks: true, link: "https%3A%2F%2Fmoviecardindia.com%2Fbuy-movie-card%2FSACPM01", name: "MoviEcard" },
     ];
 
     export const electricity = [
-        
-        {link: "https://paytm.com/offer/billpayment/", ...paytm},
 
-        {link: "https://www.amazon.in/b?node=15377663031", ...amazon},
+        { link: "https://paytm.com/offer/billpayment/", ...paytm },
+
+        { link: "https://www.amazon.in/b?node=15377663031", ...amazon },
 
         Utils.createAffiliateLink("https://www.freecharge.in/electricity", "Freecharge"),
 
@@ -135,135 +216,64 @@ export namespace AllOffers {
     ];
 
     export const flightOffers = [
-        {link: "https%3A%2F%2Fpaytm.com%2Fflights", ...paytm},
-        
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", name: "Easemytrip"},
+        { link: "https://paytm.com/offer/flight-tickets/", ...paytm },
 
-        {link: "https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F", ...makemytrip},
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", name: "Easemytrip" },
 
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.akbartravels.com%2Foffers", name: "Akbar Travels"},
+        { link: "https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F", ...makemytrip },
 
-        {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon},
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.akbartravels.com%2Foffers", name: "Akbar Travels" },
 
-        {link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fflight-offers%2F", ...goibibo},
+        { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon },
 
-        {link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip},
+        { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fflight-offers%2F", ...goibibo },
 
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.sastiticket.com%2Foffers", name: "Sastiticket"},
+        { link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip },
 
-        Utils.createAffiliateLink("https://www.ixigo.com/offers/tag/flight-offers/", "Ixigo"),
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.sastiticket.com%2Foffers", name: "Sastiticket" },
+
+        { link: "https://www.ixigo.com/offers/tag/flight-offers/", ...ixigo },
 
         Utils.createAffiliateLink("https://in.via.com/offers", "Via"),
 
         Utils.createAffiliateLink("https://www.yatra.com/offer/dom/listing/domestic-flight-deals", "Yatra"),
-         
+
     ];
 
     export const trainOffers = [
-        {link: "https%3A%2F%2Fpaytm.com%2Ftrain-tickets", ...paytm},
+        { link: "https://www.ixigo.com/offers/tag/trains/", ...ixigo },
 
-        {link: "https%3A%2F%2Fwww.makemytrip.com%2Frailways", ...makemytrip},
+        { link: "https://paytm.com/offer/train-tickets/", ...paytm },
 
-        {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon},
+        { link: "https://www.railyatri.in/offers", ...railyatri, isCuelinks: false },
 
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.railyatri.in%2Foffers", name: "Railyatri"},
+        { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon },
 
-        {link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Ftrain-offers%2F", ...goibibo},
-       
-        {link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip},
-
-        Utils.createAffiliateLink("https://www.ixigo.com/offers/tag/trains/", "Ixigo"),
+        { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Ftrain-offers%2F", ...goibibo },
     ];
 
     export const busOffers = [
-        {link: "https%3A%2F%2Fwww.makemytrip.com%2Fbus-tickets%2F", ...makemytrip},
+        { link: "https%3A%2F%2Fwww.makemytrip.com%2Fbus-tickets%2F", ...makemytrip },
 
-        {link: "https%3A%2F%2Fpaytm.com%2Fbus-tickets", ...paytm},
+        { link: "https://paytm.com/offer/bus-tickets/", ...paytm },
 
-        {link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", ...goibibo},
+        { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", ...goibibo },
 
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.railyatri.in%2Foffers", name: "Railyatri"},
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.railyatri.in%2Foffers", name: "Railyatri" },
 
-        {isCuelinks: true, link: "https%3A%2F%2Fwww.mybustickets.in%2F", name: "My Bus ticket"},
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.mybustickets.in%2F", name: "My Bus ticket" },
 
         Utils.createAffiliateLink("https://www.travelyaari.com/offers"),
-        
+
         Utils.createAffiliateLink("https://www.ticketgoose.com/"),
-        
+
         Utils.createAffiliateLink("https://www.yatra.com/offer/listing/bus"),
 
         Utils.createAffiliateLink("https://www.abhibus.com/bus-ticket-offers", "Abhibus"),
-        
+
         Utils.createAffiliateLink("https://www.redbus.in/info/OfferTerms", "Redbus")
     ];
 };
-
-// tslint:disable-next-line:no-namespace
-export namespace Flight {
-    export const flightLinks = [
-        "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}",
-
-        "https://www.cleartrip.com/flights/results?from={0}&to={1}&depart_date={2}/{3}/{4}&adults=1&childs=0&infants=0&class=Economy",
-
-        "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0",
-
-        "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true",
-
-        "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy",
-
-        "https://www.goibibo.com/flights/air-{0}-{1}-{4}{3}{2}--1-0-0-E-I/",
-
-        "https://www.ixigo.com/search/result/flight/{0}/{1}/{2}{3}{4}//1/0/0/e",
-
-        "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
-
-        "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}",
-
-        "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}",
-
-        "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}",
-
-        "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results",
-
-        "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y",
-
-        "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY"
-    ];
-}
-
-// tslint:disable-next-line:no-namespace
-export namespace Train {
-    export const trainLinks = [
-        "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0",
-        "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All",
-        "https://www.ixigo.com/search/result/train/{0}/{1}/{2}{3}{4}//1/0/0/0/ALL",
-        "https://rail.yatra.com/trains/b2c/search?srcStn={0}&destStn={1}&departDate={4}-{3}-{2}",
-        "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}",
-        "https://paytm.com/train-tickets/searchTrains/{0}_{0}/{1}_{1}/{4}{3}{2}",
-        "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL"
-    ];
-}
-
-// tslint:disable-next-line:no-namespace
-export namespace Bus {
-    // 0 fromPlace
-    // 1 toPlace
-    // 2 day
-    // 3 month
-    // 4 year
-    export const busLinks = [
-        "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway",
-        "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1",
-        "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}",
-        "https://ebus.yatra.com/busview/busdesktop/search?src={0}&dest={1}&ddate={4}-{3}-{2}",
-        "https://www.goibibo.com/bus/#bus-{0}-{1}-{4}{3}{2}---0-0-3924148632351062483-4354390963378411938"
-    ]
-
-    export const busLinksWithVariation: _.Dictionary<_.Dictionary<string>> = {
-        ["https://bus.makemytrip.com/bus/search/{0}/{1}/{2}-{3}-{4}"]: { ["Bengaluru"]: "Bangalore" },
-        ["https://www.railyatri.in/bus-booking/{0}-to-{1}-buses?doj={2}-{3}-{4}"]: { ["Bengaluru"]: "Bangalore-Bengaluru" }
-    }
-}
 
 export const affilateLinks: _.Dictionary<string> = {
     ["flights.makemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",

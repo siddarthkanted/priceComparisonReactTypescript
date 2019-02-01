@@ -6,7 +6,6 @@ import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { IAffiliateLink, IOptionType } from 'src/components/Common/Model';
-import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/components/Common/Utils";
 import { AffiliateMultipleUrlOpener } from '../Common/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import './Generic.css';
@@ -18,11 +17,10 @@ enum FieldsEnum {
 }
 
 export interface IGenericProps {
-    links: string[];
+    links: IAffiliateLink[];
     offerLinks: IAffiliateLink[];
     options: Array<ValueType<IOptionType>>;
     title: string;
-    variedLinks?: _.Dictionary<_.Dictionary<string>>
 }
 
 interface IGenericState {
@@ -74,7 +72,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                     value={this.state.date && this.state.date.toDate()}
                 />
                 {this.renderWarning(FieldsEnum.Date)}
-                <MultipleUrlOpener
+                <AffiliateMultipleUrlOpener
                     getLinks={this.getLinks}
                 />
                 {this.props.offerLinks && <AffiliateMultipleUrlOpener
@@ -115,7 +113,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
     }
 
     @autobind
-    private getLinks(validate: boolean): string[] {
+    private getLinks(validate: boolean): IAffiliateLink[] {
         if (!validate) {
             return this.props.links;
         }
@@ -126,15 +124,16 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         return this.props.links.map(link => this.handleVariedLink(link));
     }
 
-    private handleVariedLink(link: string): string {
+    private handleVariedLink(link: IAffiliateLink): IAffiliateLink {
         const { fromPlace, toPlace, date } = this.state;
         let fromPlaceValue = (fromPlace as IOptionType).value;
         let toPlaceValue = (toPlace as IOptionType).value;
-        if (this.props.variedLinks && this.props.variedLinks[link]) {
-            fromPlaceValue = this.props.variedLinks[link][fromPlaceValue] ? this.props.variedLinks[link][fromPlaceValue] : fromPlaceValue;
-            toPlaceValue = this.props.variedLinks[link][toPlaceValue] ? this.props.variedLinks[link][toPlaceValue] : toPlaceValue;
+        if (link.variedOptions) {
+            fromPlaceValue = link.variedOptions[fromPlaceValue] ? link.variedOptions[fromPlaceValue] : fromPlaceValue;
+            toPlaceValue = link.variedOptions[toPlaceValue] ? link.variedOptions[toPlaceValue] : toPlaceValue;
         }
-        return Utils.format(link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());
+        link.link = Utils.format(link.link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());
+        return link;
     }
 
     private getTwoDigit(value: number): string {

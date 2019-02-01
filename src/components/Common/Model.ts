@@ -5,7 +5,8 @@ export interface IAffiliateLink {
     email?: string;
     phone?: string;
     isCuelinks?: boolean;
-    extraParameters?: _.Dictionary<string>
+    extraParameters?: _.Dictionary<string>;
+    variedOptions?: _.Dictionary<string>;
 }
 
 export interface IOptionType { 

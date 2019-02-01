@@ -2,7 +2,7 @@ import { initializeIcons } from '@uifabric/icons';
 import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import * as React from 'react';
 import { Route, Switch } from "react-router";
-import { Bus, Flight, Train, TravelOptions } from "src/components/Common/Constants";
+import { TravelLinks, TravelOptions } from "src/components/Common/Constants";
 import { AllOffers } from "src/components/Common/Constants";
 import { Offers } from 'src/components/Common/Offers';
 import { Utils } from "src/components/Common/Utils";
@@ -24,42 +24,41 @@ interface ITravel extends IPath, IGenericProps {
 class App extends React.Component<any, any> {
   private travelList: ITravel[] = [
     {
-      links: Flight.flightLinks,
+      links: TravelLinks.flight,
       offerLinks: AllOffers.flightOffers,
       options: TravelOptions.flightOptions,
-      path: "Flight", 
-      render: this.renderGeneric, 
+      path: "Flight",
+      render: this.renderGeneric,
       title: "Flights Multiple URL Opener"
     },
     {
-      links: Train.trainLinks,
+      links: TravelLinks.train,
       offerLinks: AllOffers.trainOffers,
       options: TravelOptions.trainOptions,
-      path: "Train", 
-      render: this.renderGeneric, 
+      path: "Train",
+      render: this.renderGeneric,
       title: "Train Multiple URL Opener"
     },
     {
-      links: Bus.busLinks,
+      links: TravelLinks.bus,
       offerLinks: AllOffers.busOffers,
       options: TravelOptions.busOptions,
-      path: "Bus", 
-      render: this.renderGeneric, 
-      title: "Bus Multiple URL Opener",
-      variedLinks: Bus.busLinksWithVariation
+      path: "Bus",
+      render: this.renderGeneric,
+      title: "Bus Multiple URL Opener"
     },
   ];
-  private pathList: IPath[]  = [
+  private pathList: IPath[] = [
     ...this.travelList,
     { path: "Grocery", render: (path: IPath) => <GroceryMain />, className: "groceryMain" },
-    { path: "Offers", render: (path: IPath) => <Offers />},
+    { path: "Offers", render: (path: IPath) => <Offers /> },
   ];
 
   public render() {
     return (
       <Switch>
         {this.pathList.map(path => this.renderRoute(path))}
-        {this.renderRoute(Object.assign({}, this.travelList[0], {path: ""}))}
+        {this.renderRoute(Object.assign({}, this.travelList[0], { path: "" }))}
       </Switch>
     );
   }
@@ -88,11 +87,10 @@ class App extends React.Component<any, any> {
     const travel = path as ITravel;
     return (
       <Generic
-        links={travel.variedLinks ? Object.keys(travel.variedLinks).concat(travel.links) : travel.links}
+        links={travel.links}
         options={travel.options}
         title={travel.title}
         offerLinks={travel.offerLinks}
-        variedLinks={travel.variedLinks}
       />);
   }
 
