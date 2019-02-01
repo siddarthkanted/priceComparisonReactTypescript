@@ -1,4 +1,5 @@
 import { autobind } from '@uifabric/utilities';
+import produce from "immer";
 import * as moment from "moment";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -124,16 +125,16 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         return this.props.links.map(link => this.handleVariedLink(link));
     }
 
-    private handleVariedLink(link: IAffiliateLink): IAffiliateLink {
+    private handleVariedLink(affiliateLink: IAffiliateLink): IAffiliateLink {
         const { fromPlace, toPlace, date } = this.state;
         let fromPlaceValue = (fromPlace as IOptionType).value;
         let toPlaceValue = (toPlace as IOptionType).value;
-        if (link.variedOptions) {
-            fromPlaceValue = link.variedOptions[fromPlaceValue] ? link.variedOptions[fromPlaceValue] : fromPlaceValue;
-            toPlaceValue = link.variedOptions[toPlaceValue] ? link.variedOptions[toPlaceValue] : toPlaceValue;
+        if (affiliateLink.variedOptions) {
+            fromPlaceValue = affiliateLink.variedOptions[fromPlaceValue] ? affiliateLink.variedOptions[fromPlaceValue] : fromPlaceValue;
+            toPlaceValue = affiliateLink.variedOptions[toPlaceValue] ? affiliateLink.variedOptions[toPlaceValue] : toPlaceValue;
         }
-        link.link = Utils.format(link.link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());
-        return link;
+        const clonedAffiliateLink = produce(affiliateLink, (clonedLink) => {clonedLink.link = Utils.format(clonedLink.link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());});
+        return clonedAffiliateLink;
     }
 
     private getTwoDigit(value: number): string {
