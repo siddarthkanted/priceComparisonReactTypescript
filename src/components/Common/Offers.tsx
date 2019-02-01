@@ -24,13 +24,15 @@ export class Offers extends React.Component<any, IOffersState> {
             this.createCategory(AllOffers.affilateWebSite, "Affiliate web sites", this.renderAffilateWebSitesDescription),
             this.createCategory(AllOffers.movieBooking, "Movie Tickets"),
             this.createCategory(AllOffers.foodDelivery, "Food order"),
+            this.createCategory(AllOffers.grocery, "Grocery"),
             this.createCategory(AllOffers.wallet, "Wallet Offers"),
             this.createCategory(AllOffers.mobileRecharge, "Mobile Recharge"),
             this.createCategory(AllOffers.cabBooking, "Cab booking"),
             this.createCategory(AllOffers.electricity, "Electricity bill payment"),
             this.createCategory(AllOffers.flightOffers, "Flight Tickets"),
             this.createCategory(AllOffers.trainOffers, "Train Tickets"),
-            this.createCategory(AllOffers.busOffers, "Bus Tickets")
+            this.createCategory(AllOffers.busOffers, "Bus Tickets"),
+            this.createCategory(AllOffers.investment, "Investment"),
         ];
         this.setState({displayCategory: this.allOffersOption});
     }

@@ -27,6 +27,22 @@ const amazon = {
 
 // tslint:disable-next-line:no-namespace
 export namespace AllOffers {
+    export const grocery = [
+        {link: "https://www.amazon.in/b?node=11302610031", ...amazon},
+        Utils.createAffiliateLink("https://www.flipkart.com/grocery-supermart-store?affid=siddarthk", "Flipkart"),
+        Utils.createAffiliateLink("https://grofers.com/offers", "Grofers"),
+        {isCuelinks: true, link: "https://www.bigbasket.com/bank-offers/", name: "Bigbasket"},
+        {isCuelinks: true, link: "https://www.spencers.in/offers/", name: "Spencers"},
+        {isCuelinks: true, link: "https://play.google.com/store/apps/details?id=com.dunzo.user", name: "Dunzo", referralCode:  "BYU3ZT"},
+    ];
+
+    export const investment = [
+        Utils.createAffiliateLink("https://mycams.camsonline.com/", "MyCams"),
+        Utils.createAffiliateLink("https://www.karvymfs.com/karvy/investorservices/invLogin.aspx", "Karvy"),
+        Utils.createAffiliateLink("https://www.fundsindia.com/ref?c=3e562a3edebf96403aced68674fc56f3", "FundsIndia"),
+        Utils.createAffiliateLink("https://koinex.in/register?ref=c0487d", "Koinex", "c0487d"),
+    ];
+
     export const affilateWebSite = [
         
         {link: "https://cashkaro.com/r=912171", referralCode: "" , name: "Cashkaro", email: "contact@cashkaro.com", phone: "9821397418"},
@@ -87,6 +103,8 @@ export namespace AllOffers {
         Utils.createAffiliateLink("https://www.zomato.com/india", "Zomato", "SIDM2839"),
 
         Utils.createAffiliateLink("https://www.ubereats.com/en-IN/", "Uber eats"),
+
+        Utils.createAffiliateLink("http://magicpin.in/getapp/CAQW6774", "MagicPin", "CAQW6774"),
 
         {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031", ...amazon},
     ];
