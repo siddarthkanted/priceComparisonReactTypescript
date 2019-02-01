@@ -30,12 +30,20 @@ const yatra = {
 }
 
 const railyatri = {
-    isCuelinks: true,
     name: "Railyatri"
 }
 
 const ixigo = {
     name: "Ixigo"
+}
+
+const myBusTicket = {
+    isCuelinks: true,
+    name: "My Bus ticket"
+}
+
+const travelyaari = {
+    name: "Travelyaari"
 }
 
 // tslint:disable-next-line:no-namespace
@@ -45,11 +53,11 @@ export namespace TravelLinks {
 
         { link: "https://ebus.yatra.com/busview/busdesktop/search?src={0}&dest={1}&ddate={4}-{3}-{2}", ...yatra },
 
-        { link: "https://www.goibibo.com/bus/#bus-{0}-{1}-{4}{3}{2}---0-0-3924148632351062483-4354390963378411938", ...goibibo },
+        { link: "https://www.goibibo.com/bus/#bus-{0}-{1}-{4}{3}{2}---0-0-3924148632351062483-4354390963378411938", ...goibibo, isCuelinks: false },
 
-        { link: "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}" },
+        { link: "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}", ...myBusTicket },
 
-        { link: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway" },
+        { link: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway", ...travelyaari},
 
         { link: "https://bus.makemytrip.com/bus/search/{0}/{1}/{2}-{3}-{4}", ...makemytrip, variedOptions: { ["Bengaluru"]: "Bangalore" } },
 
@@ -100,7 +108,7 @@ export namespace TravelLinks {
 
         { link: "https://rail.yatra.com/trains/b2c/search?srcStn={0}&destStn={1}&departDate={4}-{3}-{2}", ...yatra },
 
-        { link: "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}", ...railyatri, isCuelinks: false  },
+        { link: "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}", ...railyatri },
 
         { link: "https://www.ixigo.com/search/result/train/{0}/{1}/{2}{3}{4}//1/0/0/0/ALL", ...ixigo }
     ];
@@ -245,7 +253,7 @@ export namespace AllOffers {
 
         { link: "https://paytm.com/offer/train-tickets/", ...paytm },
 
-        { link: "https://www.railyatri.in/offers", ...railyatri, isCuelinks: false },
+        { link: "https://www.railyatri.in/offers", ...railyatri },
 
         { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon },
 
@@ -253,21 +261,21 @@ export namespace AllOffers {
     ];
 
     export const busOffers = [
-        { link: "https%3A%2F%2Fwww.makemytrip.com%2Fbus-tickets%2F", ...makemytrip },
+        {link: "https%3A%2F%2Fwww.railyatri.in%2Foffers",  ...railyatri},
+
+        { link: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/", ...makemytrip },
 
         { link: "https://paytm.com/offer/bus-tickets/", ...paytm },
 
         { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", ...goibibo },
 
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.railyatri.in%2Foffers", name: "Railyatri" },
+        { link: "https://www.mybustickets.in/Bestoffers", ...myBusTicket},
 
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.mybustickets.in%2F", name: "My Bus ticket" },
+        { link: "https://www.travelyaari.com/offers", ...travelyaari},
 
-        Utils.createAffiliateLink("https://www.travelyaari.com/offers"),
+        Utils.createAffiliateLink("https://www.ticketgoose.com/#tgOfferLeftImage", "Ticketgoose"),
 
-        Utils.createAffiliateLink("https://www.ticketgoose.com/"),
-
-        Utils.createAffiliateLink("https://www.yatra.com/offer/listing/bus"),
+        {link: "https://www.yatra.com/offer/listing/bus",  ...yatra},
 
         Utils.createAffiliateLink("https://www.abhibus.com/bus-ticket-offers", "Abhibus"),
 
