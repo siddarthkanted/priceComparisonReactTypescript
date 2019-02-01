@@ -4,4 +4,6 @@ export interface IAffiliateLink {
     name?: string;
     email?: string;
     phone?: string;
+    isCuelinks?: boolean;
+    extraParameters?: _.Dictionary<string>
 }

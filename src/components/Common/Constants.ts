@@ -1,10 +1,34 @@
 import { Utils } from "src/components/Common/Utils";
 
+const paytm = {
+    isCuelinks: true,
+    name: "Paytm"
+}
+
+const makemytrip = {
+    isCuelinks: true,
+    name: "Makemytrip"
+}
+
+const goibibo = {
+    isCuelinks: true,
+    name: "Goibibo"
+}
+
+const cleartrip = {
+    isCuelinks: true,
+    name: "Cleartrip"
+}
+
+const amazon = {
+    extraParameters: { ["tag"]: "amazonhttpp-21" },
+    name: "Amazon"
+}
+
 // tslint:disable-next-line:no-namespace
 export namespace AllOffers {
     export const affilateWebSite = [
         
-
         {link: "https://cashkaro.com/r=912171", referralCode: "" , name: "Cashkaro", email: "contact@cashkaro.com", phone: "9821397418"},
 
         Utils.createAffiliateLink("https://zngy.in/c4ol", "Zingoy", "sidman03"),
@@ -17,11 +41,11 @@ export namespace AllOffers {
         
         Utils.createAffiliateLink("https://www.freecharge.in/offers", "Freecharge"),
         
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https://paytm.com/offer/", "Paytm"),
+        {link: "https://paytm.com/offer/", ...paytm},
 
         Utils.createAffiliateLink("https://www.mobikwik.com/offers", "MobiKwik"),
 
-        Utils.createAffiliateLink("https://www.amazon.in/b?node=14783922031&tag=amazonhttpp-21", "Amazon"),
+        {link: "https://www.amazon.in/b?node=14783922031", ...amazon},
         
         Utils.createAffiliateLink("https://www.paypal.com/in/webapps/mpp/online-shopping", "PayPal"),
         
@@ -40,10 +64,10 @@ export namespace AllOffers {
     export const mobileRecharge = [
         Utils.createAffiliateLink("https://niki.ai/?chat=1&_branch_match_id=618330132380661336", "Niki Ai", "niki21218"),
         Utils.createAffiliateLink("https://www.messenger.com/t/hdfcbankonchat", "HDFC Bank OnChat"),
-        Utils.createAffiliateLink("https://www.amazon.in/hfc/mobileRecharge?tag=amazonhttpp-21", "Amazon"),
+        {link: "https://www.amazon.in/hfc/mobileRecharge", ...amazon},
         Utils.createAffiliateLink("https://www.freecharge.in/prepaid", "Freecharge"),
         Utils.createAffiliateLink("https://www.mobikwik.com/mobile", "MobiKwik"),
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Frecharge", "Paytm"),
+        {link: "https://paytm.com/offer/recharge/", ...paytm},
         Utils.createAffiliateLink("https://www.airtel.in/bank/recharge/mobile?type=prepaid", "Airtel"),
     ];
 
@@ -58,56 +82,56 @@ export namespace AllOffers {
     ];
 
     export const foodDelivery = [
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.swiggy.com%2Foffers%2Fpayment", "Swiggy", "1AFJ6G"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.swiggy.com%2Foffers%2Fpayment", name: "Swiggy", referralCode:"1AFJ6G"},
 
         Utils.createAffiliateLink("https://www.zomato.com/india", "Zomato", "SIDM2839"),
 
         Utils.createAffiliateLink("https://www.ubereats.com/en-IN/", "Uber eats"),
 
-        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031&tag=amazonhttpp-21  ", "Amazon"),
+        {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031", ...amazon},
     ];
 
     export const movieBooking = [
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fin.bookmyshow.com%2Foffers", "Bookmyshow"),
+        {isCuelinks: true, link: "https%3A%2F%2Fin.bookmyshow.com%2Foffers", name: "Bookmyshow"},
       
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Foffer%2Fmovies%2F", "Paytm"),
+        {link: "https%3A%2F%2Fpaytm.com%2Foffer%2Fmovies%2F", ...paytm},
 
         Utils.createAffiliateLink("https://www.ticketnew.com/Movie-offers-Tickets-Online-Booking-Show-Timings/latest-offers/Offer_Section", "TicketNew"),
 
         Utils.createAffiliateLink("https://www.justickets.in/", "JusTickets"),
       
-        Utils.createAffiliateLink("https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031&tag=amazonhttpp-21  ", "Amazon"),
+        {link: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031", ...amazon},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fmoviecardindia.com%2Fbuy-movie-card%2FSACPM01", "MoviEcard"),
+        {isCuelinks: true, link: "https%3A%2F%2Fmoviecardindia.com%2Fbuy-movie-card%2FSACPM01", name: "MoviEcard"},
     ];
 
     export const electricity = [
         
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Foffer%2Felectricity%2F", "Paytm"),
+        {link: "https://paytm.com/offer/billpayment/", ...paytm},
 
-        Utils.createAffiliateLink("https://www.amazon.in/b?node=15377663031&tag=amazonhttpp-21", "Amazon"),
+        {link: "https://www.amazon.in/b?node=15377663031", ...amazon},
 
         Utils.createAffiliateLink("https://www.freecharge.in/electricity", "Freecharge"),
 
-        Utils.createAffiliateLink("https://www.mobikwik.com/offers/rechargeandbills", "MobiKwik", "sidman03"),
+        Utils.createAffiliateLink("https://www.mobikwik.com/offers/rechargeandbills", "MobiKwik"),
     ];
 
     export const flightOffers = [
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Fflights", "Paytm"),
+        {link: "https%3A%2F%2Fpaytm.com%2Fflights", ...paytm},
         
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", "Easemytrip"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", name: "Easemytrip"},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F", "Makemytrip"),
+        {link: "https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F", ...makemytrip},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.akbartravels.com%2Foffers", "Akbar Travels"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.akbartravels.com%2Foffers", name: "Akbar Travels"},
 
-        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031&tag=amazonhttpp-21", "Amazon"),
+        {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fflight-offers%2F", "Goibibo"),
+        {link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fflight-offers%2F", ...goibibo},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", "Cleartrip"),
+        {link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.sastiticket.com%2Foffers", "Sastiticket"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.sastiticket.com%2Foffers", name: "Sastiticket"},
 
         Utils.createAffiliateLink("https://www.ixigo.com/offers/tag/flight-offers/", "Ixigo"),
 
@@ -118,31 +142,31 @@ export namespace AllOffers {
     ];
 
     export const trainOffers = [
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Ftrain-tickets", "Paytm"),
+        {link: "https%3A%2F%2Fpaytm.com%2Ftrain-tickets", ...paytm},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.makemytrip.com%2Frailways", "Makemytrip"),
+        {link: "https%3A%2F%2Fwww.makemytrip.com%2Frailways", ...makemytrip},
 
-        Utils.createAffiliateLink("https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031&tag=amazonhttpp-21", "Amazon"),
+        {link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.railyatri.in%2Foffers", "Railyatri"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.railyatri.in%2Foffers", name: "Railyatri"},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.goibibo.com%2Foffers%2Ftrain-offers%2F", "Goibibo"),
+        {link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Ftrain-offers%2F", ...goibibo},
        
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", "Cleartrip"),
+        {link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip},
 
         Utils.createAffiliateLink("https://www.ixigo.com/offers/tag/trains/", "Ixigo"),
     ];
 
     export const busOffers = [
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.makemytrip.com%2Fbus-tickets%2F", "Makemytrip"),
+        {link: "https%3A%2F%2Fwww.makemytrip.com%2Fbus-tickets%2F", ...makemytrip},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fpaytm.com%2Fbus-tickets", "Paytm"),
+        {link: "https%3A%2F%2Fpaytm.com%2Fbus-tickets", ...paytm},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", "Goibibo"),
+        {link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", ...goibibo},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.railyatri.in%2Foffers", "Railyatri"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.railyatri.in%2Foffers", name: "Railyatri"},
 
-        Utils.createAffiliateLink("https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=https%3A%2F%2Fwww.mybustickets.in%2F", "My Bus ticket"),
+        {isCuelinks: true, link: "https%3A%2F%2Fwww.mybustickets.in%2F", name: "My Bus ticket"},
 
         Utils.createAffiliateLink("https://www.travelyaari.com/offers"),
         
