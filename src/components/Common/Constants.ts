@@ -261,7 +261,7 @@ export namespace AllOffers {
     ];
 
     export const busOffers = [
-        {link: "https%3A%2F%2Fwww.railyatri.in%2Foffers",  ...railyatri},
+        {link: "https://www.railyatri.in/offers",  ...railyatri},
 
         { link: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/", ...makemytrip },
 
@@ -273,7 +273,7 @@ export namespace AllOffers {
 
         { link: "https://www.travelyaari.com/offers", ...travelyaari},
 
-        Utils.createAffiliateLink("https://www.ticketgoose.com/#tgOfferLeftImage", "Ticketgoose"),
+        Utils.createAffiliateLink("https://www.ticketgoose.com/", "Ticketgoose"),
 
         {link: "https://www.yatra.com/offer/listing/bus",  ...yatra},
 
