@@ -18,7 +18,7 @@ export class ProductCard extends React.Component<IProductCardProps> {
         const { data } = this.props;
         const previewProps: IDocumentCardPreviewProps = Utils.getIDocumentCardPreviewProps(data.Images);
         return (
-            <DocumentCard className={"documentCard"}>
+            <DocumentCard>
                 <Breadcrumb
                     items={[
                         this.createBreadcrumbItem(data.Category[0], data.Category[0]),

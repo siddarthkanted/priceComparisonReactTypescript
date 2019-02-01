@@ -14,7 +14,7 @@ export namespace Utils {
     }
 
     export function getIDocumentCardPreviewProps(imageStringArray: string[]): IDocumentCardPreviewProps {
-        const images = imageStringArray.map(image => ({ previewImageSrc: image, height: 196}));
+        const images = imageStringArray.map(image => ({ previewImageSrc: image, height: 150, width: 150}));
         const previewProps: IDocumentCardPreviewProps = {
             previewImages: images,
         };

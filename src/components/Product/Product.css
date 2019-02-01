@@ -1,9 +1,5 @@
 .multipleProductDataList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-around;
-}
-
-.documentCard {
-    height: 430px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
 }
