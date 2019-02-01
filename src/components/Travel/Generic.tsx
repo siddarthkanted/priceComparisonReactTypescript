@@ -5,13 +5,11 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { IAffiliateLink } from 'src/components/Common/Model';
+import { IAffiliateLink, IOptionType } from 'src/components/Common/Model';
 import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
 import { Utils } from "src/components/Common/Utils";
 import { AffiliateMultipleUrlOpener } from '../Common/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import './Generic.css';
-
-interface IOptionType { value: string; label: string; }
 
 enum FieldsEnum {
     FromPlace,

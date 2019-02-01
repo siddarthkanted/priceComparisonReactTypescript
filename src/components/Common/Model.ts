@@ -7,3 +7,8 @@ export interface IAffiliateLink {
     isCuelinks?: boolean;
     extraParameters?: _.Dictionary<string>
 }
+
+export interface IOptionType { 
+    value: string; 
+    label: string; 
+}
