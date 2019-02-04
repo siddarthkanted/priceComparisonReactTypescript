@@ -46,6 +46,11 @@ const travelyaari = {
     name: "Travelyaari"
 }
 
+const sastiticket ={
+    name: "Sastiticket"
+
+}
+
 // tslint:disable-next-line:no-namespace
 export namespace TravelLinks {
     export const bus = [
@@ -238,7 +243,7 @@ export namespace AllOffers {
 
         { link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip },
 
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.sastiticket.com%2Foffers", name: "Sastiticket" },
+        { link: "https://www.sastiticket.com/offers", name: "Sastiticket" },
 
         { link: "https://www.ixigo.com/offers/tag/flight-offers/", ...ixigo },
 
