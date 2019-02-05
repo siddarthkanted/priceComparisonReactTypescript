@@ -48,7 +48,6 @@ const travelyaari = {
 
 const sastiticket ={
     name: "Sastiticket"
-
 }
 
 const grofers = {
@@ -65,6 +64,14 @@ const bigbasket = {
 const flipkart = {
     extraParameters: { ["affid"]: "siddarthk" },
     name: "Flipkart"
+}
+
+const via = {
+    name: "Via"
+}
+
+const easemytrip = {
+    name: "Easemytrip"
 }
 
 // tslint:disable-next-line:no-namespace
@@ -98,23 +105,26 @@ export namespace TravelLinks {
 
         { link: "https://www.ixigo.com/search/result/flight/{0}/{1}/{2}{3}{4}//1/0/0/e", ...ixigo },
 
-        { link: "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0" },
+        { link: "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0", ...via },
 
-        { link: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true" },
+        { link: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true", ...easemytrip},
 
-        { link: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy" },
+        { link: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy", name:"Happyeasygo" },
 
-        { link: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}" },
+        { link: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}", name:"Kayak", isCuelinks: true },
 
-        { link: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}" },
+        { link: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}", name:"Agoda", isCuelinks: true },
 
-        { link: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}" },
+        { link: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}", name:"Cheapticket" },
 
-        { link: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results" },
 
-        { link: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y" },
+        { link: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results" , name:"Skyscanner" },
 
-        { link: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY" },
+
+        { link: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y" , name:"Expedia" },
+
+
+        { link: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY", ...sastiticket},
 
     ];
 
@@ -247,7 +257,7 @@ export namespace AllOffers {
     export const flightOffers = [
         { link: "https://paytm.com/offer/flight-tickets/", ...paytm },
 
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", name: "Easemytrip" },
+        { isCuelinks: true, link: "https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", ...easemytrip },
 
         { link: "https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F", ...makemytrip },
 
@@ -259,13 +269,13 @@ export namespace AllOffers {
 
         { link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip },
 
-        { link: "https://www.sastiticket.com/offers", name: "Sastiticket" },
+        { link: "https://www.sastiticket.com/offers", ...sastiticket },
 
         { link: "https://www.ixigo.com/offers/tag/flight-offers/", ...ixigo },
 
-        Utils.createAffiliateLink("https://in.via.com/offers", "Via"),
+        { link: "https://in.via.com/offers", ...via },
 
-        Utils.createAffiliateLink("https://www.yatra.com/offer/dom/listing/domestic-flight-deals", "Yatra"),
+        { link: "https://www.yatra.com/offer/dom/listing/domestic-flight-deals", ...yatra},
 
     ];
 
