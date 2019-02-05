@@ -75,7 +75,14 @@ const easemytrip = {
 }
 
 // tslint:disable-next-line:no-namespace
-export namespace TravelLinks {
+export namespace BuyLinks {
+    export const grocery = [
+        { link: "", ...amazon },
+        { link: "", ...flipkart },
+        { link: "", ...grofers },
+        { link: "", ...bigbasket },
+    ];
+
     export const bus = [
         { link: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1", ...paytm },
 
@@ -146,7 +153,7 @@ export namespace TravelLinks {
 }
 
 // tslint:disable-next-line:no-namespace
-export namespace AllOffers {
+export namespace OfferLinks {
     export const grocery = [
         { link: "https://www.amazon.in/b?node=11302610031", ...amazon },
         { link: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc", ...flipkart},
@@ -313,40 +320,6 @@ export namespace AllOffers {
         Utils.createAffiliateLink("https://www.redbus.in/info/OfferTerms", "Redbus")
     ];
 };
-
-export const affilateLinks: _.Dictionary<string> = {
-    ["flights.makemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-    ["bus.makemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["www.goibibo.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["www.railyatri.in"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    // ["www.cleartrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    // ["flight.easemytrip.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    // ["www.expedia.co.in"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    // ["www.sastiticket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["www.akbartravels.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["booking.kayak.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["www.mybustickets.in"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["paytm.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["flights.agoda.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["www.bigbasket.com"]: "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url={0}",
-
-    ["www.amazon.in"]: "{0}?tag=amazonhttpp-21",
-
-    ["www.flipkart.com"]: "{0}&affid=siddarthk"
-
-}
 
 // tslint:disable-next-line:no-namespace
 export namespace TravelOptions {

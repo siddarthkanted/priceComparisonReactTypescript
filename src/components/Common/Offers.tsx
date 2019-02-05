@@ -3,7 +3,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { AllOffers } from "src/components/Common/Constants";
+import { OfferLinks } from "src/components/Common/Constants";
 import { IAffiliateLink, IOptionType, OptionTypeUtils } from 'src/components/Common/Model';
 import { AffiliateMultipleUrlOpener } from './AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import { Utils } from './Utils';
@@ -28,29 +28,29 @@ interface IOffersState {
 
 export class Offers extends React.Component<IOffersProps, IOffersState> {
     private categoryList: ICategory[];
-    private allOffersOption = {value: "All offers", label: "All offers"};
+    private OfferLinksOption = {value: "All offers", label: "All offers"};
 
     public componentWillMount(): void {
         this.categoryList = [
-            this.createCategory(AllOffers.affilateWebSite, "Affiliate web sites", this.renderAffilateWebSitesDescription),
-            this.createCategory(AllOffers.movieBooking, "Movie Tickets"),
-            this.createCategory(AllOffers.foodDelivery, "Food order"),
-            this.createCategory(AllOffers.grocery, "Grocery"),
-            this.createCategory(AllOffers.wallet, "Wallet Offers"),
-            this.createCategory(AllOffers.mobileRecharge, "Mobile Recharge"),
-            this.createCategory(AllOffers.cabBooking, "Cab booking"),
-            this.createCategory(AllOffers.electricity, "Electricity bill payment"),
-            this.createCategory(AllOffers.flightOffers, "Flight Tickets"),
-            this.createCategory(AllOffers.trainOffers, "Train Tickets"),
-            this.createCategory(AllOffers.busOffers, "Bus Tickets"),
-            this.createCategory(AllOffers.investment, "Investment"),
+            this.createCategory(OfferLinks.affilateWebSite, "Affiliate web sites", this.renderAffilateWebSitesDescription),
+            this.createCategory(OfferLinks.movieBooking, "Movie Tickets"),
+            this.createCategory(OfferLinks.foodDelivery, "Food order"),
+            this.createCategory(OfferLinks.grocery, "Grocery"),
+            this.createCategory(OfferLinks.wallet, "Wallet Offers"),
+            this.createCategory(OfferLinks.mobileRecharge, "Mobile Recharge"),
+            this.createCategory(OfferLinks.cabBooking, "Cab booking"),
+            this.createCategory(OfferLinks.electricity, "Electricity bill payment"),
+            this.createCategory(OfferLinks.flightOffers, "Flight Tickets"),
+            this.createCategory(OfferLinks.trainOffers, "Train Tickets"),
+            this.createCategory(OfferLinks.busOffers, "Bus Tickets"),
+            this.createCategory(OfferLinks.investment, "Investment"),
         ];
         this.setDisplayCategoryState();
     }
 
     public render(): JSX.Element {
         const displayCategoryValue = OptionTypeUtils.getValue(this.state.displayCategory);
-        const isAllOffersSelected = displayCategoryValue === OptionTypeUtils.getValue(this.allOffersOption);
+        const isOfferLinksSelected = displayCategoryValue === OptionTypeUtils.getValue(this.OfferLinksOption);
 
         return (
             <>
@@ -58,10 +58,10 @@ export class Offers extends React.Component<IOffersProps, IOffersState> {
                 <Select
                     value={this.state.displayCategory}
                     onChange={this.dropdownOnChange}
-                    options={[this.allOffersOption, ...this.categoryList.map(category => category.titleOptionType)]}
+                    options={[this.OfferLinksOption, ...this.categoryList.map(category => category.titleOptionType)]}
                 />
-                {isAllOffersSelected && this.categoryList.map((category, index) => this.renderAffiliateMultipleUrlOpener(index, category))}
-                {!isAllOffersSelected && this.renderAffiliateMultipleUrlOpener(0, this.categoryList.find(category => (category.titleOptionType as IOptionType).value === displayCategoryValue))}
+                {isOfferLinksSelected && this.categoryList.map((category, index) => this.renderAffiliateMultipleUrlOpener(index, category))}
+                {!isOfferLinksSelected && this.renderAffiliateMultipleUrlOpener(0, this.categoryList.find(category => (category.titleOptionType as IOptionType).value === displayCategoryValue))}
             </>
         );
     }
@@ -102,11 +102,11 @@ export class Offers extends React.Component<IOffersProps, IOffersState> {
     private setDisplayCategoryState(): void {
         const { displayCategoryString } = this.props.match.params;
         if (!displayCategoryString) {
-            this.setState({displayCategory: this.allOffersOption});
+            this.setState({displayCategory: this.OfferLinksOption});
             return;
         } else {
             const selectedCategory = this.categoryList.find(category => Utils.convertToSlug(OptionTypeUtils.getValue(category.titleOptionType)) === displayCategoryString);
-            this.setState({displayCategory: selectedCategory ? selectedCategory.titleOptionType : this.allOffersOption});
+            this.setState({displayCategory: selectedCategory ? selectedCategory.titleOptionType : this.OfferLinksOption});
         } 
     }
 }

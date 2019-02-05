@@ -1,3 +1,5 @@
+import { autobind } from '@uifabric/utilities';
+import produce from "immer";
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
 import {
     DocumentCard,
@@ -5,8 +7,10 @@ import {
     IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import * as React from "react";
-import { MultipleUrlOpener } from "src/components/Common/MultipleUrlOpener";
+import { IAffiliateLink } from 'src/components/Common/Model';
 import { Utils } from "src/components/Common/Utils";
+import { AffiliateMultipleUrlOpener } from '../Common/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
+import { BuyLinks } from '../Common/Constants';
 import './Product.css';
 
 interface IProductCardProps {
@@ -27,12 +31,28 @@ export class ProductCard extends React.Component<IProductCardProps> {
                     ariaLabel={'Category of ' + data.Name}
                 />
                 <h3>{data.Name}</h3>
-                <MultipleUrlOpener
-                    getLinks={() => data.Link}
+                <AffiliateMultipleUrlOpener
+                    getLinks={this.getLinks}
                 />
                 <DocumentCardPreview {...previewProps} />
             </DocumentCard>
         )
+    }
+
+    @autobind
+    private getLinks(): IAffiliateLink[] {
+        const affilateLinks: IAffiliateLink[] = [];
+        this.props.data.Link.forEach(link => {
+            const affilateLink = BuyLinks.grocery.find(affilate => link.includes(affilate.name.toLowerCase()));
+            if (affilateLink) {
+                const clonedAffilateLink = produce(affilateLink, (clonedLink) => {clonedLink.link = link;});
+                affilateLinks.push(clonedAffilateLink);
+            } else {
+                affilateLinks.push(Utils.createAffiliateLink(link));
+            }
+           
+        });
+        return affilateLinks;
     }
 
     private createBreadcrumbItem(category: string, ...urlPart: string[]): IBreadcrumbItem {

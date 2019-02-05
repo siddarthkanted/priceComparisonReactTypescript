@@ -2,8 +2,7 @@ import { initializeIcons } from '@uifabric/icons';
 import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import * as React from 'react';
 import { Route, Switch } from "react-router";
-import { TravelLinks, TravelOptions } from "src/components/Common/Constants";
-import { AllOffers } from "src/components/Common/Constants";
+import { BuyLinks, OfferLinks, TravelOptions } from "src/components/Common/Constants";
 import { Offers } from 'src/components/Common/Offers';
 import { Utils } from "src/components/Common/Utils";
 import { GroceryMain } from "src/components/Product/GroceryMain";
@@ -26,24 +25,24 @@ interface ITravel extends IPath, IGenericProps {
 class App extends React.Component<any, any> {
   private travelList: ITravel[] = [
     {
-      links: TravelLinks.flight,
-      offerLinks: AllOffers.flightOffers,
+      links: BuyLinks.flight,
+      offerLinks: OfferLinks.flightOffers,
       options: TravelOptions.flightOptions,
       path: "Flight",
       render: this.renderGenericTravel,
       title: "Flights Multiple URL Opener"
     },
     {
-      links: TravelLinks.train,
-      offerLinks: AllOffers.trainOffers,
+      links: BuyLinks.train,
+      offerLinks: OfferLinks.trainOffers,
       options: TravelOptions.trainOptions,
       path: "Train",
       render: this.renderGenericTravel,
       title: "Train Multiple URL Opener"
     },
     {
-      links: TravelLinks.bus,
-      offerLinks: AllOffers.busOffers,
+      links: BuyLinks.bus,
+      offerLinks: OfferLinks.busOffers,
       options: TravelOptions.busOptions,
       path: "Bus",
       render: this.renderGenericTravel,
