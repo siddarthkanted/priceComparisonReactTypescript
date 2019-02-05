@@ -7,9 +7,9 @@ import {
     IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import * as React from "react";
+import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import { IAffiliateLink } from 'src/components/Common/Model';
 import { Utils } from "src/components/Common/Utils";
-import { AffiliateMultipleUrlOpener } from '../Common/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import { BuyLinks } from '../Common/Constants';
 import './Product.css';
 

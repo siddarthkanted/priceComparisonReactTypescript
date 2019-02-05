@@ -3,10 +3,10 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
+import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import { OfferLinks } from "src/components/Common/Constants";
 import { IAffiliateLink, IOptionType, OptionTypeUtils } from 'src/components/Common/Model';
-import { AffiliateMultipleUrlOpener } from './AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
-import { Utils } from './Utils';
+import { Utils } from "src/components/Common/Utils";
 
 interface IUrlParams {
     displayCategoryString?: string;

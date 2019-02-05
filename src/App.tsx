@@ -3,8 +3,8 @@ import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pi
 import * as React from 'react';
 import { Route, Switch } from "react-router";
 import { BuyLinks, OfferLinks, TravelOptions } from "src/components/Common/Constants";
-import { Offers } from 'src/components/Common/Offers';
 import { Utils } from "src/components/Common/Utils";
+import { Offers } from 'src/components/Offers/Offers';
 import { GroceryMain } from "src/components/Product/GroceryMain";
 import { Generic, IGenericProps } from "src/components/Travel/Generic";
 import './App.css';
