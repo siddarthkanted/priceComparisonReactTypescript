@@ -6,9 +6,9 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
+import { IAffiliateLink, IOptionType } from 'src/common/Model';
+import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
-import { IAffiliateLink, IOptionType } from 'src/components/Common/Model';
-import { Utils } from "src/components/Common/Utils";
 import './Generic.css';
 
 enum FieldsEnum {

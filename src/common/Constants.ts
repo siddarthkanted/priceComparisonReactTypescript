@@ -1,4 +1,4 @@
-import { Utils } from "src/components/Common/Utils";
+import { Utils } from "src/common/Utils";
 
 const paytm = {
     isCuelinks: true,

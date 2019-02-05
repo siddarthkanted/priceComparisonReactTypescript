@@ -7,10 +7,10 @@ import {
     IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import * as React from "react";
+import { BuyLinks } from 'src/common/Constants';
+import { IAffiliateLink } from 'src/common/Model';
+import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
-import { IAffiliateLink } from 'src/components/Common/Model';
-import { Utils } from "src/components/Common/Utils";
-import { BuyLinks } from '../Common/Constants';
 import './Product.css';
 
 interface IProductCardProps {

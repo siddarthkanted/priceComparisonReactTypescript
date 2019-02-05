@@ -1,6 +1,6 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { Utils } from "src/components/Common/Utils";
+import { Utils } from "src/common/Utils";
 import { ProductCard } from "src/components/Product/ProductCard";
 import './Product.css';
 
