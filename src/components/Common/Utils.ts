@@ -13,8 +13,16 @@ export namespace Utils {
         };
     }
 
+    export function isArrayNullOrEmpty<T>(array: T[]): boolean {
+        const notNull =  typeof array !== "undefined"
+            && array != null
+            && array.length != null
+            && array.length > 0;
+        return !notNull;    
+    }
+
     export function getIDocumentCardPreviewProps(imageStringArray: string[]): IDocumentCardPreviewProps {
-        const images = imageStringArray.map(image => ({ previewImageSrc: image, height: 150, width: 150}));
+        const images = imageStringArray.map(image => ({ previewImageSrc: image, height: 150, width: 150 }));
         const previewProps: IDocumentCardPreviewProps = {
             previewImages: images,
         };

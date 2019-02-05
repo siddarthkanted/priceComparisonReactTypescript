@@ -46,6 +46,22 @@ const travelyaari = {
     name: "Travelyaari"
 }
 
+const grofers = {
+    name: "Grofers",
+    referralCode: "91Q82K"
+}
+
+const bigbasket = {
+    isCuelinks: true, 
+    name: "Bigbasket",
+    referralCode: "bigb2a6yc"
+}
+
+const flipkart = {
+    extraParameters: { ["affid"]: "siddarthk" },
+    name: "Flipkart"
+}
+
 // tslint:disable-next-line:no-namespace
 export namespace TravelLinks {
     export const bus = [
@@ -118,9 +134,9 @@ export namespace TravelLinks {
 export namespace AllOffers {
     export const grocery = [
         { link: "https://www.amazon.in/b?node=11302610031", ...amazon },
-        Utils.createAffiliateLink("https://www.flipkart.com/grocery-supermart-store?affid=siddarthk", "Flipkart"),
-        Utils.createAffiliateLink("https://grofers.com/offers", "Grofers"),
-        { isCuelinks: true, link: "https://www.bigbasket.com/bank-offers/", name: "Bigbasket" },
+        { link: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc", ...flipkart},
+        { link: "https://grofers.com/offers", ...grofers },
+        { link: "https://www.bigbasket.com/bank-offers/", ...bigbasket},
         { isCuelinks: true, link: "https://www.spencers.in/offers/", name: "Spencers" },
         { isCuelinks: true, link: "https://play.google.com/store/apps/details?id=com.dunzo.user", name: "Dunzo", referralCode: "BYU3ZT" },
     ];

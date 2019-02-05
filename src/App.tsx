@@ -14,7 +14,9 @@ initializeIcons();
 
 interface IPath {
   path: string;
-  render: (path: IPath) => JSX.Element;
+  name?: string;
+  component?: React.ComponentClass;
+  render?: (path: IPath) => JSX.Element;
   className?: string;
 }
 
@@ -28,7 +30,7 @@ class App extends React.Component<any, any> {
       offerLinks: AllOffers.flightOffers,
       options: TravelOptions.flightOptions,
       path: "Flight",
-      render: this.renderGeneric,
+      render: this.renderGenericTravel,
       title: "Flights Multiple URL Opener"
     },
     {
@@ -36,7 +38,7 @@ class App extends React.Component<any, any> {
       offerLinks: AllOffers.trainOffers,
       options: TravelOptions.trainOptions,
       path: "Train",
-      render: this.renderGeneric,
+      render: this.renderGenericTravel,
       title: "Train Multiple URL Opener"
     },
     {
@@ -44,14 +46,14 @@ class App extends React.Component<any, any> {
       offerLinks: AllOffers.busOffers,
       options: TravelOptions.busOptions,
       path: "Bus",
-      render: this.renderGeneric,
+      render: this.renderGenericTravel,
       title: "Bus Multiple URL Opener"
     },
   ];
   private pathList: IPath[] = [
     ...this.travelList,
-    { path: "Grocery", render: (path: IPath) => <GroceryMain />, className: "groceryMain" },
-    { path: "Offers", render: (path: IPath) => <Offers /> },
+    { path: "Grocery", component: GroceryMain, className: "groceryMain" },
+    { path: "Offers/:displayCategoryString?", component: Offers, name: "Offers" },
   ];
 
   public render() {
@@ -64,26 +66,36 @@ class App extends React.Component<any, any> {
   }
 
   private renderRoute(path: IPath): JSX.Element {
-    return <Route path={"/" + path.path} render={(props) => this.renderPivot(path)} key={path.path} />
+    return <Route path={"/" + path.path} render={(props) => this.renderPivot(path, props)} key={path.path} />
   }
 
-  private renderPivotItem(path: IPath): JSX.Element {
+  private renderPivotItem(path: IPath, props: any): JSX.Element {
+    const pathName = this.getPathName(path);
     return (
-      <PivotItem linkText={path.path} itemKey={path.path} key={path.path} className={path.className}>
-        {path.render(path)}
+      <PivotItem linkText={pathName} itemKey={pathName} key={pathName} className={path.className}>
+        {path.render && path.render(path)}
+        {path.component && this.renderGeneric(path.component, props)}
       </PivotItem>
     );
   }
 
-  private renderPivot(selectedPath: IPath): JSX.Element {
+  private renderPivot(selectedPath: IPath, props: any): JSX.Element {
+    const pathName = this.getPathName(selectedPath);
     return (
-      <Pivot linkFormat={PivotLinkFormat.tabs} selectedKey={selectedPath.path} onLinkClick={this.onPivotItemClick}>
-        {this.pathList.map(pathItem => this.renderPivotItem(pathItem))}
+      <Pivot linkFormat={PivotLinkFormat.tabs} selectedKey={pathName} onLinkClick={this.onPivotItemClick}>
+        {this.pathList.map(pathItem => this.renderPivotItem(pathItem, props))}
       </Pivot>
     );
   }
 
-  private renderGeneric(path: IPath): JSX.Element {
+  private renderGeneric(Component: React.ComponentClass, props: any): JSX.Element {
+    return (
+      <Component 
+        {...props}
+      />);
+  }
+  
+  private renderGenericTravel(path: IPath): JSX.Element {
     const travel = path as ITravel;
     return (
       <Generic
@@ -96,8 +108,12 @@ class App extends React.Component<any, any> {
 
   private onPivotItemClick(item: PivotItem): void {
     if (item.props.itemKey) {
-      window.open(Utils.getUrl(item.props.itemKey), "_self");
+      window.location.href = Utils.getUrl(item.props.itemKey);
     }
+  }
+
+  private getPathName(path: IPath): string {
+    return path.name ? path.name : path.path;
   }
 }
 
