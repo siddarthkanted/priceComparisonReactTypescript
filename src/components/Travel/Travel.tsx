@@ -6,33 +6,26 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { IAffiliateLink, IOptionType } from 'src/common/Model';
+import { IAffiliateLink, IOptionType, ITravelProps, OptionTypeUtils } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
-import './Generic.css';
+import './Travel.css';
 
 enum FieldsEnum {
-    FromPlace,
-    ToPlace,
-    Date
+    FromPlace = "FromPlace",
+    ToPlace = "ToPlace",
+    Date = "Date"
 }
 
-export interface IGenericProps {
-    links: IAffiliateLink[];
-    offerLinks: IAffiliateLink[];
-    options: Array<ValueType<IOptionType>>;
-    title: string;
-}
-
-interface IGenericState {
+interface ITravelState {
     fromPlace: ValueType<IOptionType>;
     toPlace: ValueType<IOptionType>;
     date: moment.Moment
     errorDictionary: _.Dictionary<FieldsEnum>;
 }
 
-export class Generic extends React.Component<IGenericProps, IGenericState> {
-    constructor(props: IGenericProps) {
+export class Travel extends React.Component<ITravelProps, ITravelState> {
+    constructor(props: ITravelProps) {
         super(props);
         this.state = {
             date: moment(),
@@ -42,6 +35,9 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         }
     }
 
+    public componentDidMount(): void {
+        document.title = this.props.title;
+    }
 
     public render(): JSX.Element {
         return (
@@ -78,7 +74,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
                 />
                 {this.props.offerLinks && <AffiliateMultipleUrlOpener
                     getLinks={() => this.props.offerLinks}
-                    title= {"Offers - " + this.props.title}
+                    title={"Offers - " + this.props.title}
                 />}
             </>
         );
@@ -96,7 +92,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         return;
     }
 
-    private validate(): void {
+    private validate(): _.Dictionary<FieldsEnum> {
         const errorDictionary = {};
         if (!this.state.fromPlace) {
             errorDictionary[FieldsEnum.FromPlace] = "From Place cannot be empty";
@@ -111,6 +107,7 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
             errorDictionary[FieldsEnum.Date] = "Date is invalid";
         }
         this.setState({ errorDictionary });
+        return errorDictionary;
     }
 
     @autobind
@@ -118,8 +115,8 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
         if (!validate) {
             return this.props.links;
         }
-        this.validate();
-        if (Object.keys(this.state.errorDictionary).length > 0) {
+        const errorDictionary = this.validate();
+        if (Object.keys(errorDictionary).length > 0) {
             return [];
         }
         return this.props.links.map(link => this.handleVariedLink(link));
@@ -127,13 +124,13 @@ export class Generic extends React.Component<IGenericProps, IGenericState> {
 
     private handleVariedLink(affiliateLink: IAffiliateLink): IAffiliateLink {
         const { fromPlace, toPlace, date } = this.state;
-        let fromPlaceValue = (fromPlace as IOptionType).value;
-        let toPlaceValue = (toPlace as IOptionType).value;
+        let fromPlaceValue = OptionTypeUtils.getValue(fromPlace);
+        let toPlaceValue = OptionTypeUtils.getValue(toPlace);
         if (affiliateLink.variedOptions) {
             fromPlaceValue = affiliateLink.variedOptions[fromPlaceValue] ? affiliateLink.variedOptions[fromPlaceValue] : fromPlaceValue;
             toPlaceValue = affiliateLink.variedOptions[toPlaceValue] ? affiliateLink.variedOptions[toPlaceValue] : toPlaceValue;
         }
-        const clonedAffiliateLink = produce(affiliateLink, (clonedLink) => {clonedLink.link = Utils.format(clonedLink.link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year());});
+        const clonedAffiliateLink = produce(affiliateLink, (clonedLink) => { clonedLink.link = Utils.format(clonedLink.link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()); });
         return clonedAffiliateLink;
     }
 

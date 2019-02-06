@@ -11,9 +11,27 @@ export interface IAffiliateLink {
     variedOptions?: _.Dictionary<string>;
 }
 
-export interface IOptionType { 
-    value: string; 
-    label: string; 
+export interface IOptionType {
+    value: string;
+    label: string;
+}
+
+export interface IRoutePath {
+    path: string;
+    name?: string;
+    component?: React.ComponentClass;
+    render?: (path: IRoutePath) => JSX.Element;
+    className?: string;
+}
+
+export interface ITravelProps {
+    links: IAffiliateLink[];
+    offerLinks: IAffiliateLink[];
+    options: Array<ValueType<IOptionType>>;
+    title: string;
+}
+
+export interface ITravelRoutePath extends IRoutePath, ITravelProps {
 }
 
 export class OptionTypeUtils {
@@ -27,5 +45,9 @@ export class OptionTypeUtils {
 
     public static getValue(valueType: ValueType<IOptionType>): string {
         return (valueType as IOptionType).value
+    }
+
+    public static getLabel(valueType: ValueType<IOptionType>): string {
+        return (valueType as IOptionType).label
     }
 }

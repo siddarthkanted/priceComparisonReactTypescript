@@ -3,10 +3,10 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { OfferLinks } from "src/common/Constants";
 import { IAffiliateLink, IOptionType, OptionTypeUtils } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
+import { OfferLinks } from "src/constants/Constants";
 
 interface IUrlParams {
     displayCategoryString?: string;
@@ -46,6 +46,10 @@ export class Offers extends React.Component<IOffersProps, IOffersState> {
             this.createCategory(OfferLinks.investment, "Investment"),
         ];
         this.setDisplayCategoryState();
+    }
+
+    public componentDidMount(): void {
+        document.title = "Offers - " + OptionTypeUtils.getLabel(this.state.displayCategory);
     }
 
     public render(): JSX.Element {

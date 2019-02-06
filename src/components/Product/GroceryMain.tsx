@@ -41,18 +41,6 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
     }
   }
 
-  public componentDidMount(): void {
-    document.title = "Price Comaprison";
-    const { parentCategory, childCategory } = this.props.match.params;
-    const { dataList } = this.state;
-    if (dataList && parentCategory) {
-      document.title = this.state.dataList[0].Category[0];
-    }
-    if (dataList && childCategory) {
-      document.title = this.state.dataList[0].Category[0] + "-" + this.state.dataList[0].Category[1];
-    }
-  }
-
   public render(): JSX.Element {
     const { dataList } = this.state;
     if (dataList) {
@@ -87,6 +75,7 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
   private setAppSate(dataList: any, isSuccess: boolean): void {
     if (isSuccess) {
       this.setState({ dataList });
+      document.title = this.getDocumentTitle(dataList);
     }
   }
 
@@ -102,5 +91,18 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
         data => data.Category.map(x => Utils.convertToSlug(x)).indexOf(childCategory) >= 0);
     }
     return filteredDataList;
+  }
+
+  @autobind
+  private getDocumentTitle(dataList: any): string {
+    let title = "Price Comaprison";
+    const { parentCategory, childCategory } = this.props.match.params;
+    if (dataList && parentCategory) {
+      title = this.state.dataList[0].Category[0];
+    }
+    if (dataList && childCategory) {
+      title = this.state.dataList[0].Category[0] + "-" + this.state.dataList[0].Category[1];
+    }
+    return title;
   }
 }
