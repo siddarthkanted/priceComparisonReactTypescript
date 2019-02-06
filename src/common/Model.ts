@@ -17,21 +17,11 @@ export interface IOptionType {
 }
 
 export interface IRoutePath {
-    path: string;
-    name?: string;
-    component?: React.ComponentClass;
-    render?: (path: IRoutePath) => JSX.Element;
     className?: string;
-}
-
-export interface ITravelProps {
-    links: IAffiliateLink[];
-    offerLinks: IAffiliateLink[];
-    options: Array<ValueType<IOptionType>>;
-    title: string;
-}
-
-export interface ITravelRoutePath extends IRoutePath, ITravelProps {
+    component: React.ComponentClass;
+    extraProps?: _.Dictionary<any>;
+    name: string;
+    path: string;
 }
 
 export class OptionTypeUtils {

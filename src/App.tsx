@@ -2,7 +2,7 @@ import { initializeIcons } from '@uifabric/icons';
 import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import * as React from 'react';
 import { Route, Switch } from "react-router";
-import { IRoutePath, ITravelRoutePath } from 'src/common/Model';
+import { IRoutePath } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
 import { Offers } from 'src/components/Offers/Offers';
 import { GroceryMain } from 'src/components/Product/GroceryMain';
@@ -15,45 +15,59 @@ initializeIcons();
 
 
 class App extends React.Component<any, any> {
-  private travelList: ITravelRoutePath[] = [
+  private routePathList: IRoutePath[] = [
     {
-      links: BuyLinks.flight,
-      offerLinks: OfferLinks.flightOffers,
-      options: TravelOptions.flightOptions,
+      component: Travel,
+      extraProps: {
+        ["links"]: BuyLinks.flight,
+        ["offerLinks"]: OfferLinks.flightOffers,
+        ["options"]: TravelOptions.flightOptions,
+        ["title"]: "Flights Multiple URL Opener",
+      },
+      name: "Flight",
       path: "Flight",
-      render: this.renderGenericTravel,
-      title: "Flights Multiple URL Opener"
     },
     {
-
-      links: BuyLinks.train,
-      offerLinks: OfferLinks.trainOffers,
-      options: TravelOptions.trainOptions,
+      component: Travel,
+      extraProps: {
+        ["links"]: BuyLinks.train,
+        ["offerLinks"]: OfferLinks.trainOffers,
+        ["options"]: TravelOptions.trainOptions,
+        ["title"]: "Train Multiple URL Opener",
+      },
+      name: "Train",
       path: "Train",
-      render: this.renderGenericTravel,
-      title: "Train Multiple URL Opener"
     },
     {
-      links: BuyLinks.bus,
-      offerLinks: OfferLinks.busOffers,
-      options: TravelOptions.busOptions,
+      component: Travel,
+      extraProps: {
+        ["links"]: BuyLinks.bus,
+        ["offerLinks"]: OfferLinks.busOffers,
+        ["options"]: TravelOptions.busOptions,
+        ["title"]: "Bus Multiple URL Opener",
+      },
+      name: "Bus",
       path: "Bus",
-      render: this.renderGenericTravel,
-      title: "Bus Multiple URL Opener"
     },
+    {
+      className: "groceryMain",
+      component: GroceryMain,
+      name: "Grocery",
+      path: "Grocery/:parentCategory?/:childCategory?"
+    },
+    {
+      component: Offers, 
+      name: "Offers",
+      path: "Offers/:displayCategoryString?"
+    }
   ];
 
-  private pathList: IRoutePath[] = [
-    ...this.travelList,
-    { path: "Grocery/:parentCategory?/:childCategory?", component: GroceryMain, name: "Grocery", className: "groceryMain"  },
-    { path: "Offers/:displayCategoryString?", component: Offers, name: "Offers" },
-  ];
 
   public render() {
     return (
       <Switch>
-        {this.pathList.map(path => this.renderRoute(path))}
-        {this.renderRoute(Object.assign({}, this.travelList[0], { path: "" }))}
+        {this.routePathList.map(path => this.renderRoute(path))}
+        {this.renderRoute(Object.assign({}, this.routePathList[0], { path: "" }))}
       </Switch>
     );
   }
@@ -62,40 +76,30 @@ class App extends React.Component<any, any> {
     return <Route path={"/" + path.path} render={(props) => this.renderPivot(path, props)} key={path.path} />
   }
 
-  private renderPivotItem(path: IRoutePath, props: any): JSX.Element {
+  private renderPivot(selectedPath: IRoutePath, props: any): JSX.Element {
+    const selectedPathName = this.getPathName(selectedPath);
+    return (
+      <Pivot linkFormat={PivotLinkFormat.tabs} selectedKey={selectedPathName} onLinkClick={this.onPivotItemClick}>
+        {this.routePathList.map(pathItem => this.renderPivotItem(pathItem, selectedPathName, props))}
+      </Pivot>
+    );
+  }
+  
+  private renderPivotItem(path: IRoutePath, selectedPathName: string, props: any): JSX.Element {
     const pathName = this.getPathName(path);
     return (
       <PivotItem linkText={pathName} itemKey={pathName} key={pathName} className={path.className}>
-        {path.render && path.render(path)}
-        {path.component && this.renderGeneric(path.component, props)}
+        {selectedPathName === pathName && this.renderComponent(path, props)}
       </PivotItem>
     );
   }
 
-  private renderPivot(selectedPath: IRoutePath, props: any): JSX.Element {
-    const pathName = this.getPathName(selectedPath);
+  private renderComponent(path: IRoutePath, props: any): JSX.Element {
+    const Component = path.component as React.ComponentClass;
     return (
-      <Pivot linkFormat={PivotLinkFormat.tabs} selectedKey={pathName} onLinkClick={this.onPivotItemClick}>
-        {this.pathList.map(pathItem => this.renderPivotItem(pathItem, props))}
-      </Pivot>
-    );
-  }
-
-  private renderGeneric(Component: React.ComponentClass, props: any): JSX.Element {
-    return (
-      <Component 
+      <Component
         {...props}
-      />);
-  }
-  
-  private renderGenericTravel(path: IRoutePath): JSX.Element {
-    const travel = path as ITravelRoutePath;
-    return (
-      <Travel
-        links={travel.links}
-        options={travel.options}
-        title={travel.title}
-        offerLinks={travel.offerLinks}
+        {...path.extraProps}
       />);
   }
 

@@ -6,7 +6,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { IAffiliateLink, IOptionType, ITravelProps, OptionTypeUtils } from 'src/common/Model';
+import { IAffiliateLink, IOptionType, OptionTypeUtils } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import './Travel.css';
@@ -15,6 +15,13 @@ enum FieldsEnum {
     FromPlace = "FromPlace",
     ToPlace = "ToPlace",
     Date = "Date"
+}
+
+interface ITravelProps {
+    links: IAffiliateLink[];
+    offerLinks: IAffiliateLink[];
+    options: Array<ValueType<IOptionType>>;
+    title: string;
 }
 
 interface ITravelState {
