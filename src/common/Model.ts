@@ -16,12 +16,12 @@ export interface IOptionType {
     label: string;
 }
 
-export interface IRoutePath {
+export interface IRoute {
     className?: string;
     component: React.ComponentClass;
     extraProps?: _.Dictionary<any>;
     name: string;
-    path: string;
+    path?: string;
 }
 
 export class OptionTypeUtils {

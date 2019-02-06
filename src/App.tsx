@@ -2,7 +2,7 @@ import { initializeIcons } from '@uifabric/icons';
 import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import * as React from 'react';
 import { Route, Switch } from "react-router";
-import { IRoutePath } from 'src/common/Model';
+import { IRoute } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
 import { Offers } from 'src/components/Offers/Offers';
 import { GroceryMain } from 'src/components/Product/GroceryMain';
@@ -15,7 +15,7 @@ initializeIcons();
 
 
 class App extends React.Component<any, any> {
-  private routePathList: IRoutePath[] = [
+  private routeList: IRoute[] = [
     {
       component: Travel,
       extraProps: {
@@ -24,8 +24,7 @@ class App extends React.Component<any, any> {
         ["options"]: TravelOptions.flightOptions,
         ["title"]: "Flights Multiple URL Opener",
       },
-      name: "Flight",
-      path: "Flight",
+      name: "Flight"
     },
     {
       component: Travel,
@@ -35,8 +34,7 @@ class App extends React.Component<any, any> {
         ["options"]: TravelOptions.trainOptions,
         ["title"]: "Train Multiple URL Opener",
       },
-      name: "Train",
-      path: "Train",
+      name: "Train"
     },
     {
       component: Travel,
@@ -46,8 +44,7 @@ class App extends React.Component<any, any> {
         ["options"]: TravelOptions.busOptions,
         ["title"]: "Bus Multiple URL Opener",
       },
-      name: "Bus",
-      path: "Bus",
+      name: "Bus"
     },
     {
       className: "groceryMain",
@@ -56,7 +53,7 @@ class App extends React.Component<any, any> {
       path: "Grocery/:parentCategory?/:childCategory?"
     },
     {
-      component: Offers, 
+      component: Offers,
       name: "Offers",
       path: "Offers/:displayCategoryString?"
     }
@@ -66,40 +63,39 @@ class App extends React.Component<any, any> {
   public render() {
     return (
       <Switch>
-        {this.routePathList.map(path => this.renderRoute(path))}
-        {this.renderRoute(Object.assign({}, this.routePathList[0], { path: "" }))}
+        {this.routeList.map(route => this.renderRoute(route))}
+        {this.renderRoute(Object.assign({}, this.routeList[0], { path: "" }))}
       </Switch>
     );
   }
 
-  private renderRoute(path: IRoutePath): JSX.Element {
-    return <Route path={"/" + path.path} render={(props) => this.renderPivot(path, props)} key={path.path} />
+  private renderRoute(route: IRoute): JSX.Element {
+    const path = "/" + (route.path === undefined ? route.name : route.path);
+    return <Route path={path} render={(props) => this.renderPivot(route, props)} key={path} />
   }
 
-  private renderPivot(selectedPath: IRoutePath, props: any): JSX.Element {
-    const selectedPathName = this.getPathName(selectedPath);
+  private renderPivot(selectedRoute: IRoute, props: any): JSX.Element {
     return (
-      <Pivot linkFormat={PivotLinkFormat.tabs} selectedKey={selectedPathName} onLinkClick={this.onPivotItemClick}>
-        {this.routePathList.map(pathItem => this.renderPivotItem(pathItem, selectedPathName, props))}
+      <Pivot linkFormat={PivotLinkFormat.tabs} selectedKey={selectedRoute.name} onLinkClick={this.onPivotItemClick}>
+        {this.routeList.map(pathItem => this.renderPivotItem(pathItem, selectedRoute.name, props))}
       </Pivot>
     );
   }
-  
-  private renderPivotItem(path: IRoutePath, selectedPathName: string, props: any): JSX.Element {
-    const pathName = this.getPathName(path);
+
+  private renderPivotItem(route: IRoute, selectedRouteName: string, props: any): JSX.Element {
     return (
-      <PivotItem linkText={pathName} itemKey={pathName} key={pathName} className={path.className}>
-        {selectedPathName === pathName && this.renderComponent(path, props)}
+      <PivotItem linkText={route.name} itemKey={route.name} key={route.name} className={route.className}>
+        {selectedRouteName === route.name && this.renderComponent(route, props)}
       </PivotItem>
     );
   }
 
-  private renderComponent(path: IRoutePath, props: any): JSX.Element {
-    const Component = path.component as React.ComponentClass;
+  private renderComponent(route: IRoute, props: any): JSX.Element {
+    const Component = route.component as React.ComponentClass;
     return (
       <Component
         {...props}
-        {...path.extraProps}
+        {...route.extraProps}
       />);
   }
 
@@ -107,10 +103,6 @@ class App extends React.Component<any, any> {
     if (item.props.itemKey) {
       window.location.href = Utils.getUrl(item.props.itemKey);
     }
-  }
-
-  private getPathName(path: IRoutePath): string {
-    return path.name ? path.name : path.path;
   }
 }
 
