@@ -1,25 +1,28 @@
-import { initializeIcons } from '@uifabric/icons';
 import * as Firebase from 'firebase';
 import { autobind } from "office-ui-fabric-react";
 import * as React from 'react';
-import { Route, Switch } from "react-router";
-import { MultipleProduct } from 'src/components/Product/MultipleProduct';
-import { SingleProduct } from "src/components/Product/SingleProduct";
+import { RouteComponentProps } from "react-router";
+import { Utils } from "src/common/Utils";
+import 'src/components/Product/Product.css';
+import { ProductCard } from "src/components/Product/ProductCard";
 import { VerticalNavigationBar } from "src/components/VerticalNavigationBar/VerticalNavigationBar";
 
-initializeIcons();
+interface IUrlParams {
+  parentCategory?: string;
+  childCategory?: string;
+}
 
-interface IGroceryMain {
-  isSuccess: boolean;
+interface IGroceryMainState {
   dataList?: any;
 }
 
-export class GroceryMain extends React.Component<any, IGroceryMain> {
-  constructor(props: any) {
+interface IGroceryMainProps extends RouteComponentProps<IUrlParams> { }
+
+export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMainState> {
+  constructor(props: IGroceryMainProps) {
     super(props);
     this.state = {
-      dataList: undefined,
-      isSuccess: false
+      dataList: undefined
     }
   }
 
@@ -38,38 +41,41 @@ export class GroceryMain extends React.Component<any, IGroceryMain> {
     }
   }
 
-  public render() {
-    if (this.state.dataList) {
+  public componentDidMount(): void {
+    document.title = "Price Comaprison";
+    const { parentCategory, childCategory } = this.props.match.params;
+    const { dataList } = this.state;
+    if (dataList && parentCategory) {
+      document.title = this.state.dataList[0].Category[0];
+    }
+    if (dataList && childCategory) {
+      document.title = this.state.dataList[0].Category[0] + "-" + this.state.dataList[0].Category[1];
+    }
+  }
+
+  public render(): JSX.Element {
+    const { dataList } = this.state;
+    if (dataList) {
       return (
         <>
-          <VerticalNavigationBar dataList={this.state.dataList} />
-            <Switch>
-              <Route path="/Grocery/product/:productName" render={this.renderSingleProduct} />
-              <Route path="/Grocery/category/:parentCategory?/:childCategory?" render={this.renderCategory}  />)} />
-              <Route path="/" render={this.renderCategory}  />)} />
-            </Switch>
+          <VerticalNavigationBar dataList={dataList} />
+          <div className={"multipleProductDataList"}>
+            {this.renderProductCards()}
+          </div>
         </>
       );
+    } else {
+      return (<div>nothing found</div>);
     }
-    return <div>nothing found</div>
   }
 
-  @autobind
-  private renderSingleProduct(props: any): JSX.Element {
-    return (
-      <SingleProduct 
-        dataList={this.state.dataList}
-        {...props}
-      />);
-  }
-
-  @autobind
-  private renderCategory(props: any): JSX.Element {
-    return (
-      <MultipleProduct 
-        dataList={this.state.dataList}
-        {...props}
-      />);
+  private renderProductCards(): JSX.Element {
+    const { parentCategory, childCategory } = this.props.match.params;
+    const { dataList } = this.state;
+    if (parentCategory || childCategory) {
+      return this.getFilteredDataList(dataList).map((data, index) => <ProductCard data={data} key={index} />);
+    }
+    return dataList.map((data, index) => <ProductCard data={data} key={index} />);
   }
 
   @autobind
@@ -79,6 +85,22 @@ export class GroceryMain extends React.Component<any, IGroceryMain> {
 
   @autobind
   private setAppSate(dataList: any, isSuccess: boolean): void {
-    this.setState({ dataList, isSuccess });
+    if (isSuccess) {
+      this.setState({ dataList });
+    }
+  }
+
+  private getFilteredDataList(dataList: any): any {
+    const filteredDataList: any[] = []
+    const { parentCategory, childCategory } = this.props.match.params;
+    if (parentCategory) {
+      filteredDataList.push(...dataList.filter(
+        data => data.Category.map(x => Utils.convertToSlug(x)).indexOf(parentCategory) >= 0));
+    }
+    if (childCategory) {
+      return filteredDataList.filter(
+        data => data.Category.map(x => Utils.convertToSlug(x)).indexOf(childCategory) >= 0);
+    }
+    return filteredDataList;
   }
 }

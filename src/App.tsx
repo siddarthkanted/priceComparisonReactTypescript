@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router";
 import { BuyLinks, OfferLinks, TravelOptions } from "src/common/Constants";
 import { Utils } from "src/common/Utils";
 import { Offers } from 'src/components/Offers/Offers';
-import { GroceryMain } from "src/components/Product/GroceryMain";
+import { GroceryMain } from 'src/components/Product/GroceryMain';
 import { Generic, IGenericProps } from "src/components/Travel/Generic";
 import './App.css';
 
@@ -33,6 +33,7 @@ class App extends React.Component<any, any> {
       title: "Flights Multiple URL Opener"
     },
     {
+
       links: BuyLinks.train,
       offerLinks: OfferLinks.trainOffers,
       options: TravelOptions.trainOptions,
@@ -49,9 +50,10 @@ class App extends React.Component<any, any> {
       title: "Bus Multiple URL Opener"
     },
   ];
+
   private pathList: IPath[] = [
     ...this.travelList,
-    { path: "Grocery", component: GroceryMain, className: "groceryMain" },
+    { path: "Grocery/:parentCategory?/:childCategory?", component: GroceryMain, name: "Grocery", className: "groceryMain"  },
     { path: "Offers/:displayCategoryString?", component: Offers, name: "Offers" },
   ];
 
