@@ -3,8 +3,8 @@ import * as React from "react";
 import { Utils } from 'src/common/Utils';
 import { CategoryList } from 'src/constants/Offers';
 import { routeList } from 'src/constants/Routes';
-import { IRoute, OptionTypeUtils } from '../../common/Model';
 import { CategoryUtils, ICategory } from '../../model/Category';
+import { IRoute, OptionTypeUtils } from '../../model/Model';
 
 export class Sitemap extends React.Component<any, any> {
     public componentDidMount(): void {

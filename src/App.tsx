@@ -3,9 +3,9 @@ import { Link } from 'office-ui-fabric-react';
 import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import * as React from 'react';
 import { Route, Switch } from "react-router";
-import { IRoute } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
 import { routeList } from "src/constants/Routes";
+import { IRoute } from 'src/model/Model';
 import './App.css';
 import { Sitemap } from './components/Sitemap/Sitemap';
 

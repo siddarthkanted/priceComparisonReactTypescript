@@ -1,5 +1,13 @@
 import { ValueType } from 'react-select/lib/types';
 
+export interface IGrocery
+{
+    Category: string[];
+    Images: string[];
+    Link: string[];
+    Name: string[];
+}
+
 export interface IAffiliateLink {
     link: string;
     referralCode?: string;

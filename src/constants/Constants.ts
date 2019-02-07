@@ -11,12 +11,10 @@ const makemytrip = {
 }
 
 const goibibo = {
-    isCuelinks: true,
     name: "Goibibo"
 }
 
 const cleartrip = {
-    isCuelinks: true,
     name: "Cleartrip"
 }
 

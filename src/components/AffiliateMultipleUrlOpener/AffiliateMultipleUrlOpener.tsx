@@ -2,8 +2,8 @@ import { autobind } from '@uifabric/utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
-import { IAffiliateLink } from 'src/common/Model';
 import { Utils } from "src/common/Utils";
+import { IAffiliateLink } from 'src/model/Model';
 import './AffiliateMultipleUrlOpener.css';
 
 interface IAffiliateMultipleUrlOpenerProps {

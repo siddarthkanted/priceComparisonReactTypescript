@@ -1,8 +1,8 @@
-import { IRoute } from 'src/common/Model';
 import { Offers } from 'src/components/Offers/Offers';
 import { GroceryMain } from 'src/components/Product/GroceryMain';
 import { Travel } from "src/components/Travel/Travel";
 import { BuyLinks, OfferLinks, TravelOptions } from "src/constants/Constants";
+import { IRoute } from 'src/model/Model';
 
 export const routeList: IRoute[] = [
     {

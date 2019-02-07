@@ -1,7 +1,7 @@
 import {
     IDocumentCardPreviewImage, IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
-import { IAffiliateLink } from 'src/common/Model';
+import { IAffiliateLink } from 'src/model/Model';
 
 // tslint:disable-next-line:no-namespace
 export namespace Utils {
