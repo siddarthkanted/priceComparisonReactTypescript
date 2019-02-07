@@ -10,11 +10,11 @@ import * as React from "react";
 import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import { BuyLinks } from 'src/constants/Constants';
-import { IAffiliateLink } from 'src/model/Model';
+import { IAffiliateLink, IGrocery } from 'src/model/Model';
 import './Product.css';
 
 interface IProductCardProps {
-    data: any;
+    data: IGrocery;
 }
 
 export class ProductCard extends React.Component<IProductCardProps> {

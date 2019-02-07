@@ -6,6 +6,7 @@ import { Utils } from "src/common/Utils";
 import 'src/components/Product/Product.css';
 import { ProductCard } from "src/components/Product/ProductCard";
 import { VerticalNavigationBar } from "src/components/VerticalNavigationBar/VerticalNavigationBar";
+import { IGrocery } from 'src/model/Model';
 
 interface IUrlParams {
   parentCategory?: string;
@@ -13,7 +14,7 @@ interface IUrlParams {
 }
 
 interface IGroceryMainState {
-  dataList?: any;
+  dataList: IGrocery[];
 }
 
 interface IGroceryMainProps extends RouteComponentProps<IUrlParams> { }
@@ -22,7 +23,7 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
   constructor(props: IGroceryMainProps) {
     super(props);
     this.state = {
-      dataList: undefined
+      dataList: []
     }
   }
 
@@ -36,14 +37,14 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
       storageBucket: "pricecomparison-6d140.appspot.com"
     };
     Firebase.initializeApp(config);
-    if (!this.state.dataList) {
+    if (this.state.dataList.length <= 0) {
       this.readAllData();
     }
   }
 
   public render(): JSX.Element {
     const { dataList } = this.state;
-    if (dataList) {
+    if (dataList.length > 0) {
       return (
         <>
           <VerticalNavigationBar dataList={dataList} />
@@ -57,7 +58,7 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
     }
   }
 
-  private renderProductCards(): JSX.Element {
+  private renderProductCards(): JSX.Element[] {
     const { parentCategory, childCategory } = this.props.match.params;
     const { dataList } = this.state;
     if (parentCategory || childCategory) {
@@ -68,19 +69,19 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
 
   @autobind
   private readAllData(): void {
-    Firebase.database().ref().once('value').then(x => this.setAppSate(x.val(), true), (x => this.setAppSate(undefined, false)));
+    Firebase.database().ref().once('value').then(x => this.setAppSate(x.val(), true), (x => this.setAppSate([], false)));
   }
 
   @autobind
-  private setAppSate(dataList: any, isSuccess: boolean): void {
+  private setAppSate(dataList: IGrocery[], isSuccess: boolean): void {
     if (isSuccess) {
       this.setState({ dataList });
       document.title = this.getDocumentTitle(dataList);
     }
   }
 
-  private getFilteredDataList(dataList: any): any {
-    const filteredDataList: any[] = []
+  private getFilteredDataList(dataList: IGrocery[]): IGrocery[] {
+    const filteredDataList: IGrocery[] = []
     const { parentCategory, childCategory } = this.props.match.params;
     if (parentCategory) {
       filteredDataList.push(...dataList.filter(
@@ -94,7 +95,7 @@ export class GroceryMain extends React.Component<IGroceryMainProps, IGroceryMain
   }
 
   @autobind
-  private getDocumentTitle(dataList: any): string {
+  private getDocumentTitle(dataList: IGrocery[]): string {
     let title = "Price Comaprison";
     const { parentCategory, childCategory } = this.props.match.params;
     if (dataList && parentCategory) {
