@@ -14,8 +14,7 @@
     "react-scripts-ts": "3.1.0",
     "react-select": "^2.3.0",
     "moment": "2.22.2",
-    "immer": "1.2.1",
-    "sitemap": "^2.1.0"
+    "immer": "1.2.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",

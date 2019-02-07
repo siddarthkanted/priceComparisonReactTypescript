@@ -1,3 +1,7 @@
 .groceryMain {
   display: flex;
 }
+
+.visibilityHidden {
+  visibility: hidden;
+}

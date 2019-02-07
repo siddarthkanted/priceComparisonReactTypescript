@@ -1,9 +1,10 @@
+import { Link } from 'office-ui-fabric-react';
 import * as React from "react";
-import * as sitemap from "sitemap";
 import { Utils } from 'src/common/Utils';
 import { CategoryList } from 'src/constants/Offers';
 import { routeList } from 'src/constants/Routes';
-import { CategoryUtils } from '../../model/Category';
+import { IRoute, OptionTypeUtils } from '../../common/Model';
+import { CategoryUtils, ICategory } from '../../model/Category';
 
 export class Sitemap extends React.Component<any, any> {
     public componentDidMount(): void {
@@ -11,25 +12,22 @@ export class Sitemap extends React.Component<any, any> {
     }
 
     public render(): JSX.Element {
-        const urls = [
-            ...CategoryList.map(category => CategoryUtils.getUrlWithoutHost(category.titleOptionType)),
-            ...routeList.map(route => Utils.getUrlWithoutHost(route.name))
-        ];
         return (
-            <>
-                {this.sitemap(urls)}
-            </>
+            <ol>
+                {routeList.map(route => this.renderRoute(route))}
+                {CategoryList.map(category => this.renderCategory(category))}
+            </ol>
         );
     }
 
-    private sitemap(urls: string[]): string {
-        const sitemapObj = sitemap.createSitemap({
-            hostname: Utils.getBaseUrl(),
-            urls: [
-                { url: '/' },
-                ...urls.map(url => ({url: '/'+url}))
-            ]
-        });
-        return sitemapObj.toString();
+    private renderCategory(category: ICategory): JSX.Element {
+        const href = CategoryUtils.getUrl(category.titleOptionType);
+        const label = OptionTypeUtils.getLabel(category.titleOptionType);
+        return <li><Link href={href}>{label}</Link></li>
+    }
+
+    private renderRoute(route: IRoute): JSX.Element {
+        const href = Utils.getUrl(route.name)
+        return <li><Link href={href}>{route.name}</Link></li>
     }
 }
