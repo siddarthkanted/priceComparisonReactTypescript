@@ -14,6 +14,10 @@ export class CategoryUtils {
     }
 
     public static getUrl(optionType: ValueType<IOptionType>): string {
-        return Utils.getUrl("Offers", OptionTypeUtils.getValue(optionType));
+        return Utils.getUrl(CategoryUtils.getUrlWithoutHost(optionType));
+    }
+
+    public static getUrlWithoutHost(optionType: ValueType<IOptionType>): string {
+        return Utils.getUrlWithoutHost("Offers", OptionTypeUtils.getValue(optionType));
     }
 }

@@ -51,9 +51,14 @@ export namespace Utils {
     }
 
     export function getUrl(page: string, ...urlPart: string[]): string {
+        const urlString = getUrlWithoutHost(page, ...urlPart);
+        return new URL(urlString, Utils.getBaseUrl()).toString();
+    }
+
+    export function getUrlWithoutHost(page: string, ...urlPart: string[]): string {
         const urlAllParts = [page, ...urlPart.map(x => Utils.convertToSlug(x))];
         const urlString = urlAllParts.join("/")
-        return new URL(urlString, Utils.getBaseUrl()).toString();
+        return urlString;
     }
 
     export function getHostNameFromUrl(urlString: string): string {
