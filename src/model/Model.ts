@@ -1,5 +1,13 @@
 import { ValueType } from 'react-select/lib/types';
 
+export interface IRootReducer {
+    groceryReducer: IGroceryReducer;
+}
+
+export interface IGroceryReducer {
+    groceryList: IGrocery[];
+}
+
 export interface IGrocery
 {
     Category: string[];
