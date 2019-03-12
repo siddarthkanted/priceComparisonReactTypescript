@@ -5,7 +5,6 @@ import * as ReactRedux from "react-redux";
 import { Route, Router } from "react-router";
 import { applyMiddleware, combineReducers, compose, createStore, GenericStoreEnhancer, Reducer, Store } from "redux";
 import { enableBatching } from "redux-batched-actions";
-import thunk from "redux-thunk";
 import { GroceryReducer } from 'src/components/Product/Reducer';
 import { IRootReducer } from 'src/model/Model';
 import App from './App';
@@ -24,15 +23,15 @@ ReactDOM.render(
 registerServiceWorker();
 
 export function buildRootReducer(): Reducer<IRootReducer> {
-  const result = {};
-  // tslint:disable-next-line:no-string-literal
-  result["GroceryReducer"] = new GroceryReducer().handleAction.bind(GroceryReducer);
-  return combineReducers<IRootReducer>(result);
+  const rootReducer: IRootReducer = {
+    groceryReducer: new GroceryReducer().handleAction.bind(GroceryReducer)
+  };
+  return combineReducers<IRootReducer>(rootReducer as {});
 }
 
 export function configureStore(rootReducer: Reducer<IRootReducer>): Store<IRootReducer> {
   const reducer = enableBatching(rootReducer);
-  const middleware = applyMiddleware(thunk);
+  const middleware = applyMiddleware();
 
   if ((window as IWindowType).__REDUX_DEVTOOLS_EXTENSION__) {
     // If we have redux dev tools, create with it

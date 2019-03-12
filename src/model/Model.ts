@@ -1,11 +1,19 @@
 import { ValueType } from 'react-select/lib/types';
 
+export enum Status {
+    NotStarted = "NotStarted",
+    Loading = "Loading",
+    Success = "Success",
+    Failure = "Failure",
+}
+
 export interface IRootReducer {
     groceryReducer: IGroceryReducer;
 }
 
 export interface IGroceryReducer {
     groceryList: IGrocery[];
+    status: Status;
 }
 
 export interface IGrocery

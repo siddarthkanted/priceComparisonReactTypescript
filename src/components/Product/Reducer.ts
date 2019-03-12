@@ -1,18 +1,19 @@
+import { autobind } from '@uifabric/utilities';
 import produce from "immer";
 import { AllGroceryActions, SetGrocery } from "src/components/Product/Actions";
-import { IGroceryReducer } from 'src/model/Model';
+import { IGroceryReducer, Status } from 'src/model/Model';
 
 type HandledActions = typeof AllGroceryActions;
 
 export class GroceryReducer {
-    public handleAction(
-        state: IGroceryReducer = this.getInitialState(),
-        action: HandledActions
-    ): IGroceryReducer {
+    @autobind
+    public handleAction(state: IGroceryReducer = this.getInitialState(), action: HandledActions): IGroceryReducer {
         return produce(state, draft => {
             switch (action.type) {
                 case SetGrocery.type:
-                    draft.groceryList = action.payload.groceryList;
+                    const {groceryList} = action.payload;
+                    draft.groceryList = groceryList;
+                    draft.status = groceryList.length === 0 ? Status.Failure: Status.Success;
                     return;
             }
         });
@@ -20,7 +21,8 @@ export class GroceryReducer {
 
     public getInitialState(): IGroceryReducer {
         return {
-            groceryList: []
+            groceryList: [],
+            status: Status.NotStarted
         };
     }
 }
