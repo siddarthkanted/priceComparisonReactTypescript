@@ -33,9 +33,7 @@ class Container extends React.Component<IContainerProps> {
         const { status } = this.props;
         if (status === Status.NotStarted) {
             this.props.getGrocery();
-            return;
         }
-        document.title = this.getDocumentTitle();
     }
 
     public render(): JSX.Element | undefined {
@@ -50,6 +48,7 @@ class Container extends React.Component<IContainerProps> {
     }
 
     private renderSuccess(): JSX.Element {
+        document.title = this.getDocumentTitle();
         const { dataList } = this.props;
         return (
             <>
