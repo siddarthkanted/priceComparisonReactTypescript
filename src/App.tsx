@@ -15,12 +15,12 @@ class App extends React.Component<any, any> {
   public render() {
     return (
       <>
-      <Switch>
-        {routeList.map(route => this.renderRoute(route))}
-        {<Route path="/sitemap" render={(props) => this.renderComponent(Sitemap, props)} key={"Sitemap"} />}
-        {this.renderRoute(Object.assign({}, routeList[0], { path: "" }))}
-      </Switch>
-      <Link href={Utils.getUrl("sitemap")} className={"visibilityHidden"}>{"Sitemap"}</Link>
+        <Switch>
+          {routeList.map(route => this.renderRoute(route))}
+          {<Route path="/sitemap" render={(props) => this.renderComponent(Sitemap, props)} key={"Sitemap"} />}
+          {this.renderRoute(Object.assign({}, routeList[0], { path: "" }))}
+        </Switch>
+        <Link href={Utils.getUrl("sitemap")} className={"visibilityHidden"}>{"Sitemap"}</Link>
       </>
     );
   }
@@ -56,7 +56,7 @@ class App extends React.Component<any, any> {
 
   private onPivotItemClick(item: PivotItem): void {
     if (item.props.itemKey) {
-      window.location.href = Utils.getUrl(item.props.itemKey);
+      Utils.setUrlPath(item.props.itemKey);
     }
   }
 }

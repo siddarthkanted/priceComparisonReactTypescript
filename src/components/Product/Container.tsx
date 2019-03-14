@@ -1,4 +1,4 @@
-import { autobind } from "office-ui-fabric-react";
+import { autobind, Spinner, SpinnerSize } from "office-ui-fabric-react";
 import * as React from 'react';
 import * as ReactRedux from "react-redux";
 import { RouteComponentProps } from "react-router";
@@ -65,7 +65,7 @@ class Container extends React.Component<IContainerProps> {
     }
 
     private renderLoading(): JSX.Element {
-        return <div>loading</div>;
+        return  <Spinner size={SpinnerSize.large} label="Wait, wait...Ajax call happening"/>;
     }
 
     private renderNotStarted(): JSX.Element {

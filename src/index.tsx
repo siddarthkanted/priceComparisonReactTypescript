@@ -1,4 +1,3 @@
-import { createBrowserHistory } from "history";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from "react-redux";
@@ -6,6 +5,7 @@ import { Route, Router } from "react-router";
 import { applyMiddleware, combineReducers, compose, createStore, GenericStoreEnhancer, Reducer, Store } from "redux";
 import { enableBatching } from "redux-batched-actions";
 import { GroceryReducer } from 'src/components/Product/Reducer';
+import { HistorySingleton } from 'src/History';
 import { IRootReducer } from 'src/model/Model';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -14,7 +14,7 @@ const store = configureStore(buildRootReducer())
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
-  <Router history={createBrowserHistory({})}>
+  <Router history={HistorySingleton.getHistory()}>
     <Route path="/" component={App} />
   </Router></ReactRedux.Provider>,
   document.getElementById('root') as HTMLElement

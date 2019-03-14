@@ -1,6 +1,6 @@
 import { autobind } from '@uifabric/utilities';
 import produce from "immer";
-import { AllGroceryActions, SetGrocery } from "src/components/Product/Actions";
+import { AllGroceryActions, SetGrocery, SetStatus } from "src/components/Product/Actions";
 import { IGroceryReducer, Status } from 'src/model/Model';
 
 type HandledActions = typeof AllGroceryActions;
@@ -11,9 +11,13 @@ export class GroceryReducer {
         return produce(state, draft => {
             switch (action.type) {
                 case SetGrocery.type:
-                    const {groceryList} = action.payload;
+                    const { groceryList } = action.payload;
                     draft.groceryList = groceryList;
-                    draft.status = groceryList.length === 0 ? Status.Failure: Status.Success;
+                    draft.status = groceryList.length === 0 ? Status.Failure : Status.Success;
+                    return;
+                case SetStatus.type:
+                    const { status } = action.payload;
+                    draft.status = status;
                     return;
             }
         });

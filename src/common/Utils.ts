@@ -1,6 +1,7 @@
 import {
     IDocumentCardPreviewImage, IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
+import { HistorySingleton } from 'src/History';
 import { IAffiliateLink } from 'src/model/Model';
 
 // tslint:disable-next-line:no-namespace
@@ -59,6 +60,11 @@ export namespace Utils {
         const urlAllParts = [page, ...urlPart.map(x => Utils.convertToSlug(x))];
         const urlString = urlAllParts.join("/")
         return urlString;
+    }
+
+    export function setUrlPath(page: string, ...urlPart: string[]): void {
+        const history = HistorySingleton.getHistory();
+        history.push(Utils.getUrlWithoutHost(page, ...urlPart));
     }
 
     export function getHostNameFromUrl(urlString: string): string {

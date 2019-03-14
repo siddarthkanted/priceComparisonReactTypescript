@@ -1,7 +1,13 @@
 import * as Firebase from 'firebase';
-import { SetGrocery } from './Actions';
+import { Status } from 'src/model/Model';
+import { SetGrocery, SetStatus } from './Actions';
 
 export function getGroceryAction(dispatch: any): void {
+    dispatch(
+        new SetStatus({
+            status: Status.Loading
+        })
+    );
     const config = {
         apiKey: "AIzaSyDzwmSykRFIMFBy5JZkQmIcu5QZswwveGw",
         authDomain: "pricecomparison-6d140.firebaseapp.com",
