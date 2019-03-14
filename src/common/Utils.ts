@@ -64,7 +64,7 @@ export namespace Utils {
 
     export function setUrlPath(page: string, ...urlPart: string[]): void {
         const history = HistorySingleton.getHistory();
-        history.push(Utils.getUrlWithoutHost(page, ...urlPart));
+        history.push("/"+Utils.getUrlWithoutHost(page, ...urlPart));
     }
 
     export function getHostNameFromUrl(urlString: string): string {

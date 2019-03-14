@@ -66,9 +66,9 @@ export class ProductCard extends React.Component<IProductCardProps> {
 
     private createBreadcrumbItem(category: string, ...urlPart: string[]): IBreadcrumbItem {
         return {
-            href: Utils.getUrl("Grocery", ...urlPart),
             key: category,
-            text: category,
+            onClick: () => Utils.setUrlPath("Grocery", ...urlPart),
+            text: category
         };
     }
 };
