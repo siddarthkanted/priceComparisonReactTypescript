@@ -16,8 +16,7 @@ export interface IGroceryReducer {
     status: Status;
 }
 
-export interface IGrocery
-{
+export interface IGrocery {
     Category: string[];
     Images: string[];
     Link: string[];
@@ -33,6 +32,16 @@ export interface IAffiliateLink {
     isCuelinks?: boolean;
     extraParameters?: _.Dictionary<string>;
     variedOptions?: _.Dictionary<string>;
+    busBooking?: string;
+    flightBooking?: string;
+    trainBooking?: string;
+    walletOffer?: string;
+    mobileRechargeOffer?: string;
+    movieBookingOffer?: string;
+    electricityOffer?: string;
+    flightOffer?: string;
+    trainOffer?: string;
+    busOffer?: string;
 }
 
 export interface IOptionType {

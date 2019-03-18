@@ -1,9 +1,21 @@
 import { Utils } from "src/common/Utils";
 
 const paytm = {
+    busBooking: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1",
+    busOffer: "https://paytm.com/offer/bus-tickets/",
+    electricityOffer: "https://paytm.com/offer/billpayment/",
+    flightBooking: "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
+    flightOffer: "https://paytm.com/offer/flight-tickets/",
     isCuelinks: true,
-    name: "Paytm"
+    mobileRechargeOffer: "https://paytm.com/offer/recharge/",
+    movieBookingOffer: "https://paytm.com/offer/movies/",
+    name: "Paytm",
+    trainBooking: "https://paytm.com/train-tickets/searchTrains/{0}_{0}/{1}_{1}/{4}{3}{2}",
+    trainOffer: "https://paytm.com/offer/train-tickets/",
+    walletOffer: "https://paytm.com/offer/",
 }
+
+export const PartnerList = [paytm];
 
 const makemytrip = {
     isCuelinks: true,
