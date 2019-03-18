@@ -18,7 +18,8 @@
     "redux": "3.7.2",
     "redux-batched-actions": "0.2.1",
     "react-redux": "5.0.7",
-    "ts-action": "6.0.3"
+    "ts-action": "6.0.3",
+    "sitemap": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",

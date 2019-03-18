@@ -1,5 +1,4 @@
 import { initializeIcons } from '@uifabric/icons';
-import { Link } from 'office-ui-fabric-react';
 import { Pivot, PivotItem, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
 import * as React from 'react';
 import { Route, Switch } from "react-router";
@@ -14,14 +13,11 @@ initializeIcons();
 class App extends React.Component<any, any> {
   public render() {
     return (
-      <>
         <Switch>
           {routeList.map(route => this.renderRoute(route))}
-          {<Route path="/sitemap" render={(props) => this.renderComponent(Sitemap, props)} key={"Sitemap"} />}
+          {<Route path="/sitemapcomponent" render={(props) => this.renderComponent(Sitemap, props)} key={"sitemapcomponent"} />}
           {this.renderRoute(Object.assign({}, routeList[0], { path: "" }))}
         </Switch>
-        <Link href={Utils.getUrl("sitemap")} className={"visibilityHidden"}>{"Sitemap"}</Link>
-      </>
     );
   }
 

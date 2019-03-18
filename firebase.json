@@ -10,6 +10,16 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "/sitemap{,/**}",
+        "destination": "/sitemap.xml"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/sitemap",
+        "destination": "/sitemap.xml"
       }
     ]
   }
