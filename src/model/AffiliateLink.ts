@@ -28,6 +28,8 @@ export interface IAffiliateLink {
     foodOrderOffer?: string;
     healthOffer?: string;
     servicesOffer?: string;
+    hotelOffer?: string;
+    activityOffer?: string;
 }
 
 export class AffiliateLinkUtils {
