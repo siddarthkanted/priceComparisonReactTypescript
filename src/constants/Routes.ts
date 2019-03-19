@@ -53,6 +53,6 @@ export const routeList: IRoute[] = [
   {
     component: Partner,
     name: StringConstant.partner,
-    path: StringConstant.partner + "/:selectedPartner?"
+    path: StringConstant.partner + "/:urlParam?"
   }
 ];

@@ -1,39 +1,33 @@
 import { autobind } from '@uifabric/utilities';
 import * as React from "react";
 import { RouteComponentProps } from 'react-router';
-import Select from 'react-select/lib/Select';
+import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { Utils } from 'src/common/Utils';
 import { StringConstant } from 'src/constants/StringConstant';
-import { IOptionType, OptionTypeUtils } from 'src/model/Model';
+import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 
 interface IUrlParams {
     urlParam?: string;
 }
 
-interface IParentProps extends RouteComponentProps<IUrlParams> {}
+interface IParentProps extends RouteComponentProps<IUrlParams> { }
 
 interface IParentState {
     selectedOption: ValueType<IOptionType>;
 }
 
-export abstract class Parent<TProps extends IParentProps, TState extends IParentState> extends React.Component<
-    TProps,
-    TState
-    > {
+export abstract class Parent extends React.Component<IParentProps, IParentState> {
     private allOption = OptionTypeUtils.createOptionType(StringConstant.all, Utils.format("All {0}", this.getTitle));
 
-    public componentDidMount(): void {
-        document.title = Utils.format("{0} - {1}", this.getTitle(),
-            OptionTypeUtils.getLabel(this.state.selectedOption));
-    }
-
-    public componentWillMount(): void {
-        this.setSelectedOption();
+    constructor(props: IParentProps) {
+        super(props);
+        this.state = { selectedOption: this.getSelectedOption() };
+        this.setDocumentTitle();
     }
 
     public render(): JSX.Element {
-        const {selectedOption} = this.state;
+        const { selectedOption } = this.state;
         return (
             <>
                 <h3>{this.getTitle()}</h3>
@@ -55,20 +49,27 @@ export abstract class Parent<TProps extends IParentProps, TState extends IParent
         return this.getList().map(item => this.renderOption(item));
     }
 
+    @autobind
     private dropdownOnChange(selectedOption: ValueType<IOptionType>): void {
         Utils.setUrlPath(this.getTitle(), OptionTypeUtils.getValue(selectedOption));
+        this.setState({ selectedOption }, this.setDocumentTitle);
     }
 
     @autobind
-    private setSelectedOption(): void {
+    private getSelectedOption(): ValueType<IOptionType> {
         const { urlParam } = this.props.match.params;
         if (!urlParam) {
-            this.setState({ selectedOption: this.allOption });
-            return;
+            return this.allOption;
         } else {
             const selectedOption = this.getList().find(item =>
                 Utils.convertToSlug(OptionTypeUtils.getValue(item)) === urlParam);
-            this.setState({ selectedOption: selectedOption ? selectedOption : this.allOption });
+            return selectedOption ? selectedOption : this.allOption;
         }
+    }
+
+    @autobind
+    private setDocumentTitle(): void {
+        document.title = Utils.format("{0} - {1}", this.getTitle(),
+            OptionTypeUtils.getLabel(this.state.selectedOption));
     }
 }

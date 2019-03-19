@@ -3,7 +3,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
 import { Utils } from "src/common/Utils";
-import { IAffiliateLink } from 'src/model/Model';
+import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
 import './AffiliateMultipleUrlOpener.css';
 
 interface IAffiliateMultipleUrlOpenerProps {
@@ -97,26 +97,12 @@ export class AffiliateMultipleUrlOpener extends React.Component<IAffiliateMultip
         const links = this.props.getLinks(true);
         let windowResponseFailureCount = 0;
         links.forEach(link => {
-            let finalUrl = link.link;
-            if (link.isCuelinks) {
-                finalUrl = "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=" + finalUrl;
-            }
-            if (link.extraParameters) {
-                finalUrl = this.setExtraParameters(link.extraParameters, finalUrl);
-            }
+            const finalUrl = AffiliateLinkUtils.getLink(link);
             const windowResponse = window.open(finalUrl);
             if (!windowResponse) {
                 windowResponseFailureCount++;
             }
         });
         this.setState({ showWarning: windowResponseFailureCount > 0 ? true : false });
-    }
-
-    private setExtraParameters(extraParameters: _.Dictionary<string>, urlString: string): string {
-        const url = new URL(urlString);
-        for (const key of Object.keys(extraParameters)) {
-            url.searchParams.set(key, extraParameters[key]);
-        }
-        return url.toString();
     }
 }

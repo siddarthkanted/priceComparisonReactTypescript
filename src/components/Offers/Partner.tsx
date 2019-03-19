@@ -1,63 +1,45 @@
-import { autobind } from '@uifabric/utilities';
+import { Label, Link } from 'office-ui-fabric-react';
 import * as React from "react";
-import { RouteComponentProps } from "react-router";
-import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { Utils } from "src/common/Utils";
-import { PartnerList } from 'src/constants/Constants';
-import { CategoryUtils } from 'src/model/Category';
-import { IOptionType, OptionTypeUtils } from 'src/model/Model';
+import { Parent } from 'src/components/Offers/Parent';
+import { PartnerDictionary } from 'src/constants/Constants';
+import { StringConstant } from 'src/constants/StringConstant';
+import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
+import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 
-interface IUrlParams {
-    selectedPartner?: string;
-}
 
-interface IPartnerProps  extends RouteComponentProps<IUrlParams> {
-
-}
-
-interface IPartnerState {
-    selectedPartner: ValueType<IOptionType>;
-}
-
-export class Partner extends React.Component<IPartnerProps, IPartnerState> {
-    private allOption = {value: "All partners", label: "All partners"};
-
-    public componentWillMount(): void {
-        this.setSelectedPartner();
-    }
-
-    public componentDidMount(): void {
-        document.title = "Partner - " + OptionTypeUtils.getLabel(this.state.selectedPartner);
-    }
-
-    public render(): JSX.Element {
+export class Partner extends Parent {
+    protected renderOption(option: ValueType<IOptionType>): JSX.Element {
+        const name = OptionTypeUtils.getValue(option)
+        const partner = PartnerDictionary[name];
         return (
-            <>
-                <h3>{"Partners"}</h3>
-                <Select
-                    value={this.state.selectedPartner}
-                    onChange={this.dropdownOnChange}
-                    options={[this.allOption, 
-                        ...PartnerList.map(partner => OptionTypeUtils.createOptionType(partner.name))]}
-                />
-            </>
+            <div key={name}>
+                <Label>{name}</Label>
+                {this.renderLink(partner, partner.link, "Link")}
+                {this.renderLink(partner, partner.busOffer, "Bus offer")}
+                {this.renderLink(partner, partner.trainOffer, "Tain offer")}
+                {this.renderLink(partner, partner.flightOffer, "Flight offer")}
+                {this.renderLink(partner, partner.electricityOffer, "Electricity offer")}
+                {this.renderLink(partner, partner.movieBookingOffer, "Movie offer")}
+                {this.renderLink(partner, partner.mobileRechargeOffer, "Recharge offer")}
+                {this.renderLink(partner, partner.walletOffer, "Wallet offer")}
+            </div>
         );
     }
-
-    private dropdownOnChange(displayCategory: ValueType<IOptionType>): void {
-        window.location.href = CategoryUtils.getUrl(displayCategory);
+    protected getTitle(): string {
+        return StringConstant.partner;
     }
-
-    @autobind
-    private setSelectedPartner(): void {
-        const { selectedPartner } = this.props.match.params;
-        if (!selectedPartner) {
-            this.setState({selectedPartner: this.allOption});
-            return;
-        } else {
-            const selectedPartnerObj = PartnerList.find(partner => Utils.convertToSlug(partner.name) === selectedPartner);
-            this.setState({selectedPartner: selectedPartnerObj ? OptionTypeUtils.createOptionType(selectedPartnerObj.name) : this.allOption});
-        } 
+    protected getList(): Array<ValueType<IOptionType>> {
+        const partnerArray = Object.keys(PartnerDictionary).map(key => PartnerDictionary[key]);
+        return partnerArray.map(partner => OptionTypeUtils.createOptionType(partner.name));
+    }
+    private renderLink(affiliateLink: IAffiliateLink, link?: string, name?: string): React.ReactNode {
+        if (link) {
+            const finalUrl = AffiliateLinkUtils.getAffiliatedLink(affiliateLink, link);
+            return (<Link href={finalUrl} target="_blank">
+                {name}
+            </Link>);
+        }
+        return;
     }
 }

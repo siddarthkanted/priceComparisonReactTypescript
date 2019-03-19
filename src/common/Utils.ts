@@ -2,11 +2,11 @@ import {
     IDocumentCardPreviewImage, IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { HistorySingleton } from 'src/History';
-import { IAffiliateLink } from 'src/model/Model';
+import { IAffiliateLink } from 'src/model/AffiliateLink';
 
 // tslint:disable-next-line:no-namespace
 export namespace Utils {
-    export function createAffiliateLink(link: string, name?: string, referralCode?: string): IAffiliateLink {
+    export function createAffiliateLink(link: string, name: string, referralCode?: string): IAffiliateLink {
         return {
             link,
             name,

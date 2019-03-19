@@ -1,4 +1,5 @@
 import { Utils } from "src/common/Utils";
+import { IAffiliateLink } from 'src/model/AffiliateLink';
 
 const paytm = {
     busBooking: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1",
@@ -7,6 +8,7 @@ const paytm = {
     flightBooking: "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
     flightOffer: "https://paytm.com/offer/flight-tickets/",
     isCuelinks: true,
+    link: "https://paytm.com/",
     mobileRechargeOffer: "https://paytm.com/offer/recharge/",
     movieBookingOffer: "https://paytm.com/offer/movies/",
     name: "Paytm",
@@ -15,7 +17,9 @@ const paytm = {
     walletOffer: "https://paytm.com/offer/",
 }
 
-export const PartnerList = [paytm];
+export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {
+    [paytm.name]: paytm,
+  };
 
 const makemytrip = {
     isCuelinks: true,

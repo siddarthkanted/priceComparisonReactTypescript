@@ -1,6 +1,7 @@
 import { ValueType } from 'react-select/lib/types';
 import { Utils } from 'src/common/Utils';
-import { IAffiliateLink, IOptionType, OptionTypeUtils } from 'src/model/Model';
+import { IAffiliateLink } from 'src/model/AffiliateLink';
+import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 
 export interface ICategory {
     links: IAffiliateLink[],

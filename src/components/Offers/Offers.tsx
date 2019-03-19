@@ -7,7 +7,7 @@ import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
 import { CategoryList } from 'src/constants/Offers';
 import { CategoryUtils, ICategory } from 'src/model/Category';
-import { IOptionType, OptionTypeUtils } from 'src/model/Model';
+import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 
 interface IUrlParams {
     displayCategoryString?: string;

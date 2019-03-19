@@ -8,7 +8,8 @@ import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
 import { Utils } from "src/common/Utils";
 import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
-import { IAffiliateLink, IOptionType, OptionTypeUtils } from 'src/model/Model';
+import { IAffiliateLink } from 'src/model/AffiliateLink';
+import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 import './Travel.css';
 
 enum FieldsEnum {
