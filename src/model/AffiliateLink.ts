@@ -12,11 +12,16 @@ export interface IAffiliateLink {
     trainBooking?: string;
     walletOffer?: string;
     mobileRechargeOffer?: string;
-    movieBookingOffer?: string;
-    electricityOffer?: string;
+    movieOffer?: string;
+    billPaymentOffer?: string;
     flightOffer?: string;
     trainOffer?: string;
     busOffer?: string;
+    travelOffer?: string;
+    groceryOffer?: string;
+    foodOrderOffer?: string;
+    healthOffer?: string;
+    servicesOffer?: string;
 }
 
 export class AffiliateLinkUtils {

@@ -1,25 +1,39 @@
 import { Utils } from "src/common/Utils";
 import { IAffiliateLink } from 'src/model/AffiliateLink';
 
-const paytm = {
+const paytm: IAffiliateLink = {
+    billPaymentOffer: "https://paytm.com/offer/billpayment/",
     busBooking: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1",
     busOffer: "https://paytm.com/offer/bus-tickets/",
-    electricityOffer: "https://paytm.com/offer/billpayment/",
     flightBooking: "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
     flightOffer: "https://paytm.com/offer/flight-tickets/",
     isCuelinks: true,
     link: "https://paytm.com/",
     mobileRechargeOffer: "https://paytm.com/offer/recharge/",
-    movieBookingOffer: "https://paytm.com/offer/movies/",
+    movieOffer: "https://paytm.com/offer/movies/",
     name: "Paytm",
     trainBooking: "https://paytm.com/train-tickets/searchTrains/{0}_{0}/{1}_{1}/{4}{3}{2}",
     trainOffer: "https://paytm.com/offer/train-tickets/",
     walletOffer: "https://paytm.com/offer/",
 }
 
+const amazon: IAffiliateLink = {
+    billPaymentOffer: "https://www.amazon.in/b?node=15377663031",
+    extraParameters: { ["tag"]: "amazonhttpp-21" },
+    foodOrderOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031",
+    groceryOffer: "https://www.amazon.in/b?node=11302610031",
+    link: "https://www.amazon.in/",
+    mobileRechargeOffer: "https://www.amazon.in/hfc/mobileRecharge",
+    movieOffer: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031",
+    name: "Amazon",
+    travelOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
+    walletOffer: "https://www.amazon.in/b?node=14783922031",
+}
+
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {
     [paytm.name]: paytm,
-  };
+    [amazon.name]: amazon,
+};
 
 const makemytrip = {
     isCuelinks: true,
@@ -32,11 +46,6 @@ const goibibo = {
 
 const cleartrip = {
     name: "Cleartrip"
-}
-
-const amazon = {
-    extraParameters: { ["tag"]: "amazonhttpp-21" },
-    name: "Amazon"
 }
 
 const yatra = {
@@ -60,7 +69,7 @@ const travelyaari = {
     name: "Travelyaari"
 }
 
-const sastiticket ={
+const sastiticket = {
     name: "Sastiticket"
 }
 
@@ -70,7 +79,7 @@ const grofers = {
 }
 
 const bigbasket = {
-    isCuelinks: true, 
+    isCuelinks: true,
     name: "Bigbasket",
     referralCode: "bigb2a6yc"
 }
@@ -106,11 +115,11 @@ export namespace BuyLinks {
 
         { link: "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}", ...myBusTicket },
 
-        { link: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway", ...travelyaari},
+        { link: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway", ...travelyaari },
 
         { link: "https://bus.makemytrip.com/bus/search/{0}/{1}/{2}-{3}-{4}", ...makemytrip, variedOptions: { ["Bengaluru"]: "Bangalore" } },
 
-        { link: "https://www.railyatri.in/bus-booking/{0}-to-{1}-buses?doj={2}-{3}-{4}", ...railyatri, variedOptions: { ["Bengaluru"]: "Bangalore-Bengaluru" }},
+        { link: "https://www.railyatri.in/bus-booking/{0}-to-{1}-buses?doj={2}-{3}-{4}", ...railyatri, variedOptions: { ["Bengaluru"]: "Bangalore-Bengaluru" } },
     ]
 
     export const flight = [
@@ -128,24 +137,24 @@ export namespace BuyLinks {
 
         { link: "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0", ...via },
 
-        { link: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true", ...easemytrip},
+        { link: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true", ...easemytrip },
 
-        { link: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy", name:"Happyeasygo" },
+        { link: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy", name: "Happyeasygo" },
 
-        { link: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}", name:"Kayak", isCuelinks: true },
+        { link: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}", name: "Kayak", isCuelinks: true },
 
-        { link: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}", name:"Agoda", isCuelinks: true },
+        { link: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}", name: "Agoda", isCuelinks: true },
 
-        { link: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}", name:"Cheapticket" },
-
-
-        { link: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results" , name:"Skyscanner" },
+        { link: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}", name: "Cheapticket" },
 
 
-        { link: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y" , name:"Expedia" },
+        { link: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results", name: "Skyscanner" },
 
 
-        { link: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY", ...sastiticket},
+        { link: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y", name: "Expedia" },
+
+
+        { link: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY", ...sastiticket },
 
     ];
 
@@ -154,9 +163,9 @@ export namespace BuyLinks {
 
         { link: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL", ...makemytrip, isCuelinks: false },
 
-        { link: "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0", ...cleartrip, isCuelinks: false  },
+        { link: "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0", ...cleartrip, isCuelinks: false },
 
-        { link: "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All", ...goibibo, isCuelinks: false  },
+        { link: "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All", ...goibibo, isCuelinks: false },
 
         { link: "https://rail.yatra.com/trains/b2c/search?srcStn={0}&destStn={1}&departDate={4}-{3}-{2}", ...yatra },
 
@@ -170,9 +179,9 @@ export namespace BuyLinks {
 export namespace OfferLinks {
     export const grocery = [
         { link: "https://www.amazon.in/b?node=11302610031", ...amazon },
-        { link: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc", ...flipkart},
+        { link: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc", ...flipkart },
         { link: "https://grofers.com/offers", ...grofers },
-        { link: "https://www.bigbasket.com/bank-offers/", ...bigbasket},
+        { link: "https://www.bigbasket.com/bank-offers/", ...bigbasket },
         { isCuelinks: true, link: "https://www.spencers.in/offers/", name: "Spencers" },
         { isCuelinks: true, link: "https://play.google.com/store/apps/details?id=com.dunzo.user", name: "Dunzo", referralCode: "BYU3ZT" },
     ];
@@ -296,7 +305,7 @@ export namespace OfferLinks {
 
         { link: "https://in.via.com/offers", ...via },
 
-        { link: "https://www.yatra.com/offer/dom/listing/domestic-flight-deals", ...yatra},
+        { link: "https://www.yatra.com/offer/dom/listing/domestic-flight-deals", ...yatra },
 
     ];
 
@@ -313,7 +322,7 @@ export namespace OfferLinks {
     ];
 
     export const busOffers = [
-        {link: "https://www.railyatri.in/offers",  ...railyatri},
+        { link: "https://www.railyatri.in/offers", ...railyatri },
 
         { link: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/", ...makemytrip },
 
@@ -321,13 +330,13 @@ export namespace OfferLinks {
 
         { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", ...goibibo },
 
-        { link: "https://www.mybustickets.in/Bestoffers", ...myBusTicket},
+        { link: "https://www.mybustickets.in/Bestoffers", ...myBusTicket },
 
-        { link: "https://www.travelyaari.com/offers", ...travelyaari},
+        { link: "https://www.travelyaari.com/offers", ...travelyaari },
 
         Utils.createAffiliateLink("https://www.ticketgoose.com/", "Ticketgoose"),
 
-        {link: "https://www.yatra.com/offer/listing/bus",  ...yatra},
+        { link: "https://www.yatra.com/offer/listing/bus", ...yatra },
 
         Utils.createAffiliateLink("https://www.abhibus.com/bus-ticket-offers", "Abhibus"),
 
