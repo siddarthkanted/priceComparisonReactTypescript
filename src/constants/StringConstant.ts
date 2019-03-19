@@ -19,6 +19,7 @@ export namespace StringConstant {
         "healthOffer",
         "servicesOffer",
         "hotelOffer",
-        "activityOffer"
+        "activityOffer",
+        "cashBackOffer",
     ]
 }

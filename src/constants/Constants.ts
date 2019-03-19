@@ -155,6 +155,35 @@ const ixigo: IAffiliateLink = {
     trainOffer: "https://www.ixigo.com/offers/tag/trains/",
 }
 
+const cashkaro: IAffiliateLink = {
+    cashBackOffer: "https://cashkaro.com/r=912171",
+    email: "contact@cashkaro.com",
+    name: "Cashkaro",
+    phone: "9821397418",
+}
+
+const zingoy: IAffiliateLink = {
+    cashBackOffer: "https://zngy.in/c4ol",
+    name: "Zingoy",
+    referralCode: "sidman03",
+}
+
+const paisaGet: IAffiliateLink = {
+    cashBackOffer: "http://www.paisaget.com/?r=131420",
+    name: "PaisaGet",
+}
+
+const paisawapas: IAffiliateLink = {
+    cashBackOffer: "http://paisawapas.com/?ref=528877",
+    name: "Paisawapas",
+    referralCode: "UAIJG",
+}
+
+const couponDunia: IAffiliateLink = {
+    cashBackOffer: "https://www.coupondunia.in/referral/TML9LO",
+    name: "CouponDunia",
+}
+
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {
     [paytm.name]: paytm,
     [amazon.name]: amazon,
@@ -172,6 +201,12 @@ export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {
     [sastiticket.name]: sastiticket,
     [myBusTicket.name]: myBusTicket,
     [ixigo.name]: ixigo,
+    // cashback sites
+    [cashkaro.name]: cashkaro,
+    [zingoy.name]: zingoy,
+    [paisaGet.name]: paisaGet,
+    [paisawapas.name]: paisawapas,
+    [couponDunia.name]: couponDunia
 };
 
 // tslint:disable-next-line:no-namespace
@@ -268,16 +303,6 @@ export namespace OfferLinks {
         Utils.createAffiliateLink("https://www.karvymfs.com/karvy/investorservices/invLogin.aspx", "Karvy"),
         Utils.createAffiliateLink("https://www.fundsindia.com/ref?c=3e562a3edebf96403aced68674fc56f3", "FundsIndia"),
         Utils.createAffiliateLink("https://koinex.in/register?ref=c0487d", "Koinex", "c0487d"),
-    ];
-
-    export const affilateWebSite = [
-
-        { link: "https://cashkaro.com/r=912171", referralCode: "", name: "Cashkaro", email: "contact@cashkaro.com", phone: "9821397418" },
-
-        Utils.createAffiliateLink("https://zngy.in/c4ol", "Zingoy", "sidman03"),
-        Utils.createAffiliateLink("http://www.paisaget.com/?r=131420", "PaisaGet"),
-        Utils.createAffiliateLink("http://paisawapas.com/?ref=528877", "PaisaWapas", "UAIJG"),
-        Utils.createAffiliateLink("https://www.coupondunia.in/referral/TML9LO", "CouponDunia"),
     ];
 
     export const wallet = [

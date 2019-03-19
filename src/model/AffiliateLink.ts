@@ -1,7 +1,7 @@
 import { Utils } from 'src/common/Utils';
 
 export interface IAffiliateLink {
-    link: string;
+    link?: string;
     name: string;
     // customer care
     email?: string;
@@ -30,11 +30,12 @@ export interface IAffiliateLink {
     servicesOffer?: string;
     hotelOffer?: string;
     activityOffer?: string;
+    cashBackOffer?: string;
 }
 
 export class AffiliateLinkUtils {
     public static getLink(affiliateLink: IAffiliateLink): string {
-        return AffiliateLinkUtils.getAffiliatedLink(affiliateLink, affiliateLink.link);
+        return AffiliateLinkUtils.getAffiliatedLink(affiliateLink, affiliateLink.link as string);
     }
 
     public static getAffiliatedLink(affiliateLink: IAffiliateLink, link: string): string {

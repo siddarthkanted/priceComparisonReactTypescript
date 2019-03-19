@@ -65,7 +65,7 @@ export class AffiliateMultipleUrlOpener extends React.Component<IAffiliateMultip
     private renderAffiliateLink(affiliateLink: IAffiliateLink, index: number): JSX.Element {
         return (
             <li key={index}>
-                <span>{affiliateLink.name ? affiliateLink.name : Utils.getHostNameFromUrl(affiliateLink.link)}</span>
+                <span>{affiliateLink.name ? affiliateLink.name : Utils.getHostNameFromUrl(affiliateLink.link as string)}</span>
                 {affiliateLink.referralCode && this.renderLabelValue("Referral code", affiliateLink.referralCode)}
                 {affiliateLink.email && this.renderLabelValue("Email", affiliateLink.email)}
                 {affiliateLink.phone && this.renderLabelValue("Phone", affiliateLink.phone)}

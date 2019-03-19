@@ -2,7 +2,6 @@ import { OfferLinks } from 'src/constants/Constants';
 import { CategoryUtils } from "src/model/Category";
 
 export const CategoryList = [
-    CategoryUtils.createCategory(OfferLinks.affilateWebSite, "Affiliate web sites"),
     CategoryUtils.createCategory(OfferLinks.movieBooking, "Movie Tickets"),
     CategoryUtils.createCategory(OfferLinks.foodDelivery, "Food order"),
     CategoryUtils.createCategory(OfferLinks.grocery, "Grocery"),

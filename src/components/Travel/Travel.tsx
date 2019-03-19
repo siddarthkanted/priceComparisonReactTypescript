@@ -138,7 +138,7 @@ export class Travel extends React.Component<ITravelProps, ITravelState> {
             fromPlaceValue = affiliateLink.variedOptions[fromPlaceValue] ? affiliateLink.variedOptions[fromPlaceValue] : fromPlaceValue;
             toPlaceValue = affiliateLink.variedOptions[toPlaceValue] ? affiliateLink.variedOptions[toPlaceValue] : toPlaceValue;
         }
-        const clonedAffiliateLink = produce(affiliateLink, (clonedLink) => { clonedLink.link = Utils.format(clonedLink.link, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()); });
+        const clonedAffiliateLink = produce(affiliateLink, (clonedLink) => { clonedLink.link = Utils.format(clonedLink.link as string, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()); });
         return clonedAffiliateLink;
     }
 
