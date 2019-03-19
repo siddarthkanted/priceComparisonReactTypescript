@@ -14,6 +14,13 @@ export namespace Utils {
         };
     }
 
+    export function isStringNullOrEmpty(value: string): boolean {
+        if(!value || value === "" ) {
+            return true;
+        }
+        return false;
+    }
+
     export function isArrayNullOrEmpty<T>(array: T[]): boolean {
         const notNull =  typeof array !== "undefined"
             && array != null

@@ -1,3 +1,5 @@
+import { Utils } from 'src/common/Utils';
+
 export interface IAffiliateLink {
     link: string;
     name: string;
@@ -34,6 +36,9 @@ export class AffiliateLinkUtils {
     }
 
     public static getAffiliatedLink(affiliateLink: IAffiliateLink, link: string): string {
+        if(Utils.isStringNullOrEmpty(link)) {
+            return link;
+        }
         let finalUrl = link;
         if (affiliateLink.isCuelinks) {
             finalUrl = "https://linksredirect.com/?pub_id=16208CL14551&source=linkkit&url=" + finalUrl;
@@ -42,6 +47,10 @@ export class AffiliateLinkUtils {
             finalUrl = AffiliateLinkUtils.setExtraParameters(affiliateLink.extraParameters, finalUrl);
         }
         return finalUrl;
+    }
+
+    public static getName(affiliateLink: IAffiliateLink, variableName: string): string {
+        return affiliateLink.name ? affiliateLink.name : Utils.getHostNameFromUrl(affiliateLink[variableName]);
     }
 
     private static setExtraParameters(extraParameters: _.Dictionary<string>, urlString: string): string {

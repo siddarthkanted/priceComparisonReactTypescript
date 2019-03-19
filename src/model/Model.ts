@@ -28,3 +28,8 @@ export interface IRoute {
     name: string;
     path?: string;
 }
+
+export interface IWebLink {
+    name: string;
+    link: string;
+}
