@@ -22,23 +22,60 @@ const amazon: IAffiliateLink = {
     extraParameters: { ["tag"]: "amazonhttpp-21" },
     foodOrderOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031",
     groceryOffer: "https://www.amazon.in/b?node=11302610031",
+    healthOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_sbc_3a1_w?node=14737428031",
     link: "https://www.amazon.in/",
     mobileRechargeOffer: "https://www.amazon.in/hfc/mobileRecharge",
     movieOffer: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031",
     name: "Amazon",
+    servicesOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_sbc_3c1_w?node=15423198031",
     travelOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
     walletOffer: "https://www.amazon.in/b?node=14783922031",
 }
 
+const makemytrip: IAffiliateLink = {
+    busBooking: "https://bus.makemytrip.com/bus/search/{0}/{1}/{2}-{3}-{4}",
+    busOffer: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/",
+    flightBooking: "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}",
+    flightOffer: "https://www.makemytrip.com/daily-deals/flights/",
+    isCuelinks: true,
+    link: "https://www.makemytrip.com/",
+    name: "Makemytrip",
+    trainBooking: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL",
+}
+
+const bigbasket: IAffiliateLink = {
+    groceryOffer: "https://www.bigbasket.com/bank-offers/",
+    isCuelinks: true,
+    link: "https://www.bigbasket.com/",
+    name: "Bigbasket",
+    referralCode: "bigb2a6yc",
+}
+
+const grofers: IAffiliateLink = {
+    groceryOffer: "https://grofers.com/offers",	
+    link: "https://grofers.com/",
+    name: "Grofers",
+    referralCode: "91Q82K",
+}
+
+const flipkart: IAffiliateLink = {
+    extraParameters: { ["affid"]: "siddarthk" },
+    groceryOffer: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc",
+    link: "https://www.flipkart.com/",	
+    name: "Flipkart",	
+}
+
+
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {
     [paytm.name]: paytm,
     [amazon.name]: amazon,
+    [makemytrip.name]: makemytrip,
+    [bigbasket.name]: bigbasket,
+    [grofers.name]: grofers,
+    [flipkart.name]: flipkart,
 };
 
-const makemytrip = {
-    isCuelinks: true,
-    name: "Makemytrip"
-}
+
 
 const goibibo = {
     name: "Goibibo"
@@ -71,22 +108,6 @@ const travelyaari = {
 
 const sastiticket = {
     name: "Sastiticket"
-}
-
-const grofers = {
-    name: "Grofers",
-    referralCode: "91Q82K"
-}
-
-const bigbasket = {
-    isCuelinks: true,
-    name: "Bigbasket",
-    referralCode: "bigb2a6yc"
-}
-
-const flipkart = {
-    extraParameters: { ["affid"]: "siddarthk" },
-    name: "Flipkart"
 }
 
 const via = {

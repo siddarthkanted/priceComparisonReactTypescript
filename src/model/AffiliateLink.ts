@@ -1,15 +1,19 @@
 export interface IAffiliateLink {
     link: string;
-    referralCode?: string;
     name: string;
+    // customer care
     email?: string;
     phone?: string;
+    // affilate
+    referralCode?: string;
     isCuelinks?: boolean;
     extraParameters?: _.Dictionary<string>;
     variedOptions?: _.Dictionary<string>;
+    // booking
     busBooking?: string;
     flightBooking?: string;
     trainBooking?: string;
+    // offer
     walletOffer?: string;
     mobileRechargeOffer?: string;
     movieOffer?: string;

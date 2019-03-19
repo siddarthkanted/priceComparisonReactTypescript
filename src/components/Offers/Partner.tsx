@@ -16,19 +16,7 @@ export class Partner extends Parent {
             <div key={name}>
                 <Label>{name}</Label>
                 {this.renderLink(partner, partner.link, "Link")}
-                {this.renderLink(partner, partner.groceryOffer, "Grocery offer")}
-                {this.renderLink(partner, partner.busOffer, "Bus offer")}
-                {this.renderLink(partner, partner.trainOffer, "Tain offer")}
-                {this.renderLink(partner, partner.flightOffer, "Flight offer")}
-                {this.renderLink(partner, partner.billPaymentOffer, "Electricity & Bill payment offer")}
-                {this.renderLink(partner, partner.movieOffer, "Movie offer")}
-                {this.renderLink(partner, partner.mobileRechargeOffer, "Recharge offer")}
-                {this.renderLink(partner, partner.walletOffer, "Wallet offer")}
-                {this.renderLink(partner, partner.travelOffer, "Travel offer")}
-                {this.renderLink(partner, partner.groceryOffer, "Grocery offer")}
-                {this.renderLink(partner, partner.foodOrderOffer, "Food offer")}
-                {this.renderLink(partner, partner.healthOffer, "Health offer")}
-                {this.renderLink(partner, partner.servicesOffer, "Services offer")}
+                {StringConstant.offerVariableNameList.map(offer => this.renderLink(partner, partner[offer], offer))}
             </div>
         );
     }

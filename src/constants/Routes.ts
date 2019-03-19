@@ -48,7 +48,7 @@ export const routeList: IRoute[] = [
   {
     component: Offers,
     name: StringConstant.offer,
-    path: StringConstant.offer + "/:displayCategoryString?"
+    path: StringConstant.offer + "/:urlParam?"
   },
   {
     component: Partner,
