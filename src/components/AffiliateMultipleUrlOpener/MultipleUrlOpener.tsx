@@ -3,10 +3,10 @@ import { Link } from 'office-ui-fabric-react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
+import { Utils } from 'src/common/Utils';
 import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
 import { IWebLink } from 'src/model/Model';
 import './AffiliateMultipleUrlOpener.css';
-import { Utils } from 'src/common/Utils';
 
 interface IMultipleUrlOpenerProps {
     title?: string;
@@ -37,7 +37,7 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
                 </ol>
                 <PrimaryButton
                     text="Open all"
-                    onClick={() => this.onOpenAllClick}
+                    onClick={() => this.onOpenAllClick(links)}
                 />
                 {this.state.showWarning && this.renderWarning()}
             </>
@@ -64,20 +64,22 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
 
     private getLinks(): IWebLink[] {
         const { variableNames, partners } = this.props;
+        const webLinks: IWebLink[] = [];
         if (variableNames.length > 1) {
-            return variableNames.map(variableName =>
-                ({ name: variableName, link: AffiliateLinkUtils.getAffiliatedLink(partners[0], partners[0][variableName]) }));
+            variableNames.forEach(variableName => 
+                this.addLink(webLinks, variableName, partners[0][variableName], partners[0]));
         } else {
-            return partners.map(partner =>
-                ({ name: partner.name, link: AffiliateLinkUtils.getAffiliatedLink(partner, partner[variableNames[0]]) }));
+            partners.forEach(partner =>
+                this.addLink(webLinks, partner.name, partner[variableNames[0]], partner));
         }
+        return webLinks;
     }
 
-    private getLink(name: string, link: string, partner: IAffiliateLink): IWebLink | undefined {
+    private addLink(webLinks: IWebLink[], name: string, link: string, partner: IAffiliateLink): void {
         if (Utils.isStringNullOrEmpty(link)) {
             return;
         }
-        return { name, link: AffiliateLinkUtils.getAffiliatedLink(partner, link) }
+        webLinks.push({ name, link: AffiliateLinkUtils.getAffiliatedLink(partner, link) });
     }
 
     @autobind
