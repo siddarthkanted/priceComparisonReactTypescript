@@ -69,6 +69,17 @@ export namespace Utils {
         return urlString;
     }
 
+    export function openMultipleUrl(links: string[]): number {
+        let windowResponseFailureCount = 0;
+        links.forEach(link => {
+            const windowResponse = window.open(link);
+            if (!windowResponse) {
+                windowResponseFailureCount++;
+            }
+        });
+        return windowResponseFailureCount; 
+    }
+    
     export function setUrlPath(page: string, ...urlPart: string[]): void {
         const history = HistorySingleton.getHistory();
         history.push("/"+Utils.getUrlWithoutHost(page, ...urlPart));

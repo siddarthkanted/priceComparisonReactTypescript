@@ -40,6 +40,7 @@ const makemytrip: IAffiliateLink = {
     link: "https://www.makemytrip.com/",
     name: "Makemytrip",
     trainBooking: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL",
+    variedOptions: { ["Bengaluru"]: "Bangalore" } 
 }
 
 const bigbasket: IAffiliateLink = {
@@ -97,6 +98,7 @@ const railyatri: IAffiliateLink = {
     name: "Railyatri",
     trainBooking: "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}",
     travelOffer: "https://www.railyatri.in/offers",
+    variedOptions: { ["Bengaluru"]: "Bangalore-Bengaluru" }
 }
 
 const travelyaari: IAffiliateLink = {

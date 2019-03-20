@@ -14,6 +14,7 @@ interface IMultipleUrlOpenerProps {
     title?: string;
     variableNames: string[];
     partners: IAffiliateLink[];
+    getComputedLinks?: () => IAffiliateLink[];
 }
 
 interface IMultipleUrlOpenerState {
@@ -34,8 +35,8 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
     }
 
     public render(): JSX.Element {
-        const { title } = this.props;
-        const links: IWebLink[] = this.getLinks();
+        const { title, variableNames, partners} = this.props;
+        const links: IWebLink[] = this.getLinks(variableNames, partners);
         return (
             <>
                 {title && <h3> {title} </h3>}
@@ -69,11 +70,10 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
         );
     }
 
-    private getLinks(): IWebLink[] {
-        const { variableNames, partners } = this.props;
+    private getLinks(variableNames, partners): IWebLink[] {
         const webLinks: IWebLink[] = [];
         if (variableNames.length > 1) {
-            variableNames.forEach(variableName => 
+            variableNames.forEach(variableName =>
                 this.addLink(webLinks, variableName, partners[0][variableName], partners[0]));
         } else {
             partners.forEach(partner =>
@@ -91,13 +91,12 @@ export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, 
 
     @autobind
     private onOpenAllClick(links: IWebLink[]): void {
-        let windowResponseFailureCount = 0;
-        links.forEach(link => {
-            const windowResponse = window.open(link.link);
-            if (!windowResponse) {
-                windowResponseFailureCount++;
-            }
-        });
-        this.setState({ showWarning: windowResponseFailureCount > 0 ? true : false });
+        if (this.props.getComputedLinks) {
+            // special case for travel
+            const partners: IAffiliateLink[] = this.props.getComputedLinks();
+            links = this.getLinks(this.props.variableNames, partners);
+        }
+        const failureCount = Utils.openMultipleUrl(links.map(link => link.link));
+        this.setState({ showWarning: failureCount > 0 ? true : false });
     }
 }

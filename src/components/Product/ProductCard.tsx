@@ -8,11 +8,11 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import * as React from "react";
 import { Utils } from "src/common/Utils";
+import { MultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/MultipleUrlOpener';
 import { PartnerDictionary } from 'src/constants/Constants';
 import { StringConstant } from 'src/constants/StringConstant';
 import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
 import { IGrocery } from 'src/model/Model';
-import { MultipleUrlOpener } from '../AffiliateMultipleUrlOpener/MultipleUrlOpener';
 import './Product.css';
 
 interface IProductCardProps {
