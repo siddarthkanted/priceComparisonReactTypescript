@@ -1,7 +1,7 @@
 import { Utils } from 'src/common/Utils';
 
 export interface IAffiliateLink {
-    link?: string;
+    link: string;
     name: string;
     // customer care
     email?: string;
@@ -15,6 +15,7 @@ export interface IAffiliateLink {
     busBooking?: string;
     flightBooking?: string;
     trainBooking?: string;
+    groceryBooking?: string;
     // offer
     walletOffer?: string;
     mobileRechargeOffer?: string;

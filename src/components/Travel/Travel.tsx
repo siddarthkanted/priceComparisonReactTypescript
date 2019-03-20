@@ -1,15 +1,14 @@
 import { autobind } from '@uifabric/utilities';
-import produce from "immer";
 import * as moment from "moment";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as React from "react";
 import Select from 'react-select';
 import { ValueType } from 'react-select/lib/types';
-import { Utils } from "src/common/Utils";
-import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
+import { MultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/MultipleUrlOpener';
 import { IAffiliateLink } from 'src/model/AffiliateLink';
-import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
+import { IOptionType } from 'src/model/OptionType';
+import { StringConstant } from '../../constants/StringConstant';
 import './Travel.css';
 
 enum FieldsEnum {
@@ -23,6 +22,8 @@ interface ITravelProps {
     offerLinks: IAffiliateLink[];
     options: Array<ValueType<IOptionType>>;
     title: string;
+    offerVariableName: string;
+    bookingVariableName: string;
 }
 
 interface ITravelState {
@@ -48,9 +49,10 @@ export class Travel extends React.Component<ITravelProps, ITravelState> {
     }
 
     public render(): JSX.Element {
+        const {title, offerVariableName, bookingVariableName} = this.props;
         return (
             <>
-                <h3>{this.props.title}</h3>
+                <h3>{title}</h3>
                 <Label required={true}>
                     {"From Place"}
                 </Label>
@@ -77,13 +79,9 @@ export class Travel extends React.Component<ITravelProps, ITravelState> {
                     value={this.state.date && this.state.date.toDate()}
                 />
                 {this.renderWarning(FieldsEnum.Date)}
-                <AffiliateMultipleUrlOpener
-                    getLinks={this.getLinks}
-                />
-                {this.props.offerLinks && <AffiliateMultipleUrlOpener
-                    getLinks={() => this.props.offerLinks}
-                    title={"Offers - " + this.props.title}
-                />}
+                <MultipleUrlOpener title={"Supported Sites"} variableNames={[bookingVariableName]} />
+                <MultipleUrlOpener title={offerVariableName} variableNames={[offerVariableName]} />
+                <MultipleUrlOpener title={StringConstant.travelOffer} variableNames={[StringConstant.travelOffer]} />
             </>
         );
     }
@@ -98,52 +96,6 @@ export class Travel extends React.Component<ITravelProps, ITravelState> {
             );
         }
         return;
-    }
-
-    private validate(): _.Dictionary<FieldsEnum> {
-        const errorDictionary = {};
-        if (!this.state.fromPlace) {
-            errorDictionary[FieldsEnum.FromPlace] = "From Place cannot be empty";
-        }
-        if (!this.state.toPlace) {
-            errorDictionary[FieldsEnum.ToPlace] = "To Place cannot be empty";
-        }
-        if (!this.state.date) {
-            errorDictionary[FieldsEnum.Date] = "Date cannot be empty";
-        }
-        else if (!this.state.date.isValid()) {
-            errorDictionary[FieldsEnum.Date] = "Date is invalid";
-        }
-        this.setState({ errorDictionary });
-        return errorDictionary;
-    }
-
-    @autobind
-    private getLinks(validate: boolean): IAffiliateLink[] {
-        if (!validate) {
-            return this.props.links;
-        }
-        const errorDictionary = this.validate();
-        if (Object.keys(errorDictionary).length > 0) {
-            return [];
-        }
-        return this.props.links.map(link => this.handleVariedLink(link));
-    }
-
-    private handleVariedLink(affiliateLink: IAffiliateLink): IAffiliateLink {
-        const { fromPlace, toPlace, date } = this.state;
-        let fromPlaceValue = OptionTypeUtils.getValue(fromPlace);
-        let toPlaceValue = OptionTypeUtils.getValue(toPlace);
-        if (affiliateLink.variedOptions) {
-            fromPlaceValue = affiliateLink.variedOptions[fromPlaceValue] ? affiliateLink.variedOptions[fromPlaceValue] : fromPlaceValue;
-            toPlaceValue = affiliateLink.variedOptions[toPlaceValue] ? affiliateLink.variedOptions[toPlaceValue] : toPlaceValue;
-        }
-        const clonedAffiliateLink = produce(affiliateLink, (clonedLink) => { clonedLink.link = Utils.format(clonedLink.link as string, fromPlaceValue, toPlaceValue, this.getTwoDigit(date.date()), this.getTwoDigit(date.month() + 1), date.year()); });
-        return clonedAffiliateLink;
-    }
-
-    private getTwoDigit(value: number): string {
-        return ("0" + value).slice(-2)
     }
 
     @autobind

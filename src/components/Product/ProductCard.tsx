@@ -8,10 +8,11 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import * as React from "react";
 import { Utils } from "src/common/Utils";
-import { AffiliateMultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/AffiliateMultipleUrlOpener';
-import { BuyLinks } from 'src/constants/Constants';
-import { IAffiliateLink } from 'src/model/AffiliateLink';
+import { PartnerDictionary } from 'src/constants/Constants';
+import { StringConstant } from 'src/constants/StringConstant';
+import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
 import { IGrocery } from 'src/model/Model';
+import { MultipleUrlOpener } from '../AffiliateMultipleUrlOpener/MultipleUrlOpener';
 import './Product.css';
 
 interface IProductCardProps {
@@ -26,8 +27,10 @@ export class ProductCard extends React.Component<IProductCardProps> {
             <DocumentCard>
                 {data.Category && data.Category.length > 0 && this.renderBreadCrumb()}
                 <h3>{data.Name}</h3>
-                {data.Link && <AffiliateMultipleUrlOpener
-                    getLinks={this.getLinks}
+                {data.Link && <MultipleUrlOpener
+                    title={"Buy now"}
+                    partners={this.getLinks()}
+                    variableNames={[StringConstant.groceryBooking]}
                 />}
                 <DocumentCardPreview {...previewProps} />
             </DocumentCard>
@@ -51,18 +54,15 @@ export class ProductCard extends React.Component<IProductCardProps> {
 
     @autobind
     private getLinks(): IAffiliateLink[] {
-        const affilateLinks: IAffiliateLink[] = [];
+        const partners: IAffiliateLink[] = [];
         this.props.data.Link.forEach(link => {
-            const affilateLink = BuyLinks.grocery.find(affilate => link.includes(affilate.name.toLowerCase()));
-            if (affilateLink) {
-                const clonedAffilateLink = produce(affilateLink, (clonedLink) => { clonedLink.link = link; });
-                affilateLinks.push(clonedAffilateLink);
-            } else {
-                affilateLinks.push(Utils.createAffiliateLink(link, ""));
+            const partner = PartnerDictionary[Utils.getHostNameFromUrl(link)];
+            if(partner) {
+                const clonedPartner =  produce(partner, (clone) => { clone.groceryBooking = AffiliateLinkUtils.getAffiliatedLink(clone, link); });
+                partners.push(clonedPartner);
             }
-
         });
-        return affilateLinks;
+        return partners;
     }
 
     private createBreadcrumbItem(category: string, ...urlPart: string[]): IBreadcrumbItem {

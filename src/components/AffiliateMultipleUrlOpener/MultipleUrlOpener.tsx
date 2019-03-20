@@ -4,6 +4,8 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from "react";
 import { Utils } from 'src/common/Utils';
+import { PartnerList } from 'src/constants/Constants';
+import { StringConstant } from 'src/constants/StringConstant';
 import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
 import { IWebLink } from 'src/model/Model';
 import './AffiliateMultipleUrlOpener.css';
@@ -19,6 +21,11 @@ interface IMultipleUrlOpenerState {
 }
 
 export class MultipleUrlOpener extends React.Component<IMultipleUrlOpenerProps, IMultipleUrlOpenerState> {
+    public static defaultProps = {
+        partners: PartnerList,
+        variableNames: StringConstant.offerVariableNameList,
+    };
+
     constructor(props: IMultipleUrlOpenerProps) {
         super(props);
         this.state = {

@@ -16,6 +16,8 @@ export const routeList: IRoute[] = [
       ["offerLinks"]: OfferLinks.flightOffers,
       ["options"]: TravelOptions.flightOptions,
       ["title"]: "Flights Multiple URL Opener",
+      ["offerVariableName"]: StringConstant.flightOffer,
+      ["bookingVariableName"]: StringConstant.flightBooking,
     },
     name: "Flight"
   },
@@ -26,8 +28,10 @@ export const routeList: IRoute[] = [
       ["offerLinks"]: OfferLinks.trainOffers,
       ["options"]: TravelOptions.trainOptions,
       ["title"]: "Train Multiple URL Opener",
+      ["offerVariableName"]: StringConstant.trainOffer,
+      ["bookingVariableName"]: StringConstant.trainBooking,
     },
-    name: "Train"
+    name: "Train",
   },
   {
     component: Travel,
@@ -36,8 +40,10 @@ export const routeList: IRoute[] = [
       ["offerLinks"]: OfferLinks.busOffers,
       ["options"]: TravelOptions.busOptions,
       ["title"]: "Bus Multiple URL Opener",
+      ["offerVariableName"]: StringConstant.busOffer,
+      ["bookingVariableName"]: StringConstant.busBooking,
     },
-    name: "Bus"
+    name: "Bus",
   },
   {
     className: "groceryMain",

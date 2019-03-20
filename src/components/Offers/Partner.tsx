@@ -15,7 +15,7 @@ export class Partner extends Parent {
         const partner = PartnerDictionary[name];
         return (
             <>
-                <MultipleUrlOpener title={name} variableNames={StringConstant.offerVariableNameList} partners={[partner]} />
+                <MultipleUrlOpener title={name} partners={[partner]} />
                 {this.renderPartnerDetails(partner)}
             </>
         );
@@ -24,8 +24,8 @@ export class Partner extends Parent {
         return StringConstant.partner;
     }
     protected getList(): Array<ValueType<IOptionType>> {
-        const partnerArray = Object.keys(PartnerDictionary).map(key => PartnerDictionary[key]);
-        return partnerArray.map(partner => OptionTypeUtils.createOptionType(partner.name));
+        return Object.keys(PartnerDictionary)
+        .map(key => OptionTypeUtils.createOptionType(key, PartnerDictionary[key].name));
     }
     private renderPartnerDetails(partner: IAffiliateLink): JSX.Element {
         return (

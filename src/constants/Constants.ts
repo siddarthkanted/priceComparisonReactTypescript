@@ -37,7 +37,6 @@ const makemytrip: IAffiliateLink = {
     busOffer: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/",
     flightBooking: "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}",
     flightOffer: "https://www.makemytrip.com/daily-deals/flights/",
-    isCuelinks: true,
     link: "https://www.makemytrip.com/",
     name: "Makemytrip",
     trainBooking: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL",
@@ -45,7 +44,6 @@ const makemytrip: IAffiliateLink = {
 
 const bigbasket: IAffiliateLink = {
     groceryOffer: "https://www.bigbasket.com/bank-offers/",
-    isCuelinks: true,
     link: "https://www.bigbasket.com/",
     name: "Bigbasket",
     referralCode: "bigb2a6yc",
@@ -158,66 +156,69 @@ const ixigo: IAffiliateLink = {
 const cashkaro: IAffiliateLink = {
     cashBackOffer: "https://cashkaro.com/r=912171",
     email: "contact@cashkaro.com",
+    link: "https://cashkaro.com/r=912171",
     name: "Cashkaro",
     phone: "9821397418",
 }
 
 const zingoy: IAffiliateLink = {
     cashBackOffer: "https://zngy.in/c4ol",
+    link:"https://zngy.in/c4ol",
     name: "Zingoy",
     referralCode: "sidman03",
 }
 
 const paisaGet: IAffiliateLink = {
     cashBackOffer: "http://www.paisaget.com/?r=131420",
+    link:"http://www.paisaget.com/?r=131420",
     name: "PaisaGet",
 }
 
 const paisawapas: IAffiliateLink = {
     cashBackOffer: "http://paisawapas.com/?ref=528877",
+    link: "http://paisawapas.com/?ref=528877",
     name: "Paisawapas",
     referralCode: "UAIJG",
 }
 
 const couponDunia: IAffiliateLink = {
     cashBackOffer: "https://www.coupondunia.in/referral/TML9LO",
+    link:"https://www.coupondunia.in/referral/TML9LO",
     name: "CouponDunia",
 }
 
-export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {
-    [paytm.name]: paytm,
-    [amazon.name]: amazon,
-    [makemytrip.name]: makemytrip,
-    [bigbasket.name]: bigbasket,
-    [grofers.name]: grofers,
-    [flipkart.name]: flipkart,
-    [goibibo.name]: goibibo,
-    [easemytrip.name]: easemytrip,
-    [via.name]: via,
-    [railyatri.name]: railyatri,
-    [travelyaari.name]: travelyaari,
-    [cleartrip.name]: cleartrip,
-    [yatra.name]: yatra,
-    [sastiticket.name]: sastiticket,
-    [myBusTicket.name]: myBusTicket,
-    [ixigo.name]: ixigo,
+export const PartnerList: IAffiliateLink[] = [
+    paytm,
+    amazon,
+    makemytrip,
+    bigbasket,
+    grofers,
+    flipkart,
+    goibibo,
+    easemytrip,
+    via,
+    railyatri,
+    travelyaari,
+    cleartrip,
+    yatra,
+    sastiticket,
+    myBusTicket,
+    ixigo,
     // cashback sites
-    [cashkaro.name]: cashkaro,
-    [zingoy.name]: zingoy,
-    [paisaGet.name]: paisaGet,
-    [paisawapas.name]: paisawapas,
-    [couponDunia.name]: couponDunia
-};
+    cashkaro,
+    zingoy,
+    paisaGet,
+    paisawapas,
+    couponDunia
+];
+
+export const PartnerDictionary: _.Dictionary<IAffiliateLink>  = {};
+PartnerList.forEach(
+    partner => PartnerDictionary[Utils.getHostNameFromUrl(partner.link)] = partner
+);
 
 // tslint:disable-next-line:no-namespace
 export namespace BuyLinks {
-    export const grocery = [
-        { link: "", ...amazon },
-        { link: "", ...flipkart },
-        { link: "", ...grofers },
-        { link: "", ...bigbasket },
-    ];
-
     export const bus = [
         { link: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1", ...paytm },
 
