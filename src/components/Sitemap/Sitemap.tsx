@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as sitemap from "sitemap";
 import { Utils } from 'src/common/Utils';
-import { CategoryList } from 'src/constants/Offers';
+import { PartnerDictionary } from 'src/constants/Constants';
 import { routeList } from 'src/constants/Routes';
-import { CategoryUtils } from 'src/model/Category';
+import { StringConstant } from 'src/constants/StringConstant';
 
 export class Sitemap extends React.Component<any, any> {
     public componentDidMount(): void {
@@ -13,7 +13,8 @@ export class Sitemap extends React.Component<any, any> {
     public render(): string {
         const urls: string[] = [];
         urls.push(...routeList.map(route =>  Utils.getUrl(route.name)));
-        urls.push(...CategoryList.map(category =>  CategoryUtils.getUrl(category.titleOptionType)));
+        urls.push(...Object.keys(PartnerDictionary).map(key =>  Utils.getUrl(StringConstant.partner, key)));
+        urls.push(...StringConstant.offerVariableNameList.map(offer =>  Utils.getUrl(StringConstant.offer, offer)));
         const sitemapObj = sitemap.createSitemap({
             hostname: 'https://pricecomparison-6d140.firebaseapp.com/',
             urls
