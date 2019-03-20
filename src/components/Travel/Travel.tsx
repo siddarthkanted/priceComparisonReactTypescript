@@ -21,8 +21,6 @@ enum FieldsEnum {
 }
 
 interface ITravelProps {
-    links: IAffiliateLink[];
-    offerLinks: IAffiliateLink[];
     options: Array<ValueType<IOptionType>>;
     title: string;
     offerVariableName: string;

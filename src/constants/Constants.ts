@@ -40,7 +40,7 @@ const makemytrip: IAffiliateLink = {
     link: "https://www.makemytrip.com/",
     name: "Makemytrip",
     trainBooking: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL",
-    variedOptions: { ["Bengaluru"]: "Bangalore" } 
+    variedOptions: { ["Bengaluru"]: "Bangalore" }
 }
 
 const bigbasket: IAffiliateLink = {
@@ -165,14 +165,14 @@ const cashkaro: IAffiliateLink = {
 
 const zingoy: IAffiliateLink = {
     cashBackOffer: "https://zngy.in/c4ol",
-    link:"https://zngy.in/c4ol",
+    link: "https://zngy.in/c4ol",
     name: "Zingoy",
     referralCode: "sidman03",
 }
 
 const paisaGet: IAffiliateLink = {
     cashBackOffer: "http://www.paisaget.com/?r=131420",
-    link:"http://www.paisaget.com/?r=131420",
+    link: "http://www.paisaget.com/?r=131420",
     name: "PaisaGet",
 }
 
@@ -185,8 +185,46 @@ const paisawapas: IAffiliateLink = {
 
 const couponDunia: IAffiliateLink = {
     cashBackOffer: "https://www.coupondunia.in/referral/TML9LO",
-    link:"https://www.coupondunia.in/referral/TML9LO",
+    link: "https://www.coupondunia.in/referral/TML9LO",
     name: "CouponDunia",
+}
+
+const skyscanner: IAffiliateLink = {
+    flightBooking: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results",
+    link: "https://www.skyscanner.co.in",
+    name: "Skyscanner",
+}
+
+const cheapticket: IAffiliateLink = {
+    flightBooking: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}",
+    link: "https://www.cheapticket.in",
+    name: "Cheapticket",
+}
+
+const agoda: IAffiliateLink = {
+    flightBooking: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}",
+    link: "https://www.agoda.com/en-gb/",
+    name: "Agoda",
+}
+
+const kayak: IAffiliateLink = {
+    flightBooking: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}",
+    link: "https://www.kayak.co.in/",
+    name: "Kayak",
+}
+
+const happyeasygo: IAffiliateLink = {
+    flightBooking: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy",
+    link: "https://www.kayak.co.in/",
+    name: "Happyeasygo",
+    referralCode: "sidmRDU4",
+    travelOffer: "https://www.happyeasygo.com/offer/"
+}
+
+const expedia: IAffiliateLink = {
+    flightBooking: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y",
+    link: "https://www.kayak.co.in/",
+    name: "Expedia",
 }
 
 export const PartnerList: IAffiliateLink[] = [
@@ -211,84 +249,20 @@ export const PartnerList: IAffiliateLink[] = [
     zingoy,
     paisaGet,
     paisawapas,
-    couponDunia
+    couponDunia,
+    // flight booking
+    skyscanner,
+    cheapticket,
+    agoda,
+    kayak,
+    happyeasygo,
+    expedia,
 ];
 
-export const PartnerDictionary: _.Dictionary<IAffiliateLink>  = {};
+export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};
 PartnerList.forEach(
     partner => PartnerDictionary[Utils.getHostNameFromUrl(partner.link)] = partner
 );
-
-// tslint:disable-next-line:no-namespace
-export namespace BuyLinks {
-    export const bus = [
-        { link: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1", ...paytm },
-
-        { link: "https://ebus.yatra.com/busview/busdesktop/search?src={0}&dest={1}&ddate={4}-{3}-{2}", ...yatra },
-
-        { link: "https://www.goibibo.com/bus/#bus-{0}-{1}-{4}{3}{2}---0-0-3924148632351062483-4354390963378411938", ...goibibo, isCuelinks: false },
-
-        { link: "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}", ...myBusTicket },
-
-        { link: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway", ...travelyaari },
-
-        { link: "https://bus.makemytrip.com/bus/search/{0}/{1}/{2}-{3}-{4}", ...makemytrip, variedOptions: { ["Bengaluru"]: "Bangalore" } },
-
-        { link: "https://www.railyatri.in/bus-booking/{0}-to-{1}-buses?doj={2}-{3}-{4}", ...railyatri, variedOptions: { ["Bengaluru"]: "Bangalore-Bengaluru" } },
-    ]
-
-    export const flight = [
-        { link: "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}", ...makemytrip },
-
-        { link: "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}", ...paytm },
-
-        { link: "https://www.cleartrip.com/flights/results?from={0}&to={1}&depart_date={2}/{3}/{4}&adults=1&childs=0&infants=0&class=Economy", ...cleartrip },
-
-        { link: "https://www.goibibo.com/flights/air-{0}-{1}-{4}{3}{2}--1-0-0-E-I/", ...goibibo },
-
-        { link: "https://flight.yatra.com/air-search-ui/dom2/trigger?type=O&origin={0}&destination={1}&flight_depart_date={2}/{3}/{4}&ADT=1&CHD=0&INF=0&class=Economy", ...yatra },
-
-        { link: "https://www.ixigo.com/search/result/flight/{0}/{1}/{2}{3}{4}//1/0/0/e", ...ixigo },
-
-        { link: "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0", ...via },
-
-        { link: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true", ...easemytrip },
-
-        { link: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy", name: "Happyeasygo" },
-
-        { link: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}", name: "Kayak", isCuelinks: true },
-
-        { link: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}", name: "Agoda", isCuelinks: true },
-
-        { link: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}", name: "Cheapticket" },
-
-
-        { link: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results", name: "Skyscanner" },
-
-
-        { link: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y", name: "Expedia" },
-
-
-        { link: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY", ...sastiticket },
-
-    ];
-
-    export const train = [
-        { link: "https://paytm.com/train-tickets/searchTrains/{0}_{0}/{1}_{1}/{4}{3}{2}", ...paytm },
-
-        { link: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL", ...makemytrip, isCuelinks: false },
-
-        { link: "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0", ...cleartrip, isCuelinks: false },
-
-        { link: "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All", ...goibibo, isCuelinks: false },
-
-        { link: "https://rail.yatra.com/trains/b2c/search?srcStn={0}&destStn={1}&departDate={4}-{3}-{2}", ...yatra },
-
-        { link: "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}", ...railyatri },
-
-        { link: "https://www.ixigo.com/search/result/train/{0}/{1}/{2}{3}{4}//1/0/0/0/ALL", ...ixigo }
-    ];
-}
 
 // tslint:disable-next-line:no-namespace
 export namespace OfferLinks {
