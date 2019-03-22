@@ -183,6 +183,13 @@ const paisawapas: IAffiliateLink = {
     referralCode: "UAIJG",
 }
 
+const magicPin: IAffiliateLink = {
+    cashBackOffer: "http://magicpin.in/getapp/CAQW6774",
+    link: "http://magicpin.in",
+    name: "Magicpin",
+    referralCode: "CAQW6774"
+}
+
 const couponDunia: IAffiliateLink = {
     cashBackOffer: "https://www.coupondunia.in/referral/TML9LO",
     link: "https://www.coupondunia.in/referral/TML9LO",
@@ -227,9 +234,34 @@ const expedia: IAffiliateLink = {
     name: "Expedia",
 }
 
+const ola: IAffiliateLink = {
+    cabOffer: "https://hello.ola.app/refer/?referral_code=2YM97VU",
+    link: "https://www.olacabs.com/",
+    name: "Ola",
+    referralCode: "2YM97VU"
+}
+
+const uber: IAffiliateLink = {
+    cabOffer: "https://www.uber.com/invite/siddarthk140ue",
+    link: "https://www.uber.com/en-IN/fare-estimate/",
+    name: "Uber",
+    referralCode: "siddarthk140ue"
+}
+
+const rapido: IAffiliateLink = {
+    cabOffer: "https://umzf4.app.goo.gl/C4ytAJ7MHMnt5kkD8",
+    link: "https://rapido.bike/",
+    name: "Rapido",
+    referralCode: "SIDPUVQ"
+}
+
+const mobikwik: IAffiliateLink = {
+    cabOffer: "https://www.mobikwik.com/offers/bikesandcabs",
+    link: "https://www.mobikwik.com/",
+    name: "MobiKwik"
+}
+
 export const PartnerList: IAffiliateLink[] = [
-    paytm,
-    amazon,
     makemytrip,
     bigbasket,
     grofers,
@@ -250,6 +282,7 @@ export const PartnerList: IAffiliateLink[] = [
     paisaGet,
     paisawapas,
     couponDunia,
+    magicPin,
     // flight booking
     skyscanner,
     cheapticket,
@@ -257,6 +290,14 @@ export const PartnerList: IAffiliateLink[] = [
     kayak,
     happyeasygo,
     expedia,
+    // cab booking
+    ola,
+    uber,
+    rapido,
+    // wallet
+    paytm,
+    amazon,
+    mobikwik
 ];
 
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};
@@ -314,16 +355,6 @@ export namespace OfferLinks {
         Utils.createAffiliateLink("https://www.mobikwik.com/mobile", "MobiKwik"),
         { link: "https://paytm.com/offer/recharge/", ...paytm },
         Utils.createAffiliateLink("https://www.airtel.in/bank/recharge/mobile?type=prepaid", "Airtel"),
-    ];
-
-    export const cabBooking = [
-        Utils.createAffiliateLink("https://hello.ola.app/refer/?referral_code=2YM97VU", "Ola", "2YM97VU"),
-
-        Utils.createAffiliateLink("https://www.uber.com/invite/siddarthk140ue", "Uber", "siddarthk140ue"),
-
-        Utils.createAffiliateLink("https://umzf4.app.goo.gl/C4ytAJ7MHMnt5kkD8", "Rapido", "SIDPUVQ"),
-
-        Utils.createAffiliateLink("https://www.mobikwik.com/offers/bikesandcabs", "MobiKwik")
     ];
 
     export const foodDelivery = [

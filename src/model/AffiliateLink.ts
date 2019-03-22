@@ -32,6 +32,7 @@ export interface IAffiliateLink {
     hotelOffer?: string;
     activityOffer?: string;
     cashBackOffer?: string;
+    cabOffer?: string;
 }
 
 export class AffiliateLinkUtils {
