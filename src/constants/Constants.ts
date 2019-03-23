@@ -266,7 +266,8 @@ const mobikwik: IAffiliateLink = {
     billPaymentOffer: "https://www.mobikwik.com/offers/rechargeandbills",
     cabOffer: "https://www.mobikwik.com/offers/bikesandcabs",
     link: "https://www.mobikwik.com/",
-    name: "MobiKwik"
+    name: "MobiKwik",
+    walletOffer: "https://www.mobikwik.com/offers"
 }
 
 const swiggy: IAffiliateLink = {
@@ -302,7 +303,8 @@ const dunzo: IAffiliateLink = {
 const freecharge: IAffiliateLink = {
     billPaymentOffer: "https://www.freecharge.in/electricity",
     link: "https://www.freecharge.in",
-    name: "Freecharge"
+    name: "Freecharge",
+    walletOffer: "https://www.freecharge.in/offers"
 }
 
 const bookmyshow: IAffiliateLink = {
@@ -330,6 +332,71 @@ const moviEcard: IAffiliateLink = {
     movieOffer: "https://moviecardindia.com/buy-movie-card/SACPM01",
     name: "MoviEcard"
 }
+
+const myCams: IAffiliateLink = {
+    link: "https://mycams.camsonline.com/",
+    name: "MyCams"
+}
+
+const karvy: IAffiliateLink = {
+    link: "https://www.karvymfs.com/karvy/investorservices/invLogin.aspx",
+    name: "Karvy"
+}
+
+const fundsIndia: IAffiliateLink = {
+    link: "https://www.fundsindia.com/ref?c=3e562a3edebf96403aced68674fc56f3",
+    name: "FundsIndia"
+}
+
+const koinex: IAffiliateLink = {
+    link: "https://koinex.in/register?ref=c0487d",
+    name: "Koinex",
+    referralCode: "c0487d"
+}
+
+const payPal: IAffiliateLink = {
+    link: "https://www.paypal.com/",
+    name: "PayPal",
+    walletOffer: "https://www.paypal.com/in/webapps/mpp/online-shopping",
+}
+
+const payZapp: IAffiliateLink = {
+    email: "support@payzapp.in",
+    link: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html",
+    name: "PayZapp",
+    phone: "18001029426",
+    referralCode: "siro80",
+    walletOffer: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html",
+}
+
+const pockets: IAffiliateLink = {
+    link: "https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html",
+    name: "Pockets",
+    referralCode: "POC0181469",
+    walletOffer: "https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html",
+}
+
+const phonePe: IAffiliateLink = {
+    email: "support@phonepe.com",
+    link: "https://www.phonepe.com/en/",
+    name: "PhonePe",
+    phone: "01246789345",
+    walletOffer: "https://www.phonepe.com/en/",
+}
+
+const airtel: IAffiliateLink = {
+    link: "https://www.airtel.in/bank/offers",
+    name: "Airtel",
+    walletOffer: "https://www.airtel.in/bank/offers",
+}
+
+const googlePay: IAffiliateLink = {
+    link: "https://moviecardindia.com/",
+    name: "Google Pay",
+    referralCode: "up873",
+    walletOffer: "https://g.co/payinvite/up873",
+}
+
 
 export const PartnerList: IAffiliateLink[] = [
     makemytrip,
@@ -367,6 +434,12 @@ export const PartnerList: IAffiliateLink[] = [
     paytm,
     amazon,
     mobikwik,
+    payPal,
+    pockets,
+    payZapp,
+    phonePe,
+    airtel,
+    googlePay,
     // food order
     swiggy,
     zomato,
@@ -381,7 +454,12 @@ export const PartnerList: IAffiliateLink[] = [
     bookmyshow,
     ticketNew,
     jusTickets,
-    moviEcard
+    moviEcard,
+    // investment
+    myCams,
+    karvy,
+    fundsIndia,
+    koinex
 ];
 
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};
@@ -391,36 +469,6 @@ PartnerList.forEach(
 
 // tslint:disable-next-line:no-namespace
 export namespace OfferLinks {
-    export const investment = [
-        Utils.createAffiliateLink("https://mycams.camsonline.com/", "MyCams"),
-        Utils.createAffiliateLink("https://www.karvymfs.com/karvy/investorservices/invLogin.aspx", "Karvy"),
-        Utils.createAffiliateLink("https://www.fundsindia.com/ref?c=3e562a3edebf96403aced68674fc56f3", "FundsIndia"),
-        Utils.createAffiliateLink("https://koinex.in/register?ref=c0487d", "Koinex", "c0487d"),
-    ];
-
-    export const wallet = [
-
-        Utils.createAffiliateLink("https://www.freecharge.in/offers", "Freecharge"),
-
-        { link: "https://paytm.com/offer/", ...paytm },
-
-        Utils.createAffiliateLink("https://www.mobikwik.com/offers", "MobiKwik"),
-
-        { link: "https://www.amazon.in/b?node=14783922031", ...amazon },
-
-        Utils.createAffiliateLink("https://www.paypal.com/in/webapps/mpp/online-shopping", "PayPal"),
-
-        { link: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html", referralCode: "siro80", name: "PayZapp", email: "support@payzapp.in", phone: "18001029426" },
-
-        { link: "https://www.phonepe.com/en/", name: "PhonePe", email: "support@phonepe.com", phone: "01246789345" },
-
-        Utils.createAffiliateLink("https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html", "Pockets", "POC0181469"),
-
-        Utils.createAffiliateLink("https://www.airtel.in/bank/offers", "Airtel"),
-
-        Utils.createAffiliateLink("https://g.co/payinvite/up873", "Google Pay", "up873"),
-
-    ];
 
     export const mobileRecharge = [
         Utils.createAffiliateLink("https://niki.ai/?chat=1&_branch_match_id=618330132380661336", "Niki Ai", "niki21218"),
