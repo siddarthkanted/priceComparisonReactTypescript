@@ -196,6 +196,12 @@ const couponDunia: IAffiliateLink = {
     name: "CouponDunia",
 }
 
+const topcashback: IAffiliateLink = {
+    cashBackOffer: "https://topcashback.in/ref/member32094591630",
+    link: "https://topcashback.in/ref/member32094591630",
+    name: "Topcashback",
+}
+
 const skyscanner: IAffiliateLink = {
     flightBooking: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results",
     link: "https://www.skyscanner.co.in",
@@ -243,6 +249,7 @@ const ola: IAffiliateLink = {
 
 const uber: IAffiliateLink = {
     cabOffer: "https://www.uber.com/invite/siddarthk140ue",
+    foodOrderOffer: "https://www.ubereats.com/en-IN/",
     link: "https://www.uber.com/en-IN/fare-estimate/",
     name: "Uber",
     referralCode: "siddarthk140ue"
@@ -256,15 +263,76 @@ const rapido: IAffiliateLink = {
 }
 
 const mobikwik: IAffiliateLink = {
+    billPaymentOffer: "https://www.mobikwik.com/offers/rechargeandbills",
     cabOffer: "https://www.mobikwik.com/offers/bikesandcabs",
     link: "https://www.mobikwik.com/",
     name: "MobiKwik"
 }
 
+const swiggy: IAffiliateLink = {
+    foodOrderOffer: "https://www.swiggy.com/offers/payment",
+    isCuelinks: true,
+    link: "https://www.swiggy.com",
+    name: "Swiggy",
+    referralCode: "1AFJ6G"
+}
+
+const zomato: IAffiliateLink = {
+    foodOrderOffer: "https://www.zomato.com/india",
+    link: "https://www.zomato.com/india",
+    name: "Zomato",
+    referralCode: "SIDM2839",
+}
+
+const spencers: IAffiliateLink = {
+    groceryOffer: "https://www.spencers.in/offers/",
+    isCuelinks: true,
+    link: "https://www.mobikwik.com/",
+    name: "Spencers"
+}
+
+const dunzo: IAffiliateLink = {
+    groceryOffer: "https://play.google.com/store/apps/details?id=com.dunzo.user",
+    isCuelinks: true,
+    link: "https://www.mobikwik.com/",
+    name: "Dunzo",
+    referralCode: "BYU3ZT"
+}
+
+const freecharge: IAffiliateLink = {
+    billPaymentOffer: "https://www.freecharge.in/electricity",
+    link: "https://www.freecharge.in",
+    name: "Freecharge"
+}
+
+const bookmyshow: IAffiliateLink = {
+    isCuelinks: true,
+    link: "https://in.bookmyshow.com/",
+    movieOffer: "https://in.bookmyshow.com/offers",
+    name: "Bookmyshow"
+}
+
+const ticketNew: IAffiliateLink = {
+    link: "https://www.ticketnew.com/",
+    movieOffer: "https://www.ticketnew.com/Movie-offers-Tickets-Online-Booking-Show-Timings/latest-offers/Offer_Section",
+    name: "TicketNew",
+}
+
+const jusTickets: IAffiliateLink = {
+    link: "https://www.justickets.in/",
+    movieOffer: "https://www.justickets.in/",
+    name: "JusTickets"
+}
+
+const moviEcard: IAffiliateLink = {
+    isCuelinks: true,
+    link: "https://moviecardindia.com/",
+    movieOffer: "https://moviecardindia.com/buy-movie-card/SACPM01",
+    name: "MoviEcard"
+}
+
 export const PartnerList: IAffiliateLink[] = [
     makemytrip,
-    bigbasket,
-    grofers,
     flipkart,
     goibibo,
     easemytrip,
@@ -283,6 +351,7 @@ export const PartnerList: IAffiliateLink[] = [
     paisawapas,
     couponDunia,
     magicPin,
+    topcashback,
     // flight booking
     skyscanner,
     cheapticket,
@@ -297,7 +366,22 @@ export const PartnerList: IAffiliateLink[] = [
     // wallet
     paytm,
     amazon,
-    mobikwik
+    mobikwik,
+    // food order
+    swiggy,
+    zomato,
+    // grocery offer
+    bigbasket,
+    grofers,
+    dunzo,
+    spencers,
+    // bill payment offer
+    freecharge,
+    // movie offers
+    bookmyshow,
+    ticketNew,
+    jusTickets,
+    moviEcard
 ];
 
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};
@@ -307,15 +391,6 @@ PartnerList.forEach(
 
 // tslint:disable-next-line:no-namespace
 export namespace OfferLinks {
-    export const grocery = [
-        { link: "https://www.amazon.in/b?node=11302610031", ...amazon },
-        { link: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc", ...flipkart },
-        { link: "https://grofers.com/offers", ...grofers },
-        { link: "https://www.bigbasket.com/bank-offers/", ...bigbasket },
-        { isCuelinks: true, link: "https://www.spencers.in/offers/", name: "Spencers" },
-        { isCuelinks: true, link: "https://play.google.com/store/apps/details?id=com.dunzo.user", name: "Dunzo", referralCode: "BYU3ZT" },
-    ];
-
     export const investment = [
         Utils.createAffiliateLink("https://mycams.camsonline.com/", "MyCams"),
         Utils.createAffiliateLink("https://www.karvymfs.com/karvy/investorservices/invLogin.aspx", "Karvy"),
@@ -355,43 +430,6 @@ export namespace OfferLinks {
         Utils.createAffiliateLink("https://www.mobikwik.com/mobile", "MobiKwik"),
         { link: "https://paytm.com/offer/recharge/", ...paytm },
         Utils.createAffiliateLink("https://www.airtel.in/bank/recharge/mobile?type=prepaid", "Airtel"),
-    ];
-
-    export const foodDelivery = [
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.swiggy.com%2Foffers%2Fpayment", name: "Swiggy", referralCode: "1AFJ6G" },
-
-        Utils.createAffiliateLink("https://www.zomato.com/india", "Zomato", "SIDM2839"),
-
-        Utils.createAffiliateLink("https://www.ubereats.com/en-IN/", "Uber eats"),
-
-        Utils.createAffiliateLink("http://magicpin.in/getapp/CAQW6774", "MagicPin", "CAQW6774"),
-
-        { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031", ...amazon },
-    ];
-
-    export const movieBooking = [
-        { isCuelinks: true, link: "https%3A%2F%2Fin.bookmyshow.com%2Foffers", name: "Bookmyshow" },
-
-        { link: "https%3A%2F%2Fpaytm.com%2Foffer%2Fmovies%2F", ...paytm },
-
-        Utils.createAffiliateLink("https://www.ticketnew.com/Movie-offers-Tickets-Online-Booking-Show-Timings/latest-offers/Offer_Section", "TicketNew"),
-
-        Utils.createAffiliateLink("https://www.justickets.in/", "JusTickets"),
-
-        { link: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031", ...amazon },
-
-        { isCuelinks: true, link: "https%3A%2F%2Fmoviecardindia.com%2Fbuy-movie-card%2FSACPM01", name: "MoviEcard" },
-    ];
-
-    export const electricity = [
-
-        { link: "https://paytm.com/offer/billpayment/", ...paytm },
-
-        { link: "https://www.amazon.in/b?node=15377663031", ...amazon },
-
-        Utils.createAffiliateLink("https://www.freecharge.in/electricity", "Freecharge"),
-
-        Utils.createAffiliateLink("https://www.mobikwik.com/offers/rechargeandbills", "MobiKwik"),
     ];
 
     export const flightOffers = [
