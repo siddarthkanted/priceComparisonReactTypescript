@@ -110,6 +110,7 @@ const travelyaari: IAffiliateLink = {
 
 const cleartrip: IAffiliateLink = {
     flightBooking: "https://www.cleartrip.com/flights/results?from={0}&to={1}&depart_date={2}/{3}/{4}&adults=1&childs=0&infants=0&class=Economy",
+    flightOffer: "https://www.cleartrip.com/offers/india",
     link: "https://www.cleartrip.com/",
     name: "Cleartrip",
     trainBooking: "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0",
@@ -266,6 +267,7 @@ const mobikwik: IAffiliateLink = {
     billPaymentOffer: "https://www.mobikwik.com/offers/rechargeandbills",
     cabOffer: "https://www.mobikwik.com/offers/bikesandcabs",
     link: "https://www.mobikwik.com/",
+    mobileRechargeOffer: "https://www.mobikwik.com/mobile",
     name: "MobiKwik",
     walletOffer: "https://www.mobikwik.com/offers"
 }
@@ -303,6 +305,7 @@ const dunzo: IAffiliateLink = {
 const freecharge: IAffiliateLink = {
     billPaymentOffer: "https://www.freecharge.in/electricity",
     link: "https://www.freecharge.in",
+    mobileRechargeOffer: "https://www.freecharge.in/prepaid",
     name: "Freecharge",
     walletOffer: "https://www.freecharge.in/offers"
 }
@@ -386,6 +389,7 @@ const phonePe: IAffiliateLink = {
 
 const airtel: IAffiliateLink = {
     link: "https://www.airtel.in/bank/offers",
+    mobileRechargeOffer: "https://www.airtel.in/bank/recharge/mobile?type=prepaid",
     name: "Airtel",
     walletOffer: "https://www.airtel.in/bank/offers",
 }
@@ -397,6 +401,43 @@ const googlePay: IAffiliateLink = {
     walletOffer: "https://g.co/payinvite/up873",
 }
 
+const nikiAi: IAffiliateLink = {
+    link: "https://niki.ai/?chat=1&_branch_match_id=618330132380661336",
+    name: "Niki Ai",
+    referralCode: "niki21218",
+    walletOffer: "https://niki.ai/offers/",
+}
+
+const hdfcBankOnChat: IAffiliateLink = {
+    link: "https://www.messenger.com/t/hdfcbankonchat",
+    name: "HDFC Bank OnChat",
+    walletOffer: "https://www.messenger.com/t/hdfcbankonchat",
+}
+
+const ticketgoose: IAffiliateLink = {
+    busOffer: "https://www.ticketgoose.com/",
+    link: "https://www.ticketgoose.com/",
+    name: "Ticketgoose",
+}
+
+const redbus: IAffiliateLink = {
+    busOffer: "https://www.redbus.in/info/OfferTerms",
+    link: "https://www.redbus.in/",
+    name: "Redbus",
+}
+
+const abhibus: IAffiliateLink = {
+    busOffer: "https://www.abhibus.com/bus-ticket-offers",
+    link: "https://www.abhibus.com/",
+    name: "Abhibus",
+}
+
+const akbarTravels: IAffiliateLink = {
+    flightOffer: "https://www.akbartravels.com/offers",
+    isCuelinks: true,
+    link: "https://www.akbartravels.com",
+    name: "Akbar Travels",
+}
 
 export const PartnerList: IAffiliateLink[] = [
     makemytrip,
@@ -411,6 +452,7 @@ export const PartnerList: IAffiliateLink[] = [
     sastiticket,
     myBusTicket,
     ixigo,
+    akbarTravels,
     // cashback sites
     cashkaro,
     zingoy,
@@ -440,6 +482,8 @@ export const PartnerList: IAffiliateLink[] = [
     phonePe,
     airtel,
     googlePay,
+    nikiAi,
+    hdfcBankOnChat,
     // food order
     swiggy,
     zomato,
@@ -459,7 +503,11 @@ export const PartnerList: IAffiliateLink[] = [
     myCams,
     karvy,
     fundsIndia,
-    koinex
+    koinex,
+    // bus offer
+    abhibus,
+    redbus,
+    ticketgoose
 ];
 
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};
@@ -467,78 +515,6 @@ PartnerList.forEach(
     partner => PartnerDictionary[Utils.getHostNameFromUrl(partner.link)] = partner
 );
 
-// tslint:disable-next-line:no-namespace
-export namespace OfferLinks {
-
-    export const mobileRecharge = [
-        Utils.createAffiliateLink("https://niki.ai/?chat=1&_branch_match_id=618330132380661336", "Niki Ai", "niki21218"),
-        Utils.createAffiliateLink("https://www.messenger.com/t/hdfcbankonchat", "HDFC Bank OnChat"),
-        { link: "https://www.amazon.in/hfc/mobileRecharge", ...amazon },
-        Utils.createAffiliateLink("https://www.freecharge.in/prepaid", "Freecharge"),
-        Utils.createAffiliateLink("https://www.mobikwik.com/mobile", "MobiKwik"),
-        { link: "https://paytm.com/offer/recharge/", ...paytm },
-        Utils.createAffiliateLink("https://www.airtel.in/bank/recharge/mobile?type=prepaid", "Airtel"),
-    ];
-
-    export const flightOffers = [
-        { link: "https://paytm.com/offer/flight-tickets/", ...paytm },
-
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.easemytrip.com%2Foffers%2Fflights.html", ...easemytrip },
-
-        { link: "https%3A%2F%2Fwww.makemytrip.com%2Fdaily-deals%2Fflights%2F", ...makemytrip },
-
-        { isCuelinks: true, link: "https%3A%2F%2Fwww.akbartravels.com%2Foffers", name: "Akbar Travels" },
-
-        { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon },
-
-        { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fflight-offers%2F", ...goibibo },
-
-        { link: "https%3A%2F%2Fwww.cleartrip.com%2Foffers%2Findia", ...cleartrip },
-
-        { link: "https://www.sastiticket.com/offers", ...sastiticket },
-
-        { link: "https://www.ixigo.com/offers/tag/flight-offers/", ...ixigo },
-
-        { link: "https://in.via.com/offers", ...via },
-
-        { link: "https://www.yatra.com/offer/dom/listing/domestic-flight-deals", ...yatra },
-
-    ];
-
-    export const trainOffers = [
-        { link: "https://www.ixigo.com/offers/tag/trains/", ...ixigo },
-
-        { link: "https://paytm.com/offer/train-tickets/", ...paytm },
-
-        { link: "https://www.railyatri.in/offers", ...railyatri },
-
-        { link: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031", ...amazon },
-
-        { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Ftrain-offers%2F", ...goibibo },
-    ];
-
-    export const busOffers = [
-        { link: "https://www.railyatri.in/offers", ...railyatri },
-
-        { link: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/", ...makemytrip },
-
-        { link: "https://paytm.com/offer/bus-tickets/", ...paytm },
-
-        { link: "https%3A%2F%2Fwww.goibibo.com%2Foffers%2Fbus-offers%2F", ...goibibo },
-
-        { link: "https://www.mybustickets.in/Bestoffers", ...myBusTicket },
-
-        { link: "https://www.travelyaari.com/offers", ...travelyaari },
-
-        Utils.createAffiliateLink("https://www.ticketgoose.com/", "Ticketgoose"),
-
-        { link: "https://www.yatra.com/offer/listing/bus", ...yatra },
-
-        Utils.createAffiliateLink("https://www.abhibus.com/bus-ticket-offers", "Abhibus"),
-
-        Utils.createAffiliateLink("https://www.redbus.in/info/OfferTerms", "Redbus")
-    ];
-};
 
 // tslint:disable-next-line:no-namespace
 export namespace TravelOptions {
