@@ -11,11 +11,11 @@ import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 
 export class Partner extends Parent {
     protected renderOption(option: ValueType<IOptionType>): JSX.Element {
-        const name = OptionTypeUtils.getValue(option)
-        const partner = PartnerDictionary[name];
+        const value = OptionTypeUtils.getValue(option)
+        const partner = PartnerDictionary[value];
         return (
             <>
-                <MultipleUrlOpener title={name} partners={[partner]} />
+                <MultipleUrlOpener title={partner.name} partners={[partner]} />
                 {this.renderPartnerDetails(partner)}
             </>
         );

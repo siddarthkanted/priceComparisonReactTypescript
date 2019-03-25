@@ -15,7 +15,7 @@ export namespace StringConstant {
 
     // offer variable names
     export const offerVariableNameList = [
-        "link",
+        "referralLink",
         "walletOffer",
         "mobileRechargeOffer",
         "movieOffer",

@@ -8,10 +8,10 @@ const paytm: IAffiliateLink = {
     flightBooking: "https://paytm.com/flights/flightSearch/{0}-{0}/{1}-{1}/1/0/0/E/{4}-{3}-{2}",
     flightOffer: "https://paytm.com/offer/flight-tickets/",
     isCuelinks: true,
-    link: "https://paytm.com/",
     mobileRechargeOffer: "https://paytm.com/offer/recharge/",
     movieOffer: "https://paytm.com/offer/movies/",
     name: "Paytm",
+    referralLink: "https://paytm.com/",
     trainBooking: "https://paytm.com/train-tickets/searchTrains/{0}_{0}/{1}_{1}/{4}{3}{2}",
     trainOffer: "https://paytm.com/offer/train-tickets/",
     walletOffer: "https://paytm.com/offer/",
@@ -23,10 +23,10 @@ const amazon: IAffiliateLink = {
     foodOrderOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2a1_w?node=14258646031",
     groceryOffer: "https://www.amazon.in/b?node=11302610031",
     healthOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_sbc_3a1_w?node=14737428031",
-    link: "https://www.amazon.in/",
     mobileRechargeOffer: "https://www.amazon.in/hfc/mobileRecharge",
     movieOffer: "https://www.amazon.in/b/ref=movietile/ref=s9_acss_bw_cg_sbc_2b1_w?node=14258645031",
     name: "Amazon",
+    referralLink: "https://www.amazon.in/",
     servicesOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_sbc_3c1_w?node=15423198031",
     travelOffer: "https://www.amazon.in/b/ref=s9_acss_bw_cg_savings_2b1_w?node=14301141031",
     walletOffer: "https://www.amazon.in/b?node=14783922031",
@@ -37,31 +37,31 @@ const makemytrip: IAffiliateLink = {
     busOffer: "https://www.makemytrip.com/daily-deals/bus-coupon-offers/",
     flightBooking: "https://flights.makemytrip.com/makemytrip/search/O/O/E/1/0/0/S/V0/{0}_{1}_{2}-{3}-{4}",
     flightOffer: "https://www.makemytrip.com/daily-deals/flights/",
-    link: "https://www.makemytrip.com/",
     name: "Makemytrip",
+    referralLink: "https://www.makemytrip.com/",
     trainBooking: "https://railways.makemytrip.com/listing?date={4}{3}{2}&srcStn={0}&destStn={1}&trip=oneWay&classCode=SL",
     variedOptions: { ["Bengaluru"]: "Bangalore" }
 }
 
 const bigbasket: IAffiliateLink = {
     groceryOffer: "https://www.bigbasket.com/bank-offers/",
-    link: "https://www.bigbasket.com/",
     name: "Bigbasket",
     referralCode: "bigb2a6yc",
+    referralLink: "https://www.bigbasket.com/",
 }
 
 const grofers: IAffiliateLink = {
     groceryOffer: "https://grofers.com/offers",
-    link: "https://grofers.com/",
     name: "Grofers",
     referralCode: "91Q82K",
+    referralLink: "https://grofers.com/",
 }
 
 const flipkart: IAffiliateLink = {
     extraParameters: { ["affid"]: "siddarthk" },
     groceryOffer: "https://www.flipkart.com/grocery/~grocery-needs/pr?sid=73z&sort=price_asc",
-    link: "https://www.flipkart.com/",
     name: "Flipkart",
+    referralLink: "https://www.flipkart.com/",
 }
 
 const goibibo: IAffiliateLink = {
@@ -69,9 +69,9 @@ const goibibo: IAffiliateLink = {
     busOffer: "https://www.goibibo.com/offers/bus-offers/",
     flightBooking: "https://www.goibibo.com/flights/air-{0}-{1}-{4}{3}{2}--1-0-0-E-I/",
     flightOffer: "https://www.goibibo.com/offers/flight-offers/",
-    link: "https://www.goibibo.com/",
     name: "Goibibo",
     referralCode: "7c0ce5b",
+    referralLink: "https://www.goibibo.com/",
     trainBooking: "https://www.goibibo.com/trains/results?src={0}&dst={1}&date={4}{3}{2}&class=All",
     trainOffer: "https://www.goibibo.com/offers/train-offers/",
 }
@@ -81,21 +81,21 @@ const easemytrip: IAffiliateLink = {
     flightBooking: "https://flight.easemytrip.com/FlightList/Index?org={0}-{0}&dept={1}-{1}&adt=1&chd=0&inf=0&cabin=0&airline=undefined&deptDT={2}/{3}/{4}&isOneway=true",
     flightOffer: "https://www.easemytrip.com/offers/flights.html",
     hotelOffer: "https://www.easemytrip.com/offers/hotels.html",
-    link: "https://www.easemytrip.com/",
     name: "Easemytrip",
+    referralLink: "https://www.easemytrip.com/",
 }
 
 const via: IAffiliateLink = {
     flightBooking: "https://in.via.com/flight/search?returnType=one-way&destination={1}&source={0}&month={3}&day={2}&year={4}&numAdults=1&numChildren=0&numInfants=0",
     flightOffer: "https://in.via.com/offers",
-    link: "https://in.via.com/",
-    name: "Via"
+    name: "Via",
+    referralLink: "https://in.via.com/",
 }
 
 const railyatri: IAffiliateLink = {
     busBooking: "https://www.railyatri.in/bus-booking/{0}-to-{1}-buses?doj={2}-{3}-{4}",
-    link: "https://www.railyatri.in/",
     name: "Railyatri",
+    referralLink: "https://www.railyatri.in/",
     trainBooking: "https://www.railyatri.in/booking/trains-between-stations?from_code={0}&from_name={0}&journey_date={2}%2F{3}%2F{4}&to_code={1}&to_name={1}",
     travelOffer: "https://www.railyatri.in/offers",
     variedOptions: { ["Bengaluru"]: "Bangalore-Bengaluru" }
@@ -104,15 +104,15 @@ const railyatri: IAffiliateLink = {
 const travelyaari: IAffiliateLink = {
     busBooking: "https://www.travelyaari.com/search/{0}-to-{1}?departDate={2}-{3}-{4}&mode=oneway",
     busOffer: "https://www.travelyaari.com/offers",
-    link: "https://www.travelyaari.com",
-    name: "Travelyaari"
+    name: "Travelyaari",
+    referralLink: "https://www.travelyaari.com",
 }
 
 const cleartrip: IAffiliateLink = {
     flightBooking: "https://www.cleartrip.com/flights/results?from={0}&to={1}&depart_date={2}/{3}/{4}&adults=1&childs=0&infants=0&class=Economy",
     flightOffer: "https://www.cleartrip.com/offers/india",
-    link: "https://www.cleartrip.com/",
     name: "Cleartrip",
+    referralLink: "https://www.cleartrip.com/",
     trainBooking: "https://www.cleartrip.com/trains/results?from_station={0}&to_station={1}&class=SL&date={2}-{3}-{4}&adults=1&children=0&male_seniors=0&female_seniors=0",
     travelOffer: "https://www.cleartrip.com/offers/india/partners",
 }
@@ -124,24 +124,24 @@ const yatra: IAffiliateLink = {
     flightBooking: "https://flight.yatra.com/air-search-ui/dom2/trigger?type=O&origin={0}&destination={1}&flight_depart_date={2}/{3}/{4}&ADT=1&CHD=0&INF=0&class=Economy",
     flightOffer: "https://www.yatra.com/offer/dom/listing/domestic-flight-deals",
     hotelOffer: "https://www.yatra.com/offer/dom/listing/domestic-hotel-deals",
-    link: "https://www.yatra.com/",
     name: "Yatra",
+    referralLink: "https://www.yatra.com/",
     trainBooking: "https://rail.yatra.com/trains/b2c/search?srcStn={0}&destStn={1}&departDate={4}-{3}-{2}",
 }
 
 const sastiticket: IAffiliateLink = {
     flightBooking: "https://www.sastiticket.com/nav/flight_searchresult/a/one-way/{0}/{1}/{4}-{3}-{2}::/1/0/0/G/ANY/O/D/0/0/N/A?src={0}&srcI={0}&dest={1}&destI={1}&request=false&is_dom_direct=N&is_int_direct=N&widthCssClass=col-md-6&travel_type=auto&journey_type=one-way&srcA={0}&destA={1}&dep_date_o={2}%2F{3}%2F{4}&dep_date={2}%2F{3}%2F{4}&o_dep_time=&arr_date={2}%2F{3}%2F{4}&added_seg_cnt=2&traveller_class=1+Traveller%2C+Economy&n_adults=1&n_children=0&n_infants=0&pref_class=G&pref_airline=ANY",
     flightOffer: "https://www.sastiticket.com/offers",
-    link: "https://www.sastiticket.com/",
-    name: "Sastiticket"
+    name: "Sastiticket",
+    referralLink: "https://www.sastiticket.com/",
 }
 
 const myBusTicket: IAffiliateLink = {
     busBooking: "https://www.mybustickets.in/Bus-Booking/{0}-to-{1}-Buses/{2}-{3}-{4}",
     busOffer: "https://www.mybustickets.in/Bestoffers",
     isCuelinks: true,
-    link: "https://www.mybustickets.in/",
     name: "My Bus ticket",
+    referralLink: "https://www.mybustickets.in/",
 }
 
 const ixigo: IAffiliateLink = {
@@ -149,9 +149,9 @@ const ixigo: IAffiliateLink = {
     flightBooking: "https://www.ixigo.com/search/result/flight/{0}/{1}/{2}{3}{4}//1/0/0/e",
     flightOffer: "https://www.ixigo.com/offers/tag/flight-offers/",
     hotelOffer: "https://www.ixigo.com/offers/tag/hotel-offers/",
-    link: "https://www.ixigo.com/",
     name: "Ixigo",
     referralCode: "SID0EH7M",
+    referralLink: "https://www.ixigo.com/",
     trainBooking: "https://www.ixigo.com/search/result/train/{0}/{1}/{2}{3}{4}//1/0/0/0/ALL",
     trainOffer: "https://www.ixigo.com/offers/tag/trains/",
 }
@@ -159,284 +159,290 @@ const ixigo: IAffiliateLink = {
 const cashkaro: IAffiliateLink = {
     cashBackOffer: "https://cashkaro.com/r=912171",
     email: "contact@cashkaro.com",
-    link: "https://cashkaro.com/r=912171",
     name: "Cashkaro",
     phone: "9821397418",
+    referralLink: "https://cashkaro.com/r=912171",
 }
 
 const zingoy: IAffiliateLink = {
     cashBackOffer: "https://zngy.in/c4ol",
-    link: "https://zngy.in/c4ol",
     name: "Zingoy",
     referralCode: "sidman03",
+    referralLink: "https://zngy.in/c4ol",
 }
 
 const paisaGet: IAffiliateLink = {
     cashBackOffer: "http://www.paisaget.com/?r=131420",
-    link: "http://www.paisaget.com/?r=131420",
     name: "PaisaGet",
+    referralLink: "http://www.paisaget.com/?r=131420",
 }
 
 const paisawapas: IAffiliateLink = {
     cashBackOffer: "http://paisawapas.com/?ref=528877",
-    link: "http://paisawapas.com/?ref=528877",
     name: "Paisawapas",
     referralCode: "UAIJG",
+    referralLink: "http://paisawapas.com/?ref=528877",
 }
 
 const magicPin: IAffiliateLink = {
     cashBackOffer: "http://magicpin.in/getapp/CAQW6774",
-    link: "http://magicpin.in",
     name: "Magicpin",
-    referralCode: "CAQW6774"
+    referralCode: "CAQW6774",
+    referralLink: "http://magicpin.in/getapp/CAQW6774",
 }
 
 const couponDunia: IAffiliateLink = {
     cashBackOffer: "https://www.coupondunia.in/referral/TML9LO",
-    link: "https://www.coupondunia.in/referral/TML9LO",
     name: "CouponDunia",
+    referralLink: "https://www.coupondunia.in/referral/TML9LO",
 }
 
 const topcashback: IAffiliateLink = {
     cashBackOffer: "https://topcashback.in/ref/member32094591630",
-    link: "https://topcashback.in/ref/member32094591630",
     name: "Topcashback",
+    referralLink: "https://topcashback.in/ref/member32094591630",
 }
 
 const skyscanner: IAffiliateLink = {
     flightBooking: "https://www.skyscanner.co.in/transport/flights/{0}/{1}/{4}{3}{2}/?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=0&preferdirects=false&outboundaltsenabled=false&inboundaltsenabled=false&ref=home#results",
-    link: "https://www.skyscanner.co.in",
     name: "Skyscanner",
+    referralLink: "https://www.skyscanner.co.in",
 }
 
 const cheapticket: IAffiliateLink = {
     flightBooking: "https://www.cheapticket.in/b2c/flights/search/d/1/1,0,0;{0}-{1}/{4}-{3}-{2}",
-    link: "https://www.cheapticket.in",
     name: "Cheapticket",
+    referralLink: "https://www.cheapticket.in",
 }
 
 const agoda: IAffiliateLink = {
     flightBooking: "https://flights.agoda.com/flights/{0}-{1}/{4}-{3}-{2}",
-    link: "https://www.agoda.com/en-gb/",
     name: "Agoda",
+    referralLink: "https://www.agoda.com/en-gb/",
 }
 
 const kayak: IAffiliateLink = {
     flightBooking: "https://booking.kayak.com/flights/{0}-{1}/{4}-{3}-{2}",
-    link: "https://www.kayak.co.in/",
     name: "Kayak",
+    referralLink: "https://www.kayak.co.in/",
 }
 
 const happyeasygo: IAffiliateLink = {
     flightBooking: "https://www.happyeasygo.com/flights/{0}-{1}/{4}-{3}-{2}?tripType=0&adults=1&childs=0&baby=0&cabinClass=Economy",
-    link: "https://www.kayak.co.in/",
     name: "Happyeasygo",
     referralCode: "sidmRDU4",
+    referralLink: "https://www.happyeasygo.com/",
     travelOffer: "https://www.happyeasygo.com/offer/"
 }
 
 const expedia: IAffiliateLink = {
     flightBooking: "https://www.expedia.co.in/Flights-Search?flight-type=on&starDate={2}/{3}/{4}&mode=search&trip=oneway&leg1=from:({0}),to:({1}),departure:{2}/{3}/{4}TANYT&passengers=children:0,adults:1,seniors:0,infantinlap:Y",
-    link: "https://www.kayak.co.in/",
     name: "Expedia",
+    referralLink: "https://www.expedia.co.in/",
 }
 
 const ola: IAffiliateLink = {
     cabOffer: "https://hello.ola.app/refer/?referral_code=2YM97VU",
-    link: "https://www.olacabs.com/",
     name: "Ola",
-    referralCode: "2YM97VU"
+    referralCode: "2YM97VU",
+    referralLink: "https://hello.ola.app/refer/?referral_code=2YM97VU",
 }
 
 const uber: IAffiliateLink = {
     cabOffer: "https://www.uber.com/invite/siddarthk140ue",
     foodOrderOffer: "https://www.ubereats.com/en-IN/",
-    link: "https://www.uber.com/en-IN/fare-estimate/",
     name: "Uber",
-    referralCode: "siddarthk140ue"
+    referralCode: "siddarthk140ue",
+    referralLink: "https://www.uber.com/invite/siddarthk140ue",
 }
 
 const rapido: IAffiliateLink = {
     cabOffer: "https://umzf4.app.goo.gl/C4ytAJ7MHMnt5kkD8",
-    link: "https://rapido.bike/",
     name: "Rapido",
-    referralCode: "SIDPUVQ"
+    referralCode: "SIDPUVQ",
+    referralLink: "https://umzf4.app.goo.gl/C4ytAJ7MHMnt5kkD8",
 }
 
 const mobikwik: IAffiliateLink = {
     billPaymentOffer: "https://www.mobikwik.com/offers/rechargeandbills",
     cabOffer: "https://www.mobikwik.com/offers/bikesandcabs",
-    link: "https://www.mobikwik.com/",
     mobileRechargeOffer: "https://www.mobikwik.com/mobile",
     name: "MobiKwik",
+    referralLink: "https://www.mobikwik.com/",
     walletOffer: "https://www.mobikwik.com/offers"
 }
 
 const swiggy: IAffiliateLink = {
     foodOrderOffer: "https://www.swiggy.com/offers/payment",
     isCuelinks: true,
-    link: "https://www.swiggy.com",
     name: "Swiggy",
-    referralCode: "1AFJ6G"
+    referralCode: "1AFJ6G",
+    referralLink: "https://www.swiggy.com",
 }
 
 const zomato: IAffiliateLink = {
     foodOrderOffer: "https://www.zomato.com/india",
-    link: "https://www.zomato.com/india",
     name: "Zomato",
     referralCode: "SIDM2839",
+    referralLink: "https://www.zomato.com/india",
 }
 
 const spencers: IAffiliateLink = {
     groceryOffer: "https://www.spencers.in/offers/",
     isCuelinks: true,
-    link: "https://www.mobikwik.com/",
-    name: "Spencers"
+    name: "Spencers",
+    referralLink: "https://www.spencers.in/",
 }
 
 const dunzo: IAffiliateLink = {
     groceryOffer: "https://play.google.com/store/apps/details?id=com.dunzo.user",
     isCuelinks: true,
-    link: "https://www.mobikwik.com/",
     name: "Dunzo",
-    referralCode: "BYU3ZT"
+    referralCode: "BYU3ZT",
+    referralLink: "https://play.google.com/store/apps/details?id=com.dunzo.user",
 }
 
 const freecharge: IAffiliateLink = {
     billPaymentOffer: "https://www.freecharge.in/electricity",
-    link: "https://www.freecharge.in",
     mobileRechargeOffer: "https://www.freecharge.in/prepaid",
     name: "Freecharge",
-    walletOffer: "https://www.freecharge.in/offers"
+    referralLink: "https://www.freecharge.in",
+    walletOffer: "https://www.freecharge.in/offers",
 }
 
 const bookmyshow: IAffiliateLink = {
     isCuelinks: true,
-    link: "https://in.bookmyshow.com/",
     movieOffer: "https://in.bookmyshow.com/offers",
-    name: "Bookmyshow"
+    name: "Bookmyshow",
+    referralLink: "https://in.bookmyshow.com/",
 }
 
 const ticketNew: IAffiliateLink = {
-    link: "https://www.ticketnew.com/",
     movieOffer: "https://www.ticketnew.com/Movie-offers-Tickets-Online-Booking-Show-Timings/latest-offers/Offer_Section",
     name: "TicketNew",
+    referralLink: "https://www.ticketnew.com/",
 }
 
 const jusTickets: IAffiliateLink = {
-    link: "https://www.justickets.in/",
     movieOffer: "https://www.justickets.in/",
-    name: "JusTickets"
+    name: "JusTickets",
+    referralLink: "https://www.justickets.in/",
 }
 
 const moviEcard: IAffiliateLink = {
     isCuelinks: true,
-    link: "https://moviecardindia.com/",
     movieOffer: "https://moviecardindia.com/buy-movie-card/SACPM01",
-    name: "MoviEcard"
+    name: "MoviEcard",
+    referralLink: "https://moviecardindia.com/",
 }
 
 const myCams: IAffiliateLink = {
-    link: "https://mycams.camsonline.com/",
-    name: "MyCams"
+    name: "MyCams",
+    referralLink: "https://mycams.camsonline.com/",
 }
 
 const karvy: IAffiliateLink = {
-    link: "https://www.karvymfs.com/karvy/investorservices/invLogin.aspx",
-    name: "Karvy"
+    name: "Karvy",
+    referralLink: "https://www.karvymfs.com/karvy/investorservices/invLogin.aspx",
 }
 
 const fundsIndia: IAffiliateLink = {
-    link: "https://www.fundsindia.com/ref?c=3e562a3edebf96403aced68674fc56f3",
-    name: "FundsIndia"
+    name: "FundsIndia",
+    referralLink: "https://www.fundsindia.com/ref?c=3e562a3edebf96403aced68674fc56f3",
 }
 
 const koinex: IAffiliateLink = {
-    link: "https://koinex.in/register?ref=c0487d",
     name: "Koinex",
-    referralCode: "c0487d"
+    referralCode: "c0487d",
+    referralLink: "https://koinex.in/register?ref=c0487d",
 }
 
 const payPal: IAffiliateLink = {
-    link: "https://www.paypal.com/",
     name: "PayPal",
+    referralLink: "https://www.paypal.com/",
     walletOffer: "https://www.paypal.com/in/webapps/mpp/online-shopping",
 }
 
 const payZapp: IAffiliateLink = {
     email: "support@payzapp.in",
-    link: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html",
     name: "PayZapp",
     phone: "18001029426",
     referralCode: "siro80",
+    referralLink: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html",
     walletOffer: "https://www.hdfcbank.com/htdocs/common/PayZapp/index.html",
 }
 
 const pockets: IAffiliateLink = {
-    link: "https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html",
     name: "Pockets",
     referralCode: "POC0181469",
+    referralLink: "https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html",
     walletOffer: "https://www.icicibank.com/Personal-Banking/bank-wallet/pockets/offer.html",
 }
 
 const phonePe: IAffiliateLink = {
     email: "support@phonepe.com",
-    link: "https://www.phonepe.com/en/",
     name: "PhonePe",
     phone: "01246789345",
+    referralLink: "https://www.phonepe.com/en/",
     walletOffer: "https://www.phonepe.com/en/",
 }
 
 const airtel: IAffiliateLink = {
-    link: "https://www.airtel.in/bank/offers",
     mobileRechargeOffer: "https://www.airtel.in/bank/recharge/mobile?type=prepaid",
     name: "Airtel",
+    referralLink: "https://www.airtel.in/bank/offers",
     walletOffer: "https://www.airtel.in/bank/offers",
 }
 
 const googlePay: IAffiliateLink = {
-    link: "https://moviecardindia.com/",
     name: "Google Pay",
     referralCode: "up873",
+    referralLink:  "https://g.co/payinvite/up873",
     walletOffer: "https://g.co/payinvite/up873",
 }
 
 const nikiAi: IAffiliateLink = {
-    link: "https://niki.ai/?chat=1&_branch_match_id=618330132380661336",
     name: "Niki Ai",
     referralCode: "niki21218",
+    referralLink: "https://niki.ai/?chat=1&_branch_match_id=618330132380661336",
     walletOffer: "https://niki.ai/offers/",
 }
 
 const hdfcBankOnChat: IAffiliateLink = {
-    link: "https://www.messenger.com/t/hdfcbankonchat",
     name: "HDFC Bank OnChat",
+    referralLink: "https://refer26.niki.ai/sid59_referral",
     walletOffer: "https://www.messenger.com/t/hdfcbankonchat",
 }
 
 const ticketgoose: IAffiliateLink = {
     busOffer: "https://www.ticketgoose.com/",
-    link: "https://www.ticketgoose.com/",
     name: "Ticketgoose",
+    referralLink: "https://www.ticketgoose.com/",
 }
 
 const redbus: IAffiliateLink = {
     busOffer: "https://www.redbus.in/info/OfferTerms",
-    link: "https://www.redbus.in/",
     name: "Redbus",
+    referralLink: "https://www.redbus.in/",
 }
 
 const abhibus: IAffiliateLink = {
     busOffer: "https://www.abhibus.com/bus-ticket-offers",
-    link: "https://www.abhibus.com/",
     name: "Abhibus",
+    referralLink: "https://www.abhibus.com/",
 }
 
 const akbarTravels: IAffiliateLink = {
     flightOffer: "https://www.akbartravels.com/offers",
     isCuelinks: true,
-    link: "https://www.akbartravels.com",
     name: "Akbar Travels",
+    referralLink: "https://www.akbartravels.com",
+}
+
+const wego: IAffiliateLink = {
+    flightBooking: "https://www.wego.co.in/flights/searches/{0}-{1}-{4}-{3}-{2}/economy/1a:0c:0i?sort=price&order=asc",
+    name: "Wego",
+    referralLink:"https://www.wego.co.in/"
 }
 
 export const PartnerList: IAffiliateLink[] = [
@@ -453,6 +459,7 @@ export const PartnerList: IAffiliateLink[] = [
     myBusTicket,
     ixigo,
     akbarTravels,
+    wego,
     // cashback sites
     cashkaro,
     zingoy,
@@ -512,7 +519,7 @@ export const PartnerList: IAffiliateLink[] = [
 
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};
 PartnerList.forEach(
-    partner => PartnerDictionary[Utils.getHostNameFromUrl(partner.link)] = partner
+    partner => PartnerDictionary[Utils.getHostNameFromUrl(partner.referralLink)] = partner
 );
 
 
