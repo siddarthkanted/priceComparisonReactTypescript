@@ -268,7 +268,8 @@ const mobikwik: IAffiliateLink = {
     cabOffer: "https://www.mobikwik.com/offers/bikesandcabs",
     mobileRechargeOffer: "https://www.mobikwik.com/mobile",
     name: "MobiKwik",
-    referralLink: "https://www.mobikwik.com/",
+    referralCode: "H23947",
+    referralLink: "https://www.mobikwik.com/invite?code=H23947",
     walletOffer: "https://www.mobikwik.com/offers"
 }
 
@@ -423,7 +424,8 @@ const ticketgoose: IAffiliateLink = {
 const redbus: IAffiliateLink = {
     busOffer: "https://www.redbus.in/info/OfferTerms",
     name: "Redbus",
-    referralLink: "https://www.redbus.in/",
+    referralCode: "redb3uoa3",
+    referralLink: "https://www.redbus.in/?avclk=1an3pd-redb3uoa3&rnd=531866712",
 }
 
 const abhibus: IAffiliateLink = {
