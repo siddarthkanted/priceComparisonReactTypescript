@@ -447,6 +447,20 @@ const wego: IAffiliateLink = {
     referralLink:"https://www.wego.co.in/"
 }
 
+const clubFactory: IAffiliateLink = {
+    name: "Club Factory",
+    onlineShopping: "https://www.clubfactory.com/",
+    referralCode: "610013701",
+    referralLink:"https://www.clubfactory.com/",
+}
+
+const paymatrix: IAffiliateLink ={
+    houseRent: "https://paymatrix.in/",
+    name: "Paymatrix",
+    referralCode: "SID165FY",
+    referralLink: "https://paymatrix.in/",
+}
+
 export const PartnerList: IAffiliateLink[] = [
     makemytrip,
     flipkart,
@@ -516,7 +530,11 @@ export const PartnerList: IAffiliateLink[] = [
     // bus offer
     abhibus,
     redbus,
-    ticketgoose
+    ticketgoose,
+    // online shopping
+    clubFactory,
+    // house rent
+    paymatrix
 ];
 
 export const PartnerDictionary: _.Dictionary<IAffiliateLink> = {};

@@ -33,6 +33,8 @@ export interface IAffiliateLink {
     activityOffer?: string;
     cashBackOffer?: string;
     cabOffer?: string;
+    onlineShopping?: string;
+    houseRent?: string;
 }
 
 export class AffiliateLinkUtils {
