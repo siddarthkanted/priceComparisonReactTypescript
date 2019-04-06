@@ -457,6 +457,7 @@ const clubFactory: IAffiliateLink = {
 const paymatrix: IAffiliateLink ={
     houseRent: "https://paymatrix.in/",
     name: "Paymatrix",
+    phone: "7305145146",
     referralCode: "SID165FY",
     referralLink: "https://paymatrix.in/",
 }
