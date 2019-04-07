@@ -9,7 +9,7 @@ import { IOptionType, OptionTypeUtils } from 'src/model/OptionType';
 export class Offers extends Parent {
     protected renderOption(option: ValueType<IOptionType>): JSX.Element {
         const name = OptionTypeUtils.getValue(option)
-        return <MultipleUrlOpener title={name} variableNames={[name]} />;
+        return <MultipleUrlOpener title={name} variableNames={[name]} key={name} />;
     }
     protected getTitle(): string {
         return StringConstant.offer;

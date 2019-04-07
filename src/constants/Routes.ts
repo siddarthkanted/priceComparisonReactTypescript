@@ -8,7 +8,7 @@ import { TravelOptions } from "src/constants/Constants";
 import { IRoute } from 'src/model/Model';
 import { StringConstant } from './StringConstant';
 
-export const routeList: IRoute[] = [
+export const RouteList: IRoute[] = [
   {
     component: Travel,
     extraProps: {
@@ -56,3 +56,8 @@ export const routeList: IRoute[] = [
     path: StringConstant.partner + "/:urlParam?"
   }
 ];
+
+export const RouteDictionary: _.Dictionary<IRoute> = {};
+RouteList.forEach(
+    route => RouteDictionary[route.name] = route
+);
