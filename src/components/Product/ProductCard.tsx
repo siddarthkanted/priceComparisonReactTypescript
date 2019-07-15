@@ -11,7 +11,7 @@ import { Utils } from "src/common/Utils";
 import { MultipleUrlOpener } from 'src/components/AffiliateMultipleUrlOpener/MultipleUrlOpener';
 import { PartnerDictionary } from 'src/constants/Constants';
 import { StringConstant } from 'src/constants/StringConstant';
-import { AffiliateLinkUtils, IAffiliateLink } from 'src/model/AffiliateLink';
+import { IAffiliateLink } from 'src/model/AffiliateLink';
 import { IGrocery } from 'src/model/Model';
 import './Product.css';
 
@@ -58,7 +58,7 @@ export class ProductCard extends React.Component<IProductCardProps> {
         this.props.data.Link.forEach(link => {
             const partner = PartnerDictionary[Utils.getHostNameFromUrl(link)];
             if(partner) {
-                const clonedPartner =  produce(partner, (clone) => { clone.groceryBooking = AffiliateLinkUtils.getAffiliatedLink(clone, link); });
+                const clonedPartner =  produce(partner, (draft) => { draft.groceryBooking = link; });
                 partners.push(clonedPartner);
             }
         });

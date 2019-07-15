@@ -1,6 +1,12 @@
 import { Utils } from "src/common/Utils";
 import { IAffiliateLink } from 'src/model/AffiliateLink';
 
+const tataCliq: IAffiliateLink = {
+    isCuelinks: true,
+    name: "Tata Cliq",
+    referralLink: "https://www.tatacliq.com"
+}
+
 const paytm: IAffiliateLink = {
     billPaymentOffer: "https://paytm.com/offer/billpayment/",
     busBooking: "https://paytm.com/bus-tickets/search/{0}/{1}/{4}-{3}-{2}/1",
@@ -465,6 +471,7 @@ const paymatrix: IAffiliateLink ={
 export const PartnerList: IAffiliateLink[] = [
     makemytrip,
     flipkart,
+    tataCliq,
     goibibo,
     easemytrip,
     via,

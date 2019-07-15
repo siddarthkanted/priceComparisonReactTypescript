@@ -6,6 +6,7 @@ import * as React from "react";
 import { Utils } from 'src/common/Utils';
 import { RouteDictionary, RouteList } from "src/constants/Routes";
 import { IRoute } from 'src/model/Model';
+import './HorizontalTabs.css';
 
 interface IHorizontalTabsProps {
     activeTabName: string;
@@ -22,7 +23,9 @@ export class HorizontalTabs extends React.Component<IHorizontalTabsProps> {
                         {RouteList.map(this.renderTab)}
                     </Tabs>
                 </AppBar>
-                {this.renderComponent(activeRoute.component, this.props.urlParams, activeRoute.extraProps)}
+                <div className="body">
+                    {this.renderComponent(activeRoute.component, this.props.urlParams, activeRoute.extraProps)}
+                </div>
             </>
         );
     }
