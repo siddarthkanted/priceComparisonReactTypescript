@@ -51,12 +51,12 @@ class Container extends React.Component<IContainerProps> {
         document.title = this.getDocumentTitle();
         const { dataList } = this.props;
         return (
-            <>
+            <div className="container">
                 <VerticalNavigationBar dataList={dataList} />
                 <div className={"multipleProductDataList"}>
                     {this.getFilteredDataList().map((data, index) => <ProductCard data={data} key={index} />)}
                 </div>
-            </>
+            </div>
         );
     }
 
